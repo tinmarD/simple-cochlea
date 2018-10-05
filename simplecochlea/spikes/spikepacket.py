@@ -1,11 +1,10 @@
 import matplotlib.pyplot as plt
-import spikelist
 
 
 class SpikePacket:
     def __init__(self, spike_list, packet_size, overlap=0):
-        if not type(spike_list) == spikelist.SpikeList:
-            raise ValueError('Argument spike_list must be a SpikeList object')
+        # if not type(spike_list) == SpikeList:
+        #     raise ValueError('Argument spike_list must be a SpikeList object')
         if not type(packet_size) == int:
             raise ValueError('Argument packet_size must be a scalar integer')
         self.spike_list = spike_list

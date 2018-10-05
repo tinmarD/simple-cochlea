@@ -10,12 +10,12 @@ import multiprocessing as mp
 from sklearn.model_selection import ParameterGrid
 from functools import wraps
 
-from ..generate_signals import *
-from ..spikes.spikelist import *
-from .cochlea_utils import *
+from .generate_signals import *
+from .spikes.spikelist import *
+from .utils.utils_cochlea import *
 from .cochlea_fun_cy import *
 from .LIF_AdaptiveThreshold_cy import *
-from ..utils_freqanalysis import *
+from .utils.utils_freqanalysis import *
 
 
 def timethis(func):

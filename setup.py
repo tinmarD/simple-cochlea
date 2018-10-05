@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='simple-cochlea',
-    version='0.1.0',
+    version='0.1.1',
     description='Simple cochlea model for sound-to-spikes conversion',
     long_description=readme,
     author='Martin Deudon',
