@@ -7,9 +7,10 @@ setup(
     ext_modules=cythonize("cochlea_fun_cy.pyx"),
     extra_compile_args=["-O3", "fopenmp"],
     extra_link_args=["fopenmp"],
-    include_dirs=[numpy.get_include()]
+    include_dirs = [numpy.get_include()]
 )
 
+# include_dirs = [numpy.get_include()]
 
 # from distutils.core import setup
 # from distutils.extension import Extension

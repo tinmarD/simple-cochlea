@@ -3,8 +3,9 @@ import os
 import random
 from scipy.io import wavfile
 import matplotlib.pyplot as plt
-import cochlea_utils
 import tqdm
+
+from .utils import utils_cochlea
 
 
 def generate_sinus(fs, f_sin, t_offset=0, t_max=1, amplitude=1):
@@ -126,7 +127,7 @@ def merge_wav_sound_from_dir(dirpath, chunk_duration, n_sounds, n_repeat_per_sou
             print('Keeping only the first channel of signal {}'.format(file_names[i]))
             signal_i = signal_i[:, 0]
         # Normalize the signal
-        signal_i = cochlea_utils.normalize_vector(signal_i)
+        signal_i = utils_cochlea.normalize_vector(signal_i)
         for i_repet in range(0, n_repeat_per_sound[i]):
             chunks[chunk_inc, :] = signal_i[0:chunk_i_n_pnts]
             sound_num_vect[chunk_inc] = i
@@ -223,7 +224,7 @@ def generate_abs_stim(dirpath, chunk_duration, n_repeat_target, n_noise_iter=1):
     if len(sig_target.shape) > 1:
         print('Keeping only the first channel of signal {}'.format(file_names[i]))
         sig_target = sig_target[:, 0]
-    sig_target_norm = cochlea_utils.normalize_vector(sig_target)[0:chunk_i_n_pnts]
+    sig_target_norm = utils_cochlea.normalize_vector(sig_target)[0:chunk_i_n_pnts]
     sig_noise_norm = np.zeros((n_noise_sounds, chunk_i_n_pnts))
     chunks = np.zeros((n_chunks, chunk_i_n_pnts))
     sound_order, sound_names = np.zeros(n_chunks, dtype=int), list()
@@ -241,7 +242,7 @@ def generate_abs_stim(dirpath, chunk_duration, n_repeat_target, n_noise_iter=1):
             if len(sig_noise_i.shape) > 1:
                 print('Keeping only the first channel')
                 sig_noise_i = sig_noise_i[:, 0]
-            sig_noise_norm[i_noise, :] = cochlea_utils.normalize_vector(sig_noise_i)[0:chunk_i_n_pnts]
+            sig_noise_norm[i_noise, :] = utils_cochlea.normalize_vector(sig_noise_i)[0:chunk_i_n_pnts]
             chunks[i, :] = sig_noise_norm[i_noise, :]
             sound_order[i] = 0
             sound_names.append(file_names[1+i_noise])

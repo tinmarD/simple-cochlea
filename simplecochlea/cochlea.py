@@ -13,8 +13,8 @@ from functools import wraps
 from .generate_signals import *
 from .spikes.spikelist import *
 from .utils.utils_cochlea import *
-from .cochlea_fun_cy import *
-from .LIF_AdaptiveThreshold_cy import *
+from simplecochlea.cochlea_fun_cy import *
+from simplecochlea.LIF_AdaptiveThreshold_cy import *
 from .utils.utils_freqanalysis import *
 
 

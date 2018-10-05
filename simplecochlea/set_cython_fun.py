@@ -1,7 +1,7 @@
 from distutils.core import setup
 from Cython.Build import cythonize
 import numpy
-# Use  python setup_cochlea_cython_fun.py build_ext --inplace
+# Use  python set_cython_fun.py build_ext --inplace
 
 setup(
     ext_modules=cythonize("LIF_AdaptiveThreshold_cy.pyx"),
