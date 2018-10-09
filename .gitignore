@@ -1,0 +1,4 @@
+build/
+dist/
+simple_cochlea.egg-info/
+.idea/
