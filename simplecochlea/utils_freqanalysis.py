@@ -29,6 +29,7 @@ def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, log
             ax.set_xscale('log')
             ax.grid(True, which="both", ls="-")
         plt.legend(['Pxx (dB)', 'Spectral Centroid', 'Spectral Peaks'])
+        f.show()
     return spect_centroid, spect_rolloff, peaks_freq, pxx_db, freqs
 
 
@@ -49,6 +50,7 @@ def find_spectrum_peaks(x, fs, fmin=[], fmax=[], nfft=4092, thresh_db_from_basel
         ax = f.add_subplot(111)
         ax.plot(freqs_sel, pxx_sel_db)
         ax.scatter(peak_freqs, peak_amps)
+        f.show()
     return peak_freqs, peak_amps, pxx_sel_db, freqs_sel
 
 

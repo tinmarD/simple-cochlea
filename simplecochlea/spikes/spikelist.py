@@ -314,7 +314,7 @@ class SpikeList:
                 _, spike_list_pattern, _ = self.select_spike(pattern_id_sel=pattern_id_sel)
                 pattern_sel_pos = int(np.where(np.unique(self.pattern_id) == pattern_id_sel)[0])
         if not ax_list:
-            fig = plt.figure()
+            f = plt.figure()
         ax0 = plt.subplot2grid((4, 7), (0, 1), rowspan=3, colspan=5) if not ax_list else ax0
         marker_size = 3 if self.n_spikes > 5000 else 5
         if n_patterns == 0:
@@ -340,6 +340,7 @@ class SpikeList:
         ax0.set_ylim(0, self.n_channels)
         ax0.set(title='Raster plot - {}'.format(self.name))
         if minplot:
+            plt.show()
             return [ax0, [], [], []]
         else:
             ax1 = plt.subplot2grid((4, 7), (3, 1), rowspan=1, colspan=5, sharex=ax0) if not ax_list else ax1
@@ -379,6 +380,7 @@ class SpikeList:
                 ax5.autoscale(axis='y', tight=True)
                 ax5.set(xlabel='$ISI_{{med}} / \\tau_{{LIF}}$')
                 ax5.set_xlim([0, 10])
+            plt.show()
             return [ax0, ax1, ax3, ax4]
 
     def plot_channel_selectivity(self, title_str=''):
@@ -402,6 +404,7 @@ class SpikeList:
         ax2.bar(range(0, self.n_channels), chan_selectivity, width=1)
         ax2.set(xlabel='Channel', title='Pattern Selectivity')
         ax1.autoscale(axis='x', tight=True)
+        f.show()
 
     def get_median_isi(self):
         median_isi = np.zeros(self.n_channels)
@@ -621,6 +624,7 @@ class SpikeList_list:
             ax_vr.autoscale(axis='y', tight=True)
             ax_vr.invert_xaxis()
             ax_vr.set(xlabel='Van Rossum Distance', title='Mean VR distance : {:.3f}'.format(global_vr_dist))
+        f.show()
 
     def compute_channel_with_spikes(self):
         """ Get proportion of channel with spikes in all epochs
@@ -738,5 +742,6 @@ def dual_spikelist_plot(spike_list_in, spike_list_out, potential_thresh_in=0, po
                         pattern_id_sel=pattern_id_sel_out)
     ax4.legend([])
     ax4.set_xlim((spike_list_in.tmin, spike_list_in.tmax))
+    f.show()
     return [ax0, ax1, ax2, ax3, ax4, ax5, ax6, ax7]
 

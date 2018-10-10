@@ -9,13 +9,18 @@ import time
 import multiprocessing as mp
 from sklearn.model_selection import ParameterGrid
 from functools import wraps
+import matplotlib
+import seaborn as sns
 
 from .generate_signals import *
 from .spikes.spikelist import *
 from .utils.utils_cochlea import *
-from simplecochlea.cochlea_fun_cy import *
-from simplecochlea.LIF_AdaptiveThreshold_cy import *
+from .cython.cochlea_fun_cy import *
 from .utils.utils_freqanalysis import *
+
+matplotlib.use('TkAgg')
+sns.set()
+sns.set_context('paper')
 
 
 def timethis(func):
@@ -62,6 +67,7 @@ class BandPassFilterbank:
         ax.set(xlabel='f (Hz)', ylabel='H (dB)',
                title='Filters frequency responses - {} filters'.format(self.n_filters))
         ax.autoscale(axis='x', tight=True)
+        f.show()
         return ax
 
     def filter_one_channel(self, input_sig, channel_pos, zi_in=[]):
@@ -100,6 +106,7 @@ class BandPassFilterbank:
             ax2.set(xlabel='time (s)', ylabel='channel', title='Filterbank output')
             f.subplots_adjust(right=0.85)
             cbar_ax = f.add_axes([0.90, 0.15, 0.025, 0.5])
+            f.show()
 
         return output, zi_out
 
@@ -709,6 +716,7 @@ class LIFBank:
         ax4.set(ylabel='Channel', xlabel='Median ISI (ms)')
         ax4.barh(range(0, self.n_channels), 1000 * self.get_median_isi(spike_time, spike_channel), 1)
         ax4.autoscale(axis='y', tight=True)
+        fig.show()
 
     def get_median_isi(self, spike_time, spike_channel):
         median_isi = np.zeros(self.n_channels)
@@ -731,6 +739,7 @@ class LIFBank:
         ax2.autoscale(axis='x', tight=True)
         ax2.legend(['Spiking Threshold'])
         ax2.set(xlabel='Channel', title='Spiking Threshold for each LIF neuron')
+        f.show(block=False)
 
 
 class Cochlea:
@@ -784,6 +793,19 @@ class Cochlea:
             self.freq_scale, self.n_channels, self.fmin, self.fmax, self.forder))
 
     def plot_channel_evolution(self, input_sig, channel_pos=[]):
+        """ Plot the processing of input_sig signal through the cochlea, for channels specified by channel_pos.
+        If channel_pos is not provided, 4 channels are selected ranging from low-frequency channel to high-frequency
+        channel.
+
+        Parameters
+        ----------
+        input_sig : array [1D]
+            Input signal
+        channel_pos : scalar | array | list
+            Position of the channel(s) to plot. If multiples channels are selected, plot one figure per channel.
+            If none,  4 channels are selected ranging from low-frequency channel to high-frequency channel.
+
+        """
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
         if not channel_pos:
@@ -795,7 +817,7 @@ class Cochlea:
             y_filt, y_rect, y_comp, v_out, threshold, t_spikes = self.process_one_channel(input_sig, channel_pos)
             tvect = np.linspace(0, len(input_sig) / self.fs, len(input_sig))
             # Plot
-            plt.figure()
+            f = plt.figure()
             ax = plt.subplot2grid((3, 1), (0, 0), rowspan=1)
             ax.plot(tvect, input_sig)
             ax.vlines(t_spikes, ymin=0, ymax=1.3*np.max(input_sig), zorder=3)
@@ -826,6 +848,7 @@ class Cochlea:
                         'Compressed - {}'.format(comp_transform),
                         'LIF output - $ \\tau = {:.1f} ms $'.format(1000 * self.lifbank.tau[channel_pos])])
             ax2.set(title='Cochlea signals', ylabel='Amplitude', xlabel='Time (s)')
+            f.show()
 
     def process_one_channel(self, input_sig, channel_pos, do_lif=1):
         v_out, spikes, threshold = [], [], []
@@ -860,15 +883,6 @@ class Cochlea:
         # return sig_filtered, sig_rectify, sig_compressed, v_out, spikes
         # return t_spikes, v_out, sig_compressed, threshold
 
-
-    # def process_one_channel_nocheck(self, input_sig, channel_pos, do_lif=1):
-    #     sig_filtered = self.filterbank.filter_one_channel_nocheck(input_sig, channel_pos)
-    #     sig_rectify = self.rectifierbank.rectify_one_channel_nocheck(sig_filtered)
-    #     sig_compressed = self.compressionbank.compress_one_channel_nocheck(sig_rectify, channel_pos)
-    #     if do_lif:
-    #         spikes = self.lifbank.filter_one_channel_nocheck(sig_compressed, channel_pos)
-    #     # return sig_filtered, sig_rectify, sig_compressed, v_out, spikes
-    #     return spikes, sig_compressed
 
     # @timethis
     # def process_input_with_inhib(self, input_sig, do_plot=0, inhib_type='sub_for', inhib_vect=[]):
@@ -933,23 +947,43 @@ class Cochlea:
                                    name=self.__str__(), tmin=tmin, tmax=tmax)
         return spike_list
 
-    def process_test_signal(self, signal_type, channel_pos=[], **kwargs):
+    def process_test_signal(self, signal_type, channel_pos=[], do_plot=True, **kwargs):
+        """ Run a test signal through the cochlea. Test signals can be a sinusoidal signal, a step or an impulse signal.
+        Argument signal_type selects the wanted signal.
+        If channel_pos is provided and do_plot is True, channel evolution is plot.
+
+        Parameters
+        ----------
+        signal_type : str
+            Test signal type. Can be
+        channel_pos :
+        do_plot :
+        kwargs :
+
+        Returns
+        -------
+
+        """
         channel_pos = np.atleast_1d(channel_pos)
         kwargs_keys = list(kwargs.keys())
         t_offset = kwargs['t_offset'] if 't_offset' in kwargs_keys else 0.2
         t_max = kwargs['t_max'] if 't_max' in kwargs_keys else 1
         amplitude = kwargs['amplitude'] if 'amplitude' in kwargs_keys else 1
+        # Get test signal
         if signal_type.lower() in ['sin', 'sinus']:
             f_sin = kwargs['f_sin'] if 'f_sin' in kwargs_keys else self.fs / 4
-            x_test = generate_signals.generate_sinus(self.fs, f_sin, t_offset, t_max, amplitude)
+            x_test = generate_sinus(self.fs, f_sin, t_offset, t_max, amplitude)
         elif signal_type.lower() in ['dirac', 'impulse']:
-            x_test = generate_signals.generate_dirac(self.fs, t_offset, t_max, amplitude)
+            x_test = generate_dirac(self.fs, t_offset, t_max, amplitude)
         elif signal_type.lower() == 'step':
-            x_test = generate_signals.generate_step(self.fs, t_offset, t_max, amplitude)
+            x_test = generate_step(self.fs, t_offset, t_max, amplitude)
+        # Run the test signal through the cochlea
         if channel_pos.size == 0:
-            spike_list = self.process_input(x_test, do_plot=1)
+            spike_list = self.process_input(x_test, do_plot=do_plot)
         else:
-            spike_list, _ = self.plot_channel_evolution(x_test, channel_pos)
+            spike_list = self.process_input(x_test, do_plot=False)
+            if do_plot:
+                self.plot_channel_evolution(x_test, channel_pos)
         return spike_list
 
     def process_input_block_ver(self, input_sig, block_len, plot_spikes=1):
@@ -1131,6 +1165,7 @@ class CochleaEstimator:
             ax4 = plt.subplot2grid((2, 6), (1, 3), colspan=2)
             sns.violinplot(x=param_key, y='Number of Spikes', data=df, inner=inner, ax=ax4)
             ax1.set(title='Cochlea parameter : {}'.format(param_key))
+            f.show()
 
     def plot_results(self, global_score, vr_score, spkchanvar_score, channel_with_spikes_ratio, n_spikes_mean,
                      param_grid, params_to_plot=['fmin', 'fmax', 'forder', 'freq_scale', 'fbank_type',
@@ -1234,6 +1269,7 @@ class CochleaEstimator:
         title_str += 'Order : {}'.format(order_str)
         ax0.set(title=title_str)
         ax0.autoscale(axis='x', tight=True)
+        f.show()
 
         # Print best configurations
         for i in range(0, min(20, len(score_sel))):
@@ -1256,23 +1292,3 @@ class CochleaEstimator:
         for key in param_grid.__dict__['param_grid'][0].keys():
             print('{} value : {}'.format(key, param_grid[grid_pos][key]))
 
-
-
-
-
-# if __name__ == '__main__':
-#     cochlea_dir = r'C:\Users\deudon\Desktop\M4\_Results\Python_cochlea\Cochlea_models'
-#     cochlea_name = 'cochlea_model_inhib_160418_1324.p'
-#     abs_dirpath = r'C:\Users\deudon\Desktop\M4\_Data\audioStim\ABS\ABS_sequences_export'
-#     save_dir = r'C:\Users\deudon\Desktop\M4\_Results\Python_cochlea\JAST2_param_search'
-#
-#     # Import  cochlea
-#     cochlea = load_cochlea(cochlea_dir, cochlea_name)
-#
-#     chunk_duration = 0.050
-#     n_repet_target = 10
-#     sig = generate_signals.generate_sinus(fs=44100, f_sin=[2000, 2100, 6000, 6500], t_offset=[0, 0.1, 0.05, 0.15])
-#     spike_list = cochlea.process_input(sig)
-#     print(spike_list)
-#
-#     # spike_list.plot()

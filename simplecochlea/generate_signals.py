@@ -260,6 +260,7 @@ def plot_signal(x, fs, ax=[]):
     t = np.linspace(0, x.size / fs, x.size)
     ax.plot(t, x)
     ax.set(xlabel="time (s)", ylabel="Amplitude")
+    plt.show()
 
 
 def delete_zero_signal(dirpath):

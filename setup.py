@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-import numpy
-
 from setuptools import setup, find_packages
 from distutils.extension import Extension
+from Cython.Build import cythonize
 from Cython.Distutils import build_ext
-
-USE_CYTHON = False
+import numpy
 
 install_requires = [
     "numpy",
@@ -15,37 +13,33 @@ install_requires = [
     "scikit-learn",
     "tqdm",
     "pymuvr",
+    "peakutils",
+    "librosa",
+    "cython"
 ]
 
-ext = '.pxy' if USE_CYTHON else '.c'
-
 cmdclass = {}
-if USE_CYTHON:
-    cmdclass.update({'build_ext': build_ext})
-    ext_modules = [
-        Extension("simplecochlea.cochlea_fun_cy", ["simplecochlea/cochlea_fun_cy" + ext]),
-        Extension("simplecochlea.LIF_AdaptiveThreshold_cy", ["simplecochlea/LIF_AdaptiveThreshold_cy" + ext]),
-    ]
-else:
-    ext_modules = [
-        Extension("simplecochlea.cochlea_fun_cy", ["simplecochlea/cochlea_fun_cy" + ext],
-                  include_dirs=[numpy.get_include()]),
-        Extension("simplecochlea.LIF_AdaptiveThreshold_cy", ["simplecochlea/LIF_AdaptiveThreshold_cy" + ext],
-                  include_dirs=[numpy.get_include()]),
-    ]
-
+ext_modules = [Extension("simplecochlea.cython.cochlea_fun_cy",
+                         ["simplecochlea/cython/cochlea_fun_cy.pyx"],
+                         include_dirs=[numpy.get_include()]),
+               Extension("simplecochlea.cython.lif_adaptthresh_fun_cy",
+                         ["simplecochlea/cython/lif_adaptthresh_fun_cy.pyx"],
+                         include_dirs=[numpy.get_include()]),
+               ]
+cmdclass.update({'build_ext': build_ext})
 
 setup(
-    name='simple-cochlea',
+    name='simplecochlea',
     version='0.1.13',
     description='Simple cochlea model for sound-to-spikes conversion',
     long_description='',
     author='Martin Deudon',
     author_email='martin.deudon@protonmail.com',
     cmdclass=cmdclass,
-    ext_modules=ext_modules,
+    ext_modules=cythonize(ext_modules),
     url='',
     license='MIT',
     packages=find_packages(exclude=('docs', 'examples')),
+    setup_requires=['numpy', 'cython'],
     install_requires=install_requires
 )

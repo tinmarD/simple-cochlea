@@ -7,3 +7,4 @@ tqdm
 pymuvr
 peakutils
 librosa
+cython

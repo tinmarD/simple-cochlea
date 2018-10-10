@@ -27,6 +27,7 @@ class SpikePacket:
         ax = f.add_subplot(111)
         ax.imshow(self.packets, origin='lower', aspect='auto')
         ax.set(xlabel='Packet number', ylabel='Channel', title=self.name)
+        f.show()
 
 
 # def overlay_same_packet_pattern(spike_packet_list, pattern_ids):
