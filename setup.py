@@ -41,5 +41,6 @@ setup(
     license='MIT',
     packages=find_packages(exclude=('docs', 'examples')),
     setup_requires=['numpy', 'cython'],
-    install_requires=install_requires
+    install_requires=install_requires,
+    python_requires='>=3.0',
 )
