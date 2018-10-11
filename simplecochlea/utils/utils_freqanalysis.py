@@ -1,12 +1,22 @@
 import numpy as np
-import peakutils
 from scipy.signal import welch, periodogram
 import matplotlib.pyplot as plt
 import seaborn as sns
-from librosa import feature
+try:
+    from librosa import feature
+    HAS_LIBROSA = True
+except:
+    HAS_LIBROSA = False
+try:
+    import peakutils
+    HAS_PEAKUTILS = True
+except:
+    HAS_PEAKUTILS = False
 
 
 def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, logscale=1):
+    if not HAS_LIBROSA:
+        raise ImportError('Librosa is not installed/available')
     if fmin and fmax:
         spect_centroid = np.mean(feature.spectral_centroid(x, fs, n_fft=nfft, freq=np.linspace(fmin, fmax, 1 + int(nfft/2))))
         spect_rolloff = np.mean(feature.spectral_rolloff(x, fs, n_fft=nfft, freq=np.linspace(fmin, fmax, 1 + int(nfft/2))))
@@ -53,6 +63,8 @@ def find_spectrum_peaks(x, fs, fmin=[], fmax=[], nfft=4092, thresh_db_from_basel
 
 
 def find_peaks(x, thresh_from_baseline, min_dist=1):
+    if not HAS_PEAKUTILS:
+        raise ImportError('peakutils is not installed/available')
     x_scaled, old_range = peakutils.prepare.scale(x, (0, 1))
     x_baseline = peakutils.baseline(x_scaled)
     thresh_norm = thresh_from_baseline / np.diff(old_range)

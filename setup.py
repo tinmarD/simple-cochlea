@@ -12,15 +12,18 @@ install_requires = [
     "seaborn",
     "scikit-learn",
     "tqdm",
-    "pymuvr",
-    "peakutils",
-    "librosa",
     "cython"
 ]
 
+extra_requires = {
+    "librosa": ['librosa'],
+    "pymuvr": ['pymuvr'],
+    "peakutils": ['peakutils'],
+}
+
 cmdclass = {}
 ext_modules = [Extension("simplecochlea.cython.cochlea_fun_cy",
-                         ["simplecochlea/cython/cochlea_fun_cy.pyx"],
+                         # ["simplecochlea/cython/cochlea_fun_cy.pyx"],
                          include_dirs=[numpy.get_include()]),
                Extension("simplecochlea.cython.lif_adaptthresh_fun_cy",
                          ["simplecochlea/cython/lif_adaptthresh_fun_cy.pyx"],

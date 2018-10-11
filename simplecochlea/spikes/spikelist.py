@@ -4,7 +4,11 @@ import seaborn as sns
 import pandas as pd
 import scipy.io as sio
 import os
-import pymuvr
+try:
+    import pymuvr
+    HAS_PYMUVR = True
+except:
+    HAS_PYMUVR = False
 sns.set()
 sns.set_context('paper')
 
@@ -665,6 +669,8 @@ class SpikeList_list:
         :param tau: Time constant for the exponential tail
         :return: mean_vr_dist, mean_vr_dist_norm, global_vr_dist, global_vr_dist_norm
         """
+        if not HAS_PYMUVR:
+            raise ImportError('pymuvr is not installed/available')
         mean_vr_dist, spikes_in_chan = np.zeros(self.n_channels), np.zeros(self.n_channels)
         mean_vr_dist_norm = np.zeros(self.n_channels)
         up_i, up_j = np.triu_indices(self.n_spikelist, 1)
