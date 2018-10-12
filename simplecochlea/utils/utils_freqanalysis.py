@@ -75,4 +75,3 @@ def find_peaks(x, thresh_from_baseline, min_dist=1):
     peak_amp = x[peak_indexes_sel]
     return peak_indexes_sel, peak_amp
 
-

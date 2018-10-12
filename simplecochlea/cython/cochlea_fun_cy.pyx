@@ -4,15 +4,15 @@ cimport numpy as np
 cimport cython
 
 
-cdef extern from "math.h":
-    double max(double x, double y)
+# cdef extern from "math.h":
+#     double max(double x, double y)
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,
-                            double v_spike, double v_reset, double v_init=0, double t_start=0, t_last_spike_p=[]):
-    cdef int i, n_pnts
+                              double v_spike, double v_reset, double v_init=0, double t_start=0, t_last_spike_p=[]):
+    cdef Py_ssize_t i, n_pnts
     cdef double t
     cdef double dt = 1.0 / fs
     n_pnts = np.array(isyn_v).size
@@ -26,7 +26,7 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
     cdef double[:] v_out_v = v_out
     t_spikes = np.zeros(n_pnts)
     cdef double[:] t_spikes_v = t_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
 
     for i in range(n_pnts):
         t = tvect_v[i]
@@ -54,11 +54,11 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
 cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init,
                     double t_start=0, t_last_spike_p=[]):
-    cdef int i
+    cdef Py_ssize_t i, c
     cdef double t
     cdef double dt = 1.0 / fs
-    cdef int n_chan = isyn_v.shape[0]
-    cdef int n_pnts = isyn_v.shape[1]
+    cdef Py_ssize_t n_chan = isyn_v.shape[0]
+    cdef Py_ssize_t n_pnts = isyn_v.shape[1]
     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
     cdef double[:] tvect_v = tvect
     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
@@ -74,7 +74,7 @@ cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
 
     for i in range(n_pnts):
         t = tvect_v[i]
@@ -105,11 +105,11 @@ cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t
 cpdef lif_filter_inhib_subfor_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
-    cdef int i, j, c
+    cdef Py_ssize_t i, j, c
     cdef double t
     cdef double dt = 1.0 / fs
-    cdef int n_chan = isyn_v.shape[0]
-    cdef int n_pnts = isyn_v.shape[1]
+    cdef Py_ssize_t n_chan = isyn_v.shape[0]
+    cdef Py_ssize_t n_pnts = isyn_v.shape[1]
     cdef int n_inhib = int(np.array(inhib_vect).size)
     cdef int n_inhib_half = int(np.floor(n_inhib/2))
     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
@@ -130,7 +130,7 @@ cpdef lif_filter_inhib_subfor_cy(int fs, double[:, :] isyn_v, int refract_period
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
 
     for i in range(n_pnts):
         t = tvect_v[i]
@@ -176,12 +176,12 @@ cpdef lif_filter_inhib_subfor_cy(int fs, double[:, :] isyn_v, int refract_period
 cpdef lif_filter_inhib_shuntfor_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
-    cdef int i, j, c, c_j
+    cdef Py_ssize_t i, j, c, c_j
     cdef double t
     cdef double dt = 1.0 / fs
-    cdef int n_chan = isyn_v.shape[0]
-    cdef int n_pnts = isyn_v.shape[1]
-    cdef int n_inhib = int(np.array(inhib_vect).size)
+    cdef Py_ssize_t n_chan = isyn_v.shape[0]
+    cdef Py_ssize_t n_pnts = isyn_v.shape[1]
+    cdef Py_ssize_t n_inhib = int(np.array(inhib_vect).size)
     cdef int n_inhib_half = int(np.floor(n_inhib/2))
     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
     cdef double[:] tvect_v = tvect
@@ -201,7 +201,7 @@ cpdef lif_filter_inhib_shuntfor_cy(int fs, double[:, :] isyn_v, int refract_peri
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
 
     for i in range(n_pnts):
         t = tvect_v[i]
@@ -250,11 +250,11 @@ cpdef lif_filter_inhib_shuntfor_cy(int fs, double[:, :] isyn_v, int refract_peri
 cpdef lif_filter_spike_inhib_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
-    cdef int i, j, c
+    cdef Py_ssize_t i, j, c
     cdef double t
     cdef double dt = 1.0 / fs
-    cdef int n_chan = isyn_v.shape[0]
-    cdef int n_pnts = isyn_v.shape[1]
+    cdef Py_ssize_t n_chan = isyn_v.shape[0]
+    cdef Py_ssize_t n_pnts = isyn_v.shape[1]
     cdef int n_inhib = int(np.array(inhib_vect).size)
     cdef int n_inhib_half = int(np.floor(n_inhib/2))
     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
@@ -275,7 +275,7 @@ cpdef lif_filter_spike_inhib_cy(int fs, double[:, :] isyn_v, int refract_period,
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
     cdef int spike_inc_last = 0
 
     for i in range(n_pnts):
@@ -316,12 +316,12 @@ cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refr
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
     print('Inhibition Sunting Forward Current')
-    cdef int i, j, c, c_j
+    cdef Py_ssize_t i, j, c, c_j
     cdef double t
     cdef double dt = 1.0 / fs
-    cdef int n_chan = isyn_v.shape[0]
-    cdef int n_pnts = isyn_v.shape[1]
-    cdef int n_inhib = int(np.array(inhib_vect).size)
+    cdef Py_ssize_t n_chan = isyn_v.shape[0]
+    cdef Py_ssize_t n_pnts = isyn_v.shape[1]
+    cdef Py_ssize_t n_inhib = int(np.array(inhib_vect).size)
     cdef int n_inhib_half = int(np.floor(n_inhib/2))
     cdef double inhib_vect_sum = np.array(inhib_vect).sum()
     inhib_vect_norm = np.zeros(n_inhib)
@@ -346,9 +346,8 @@ cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refr
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
     cdef double inhib_shunt, i_c
-
 
     for c in range(n_chan):
         if 0 < c < n_inhib_half:
@@ -395,7 +394,7 @@ cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refr
                     t_spikes_v[spike_inc] = t
                     chan_spikes_v[spike_inc] = c
                     spike_inc += 1
-            if spike_inc>0.1*n_pnts*n_chan:
+            if spike_inc>int(0.1*n_pnts*n_chan):
                 raise ValueError('Increase size of t_spikes, chan_spikes')
 
     t_spikes_v = t_spikes_v[:spike_inc]
@@ -409,7 +408,7 @@ cpdef lif_filter_inhib_shuntfor_current_mpver_cy(int fs, double[:, :] isyn_v, in
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
     print('Inhibition Sunting Forward Current')
-    cdef int i, j, c, c_j
+    cdef Py_ssize_t i, j, c, c_j
     cdef double t
     cdef double dt = 1.0 / fs
     cdef int n_chan = isyn_v.shape[0]
@@ -440,7 +439,7 @@ cpdef lif_filter_inhib_shuntfor_current_mpver_cy(int fs, double[:, :] isyn_v, in
     chan_spikes = np.zeros(int(0.1*n_pnts*n_chan), dtype=int)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
-    cdef int spike_inc = 0
+    cdef Py_ssize_t spike_inc = 0
     cdef double inhib_shunt, i_c
     # NEW variables (for prange - 11/06/2018)
     chan_has_spiked = np.zeros(n_chan, dtype=int)

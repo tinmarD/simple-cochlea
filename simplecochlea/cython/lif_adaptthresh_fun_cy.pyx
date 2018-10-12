@@ -3,11 +3,11 @@ from cython.parallel import prange
 cimport numpy as np
 cimport cython
 
-cdef extern from "math.h":
-    double max(double x, double y)
-
-cdef extern from "math.h":
-    int min(int x, int y)
+# cdef extern from "math.h":
+#     double max(double x, double y)
+#
+# cdef extern from "math.h":
+#     int min(int x, int y)
 
 cdef extern from "math.h":
     double exp(double x)
@@ -20,7 +20,7 @@ cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau
     cdef int n_tau = tau_j.shape[0]
     cdef double threshold = omega
     cdef double delay_i
-    cdef int i, j
+    cdef Py_ssize_t i, j
     if n_spikes > 0:
         for i in range(n_spikes-1, -1, -1):
             delay_i = t - t_spikes[i]
@@ -40,7 +40,8 @@ cdef get_threshold_multichan(int n_chan, double[:] t_spikes, int[:] chan_spikes,
     cdef threshold = omega * np.ones(n_chan)
     cdef double[:] threshold_v = threshold
     cdef double delay_i
-    cdef int i, c, j
+    cdef int c
+    cdef Py_ssize_t i, j
     if n_spikes > 0:
         for i in range(n_spikes-1, -1, -1):
             delay_i = t - t_spikes[i]
@@ -57,7 +58,7 @@ cdef get_threshold_multichan(int n_chan, double[:] t_spikes, int[:] chan_spikes,
 cpdef lif_filter_adaptive_threshold_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] tau_j,
                     double[:] alpha_j, double[:] omega, double t_start=0, t_last_spike_p=[]):
-    cdef int i
+    cdef Py_ssize_t i, c
     cdef double t
     cdef double dt = 1.0 / fs
     cdef int n_chan = isyn_v.shape[0]
@@ -115,7 +116,8 @@ cpdef lif_filter_one_channel_adaptive_threshold_cy(
     double v_spike, double v_reset, double v_init, double[:] tau_j,
     double[:] alpha_j, double omega, double t_start=0, t_last_spike_p=[]):
 
-    cdef int i, n_pnts
+    cdef Py_ssize_t i
+    cdef int n_pnts
     cdef double t
     cdef double dt = 1.0 / fs
     n_pnts = np.array(isyn_v).size
@@ -162,7 +164,8 @@ cdef get_threshold_multichan_samplever(int n_chan, int[:] i_spikes, int[:] chan_
     cdef threshold = omega * np.ones(n_chan)
     cdef double[:] threshold_v = threshold
     cdef int delay_i
-    cdef int i, c
+    cdef Py_ssize_t i
+    cdef int c
     if n_spikes > 0:
         for i in range(n_spikes-1, -1, -1):
             delay_i = i_t - i_spikes[i]
@@ -179,7 +182,7 @@ cdef get_threshold_multichan_samplever(int n_chan, int[:] i_spikes, int[:] chan_
 cpdef lif_filter_adaptive_threshold_samplever_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] tau_j,
                     double[:] alpha_j, double[:] omega, double t_start=0, t_last_spike_p=[]):
-    cdef int i
+    cdef Py_ssize_t i, j, c
     cdef double t
     cdef double dt = 1.0 / fs
     cdef int n_chan = isyn_v.shape[0]
@@ -202,7 +205,6 @@ cpdef lif_filter_adaptive_threshold_samplever_cy(int fs, double[:, :] isyn_v, in
     cdef int spike_inc = 0
     # Adaptive threshold
     cdef int n_tau_j = tau_j.size
-    cdef int j
     cdef double delay_max = 5 * np.max(tau_j)
     threshold = np.zeros(n_chan)
     cdef double[:] threshold_v = threshold
@@ -250,7 +252,7 @@ cpdef lif_filter_adaptive_threshold_samplever_inhib_shuntfor_current_cy(
     double t_start=0, t_last_spike_p=[]):
 
     print('Inhibition Shunting Forward Current with Adaptive threshold')
-    cdef int i, c
+    cdef Py_ssize_t i, c
     cdef double t
     cdef double dt = 1.0 / fs
     cdef int n_chan = isyn_v.shape[0]
@@ -285,7 +287,7 @@ cpdef lif_filter_adaptive_threshold_samplever_inhib_shuntfor_current_cy(
 
     # Adaptive threshold
     cdef int n_tau_j = tau_j.size
-    cdef int j
+    cdef Py_ssize_t j
     cdef double delay_max = 5 * np.max(tau_j)
     threshold = np.zeros(n_chan)
     cdef double[:] threshold_v = threshold

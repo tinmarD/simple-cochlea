@@ -1,4 +1,4 @@
-README.rst
+README.md
 setup.py
 simplecochlea/__init__.py
 simplecochlea/cochlea.py
