@@ -12,6 +12,8 @@ simplecochlea.egg-info/top_level.txt
 simplecochlea/cython/cochlea_fun_cy.c
 simplecochlea/cython/lif_adaptthresh_fun_cy.c
 simplecochlea/cython/__init__.py
+simplecochlea/cython/cochlea_fun_cy.c
+simplecochlea/cython/lif_adaptthresh_fun_cy.c
 simplecochlea/spikes/__init__.py
 simplecochlea/spikes/spikelist.py
 simplecochlea/spikes/spikepacket.py

@@ -14,9 +14,47 @@ sns.set_context('paper')
 
 
 class SpikeList:
+    """ SpikeList Class.
+    A spike is defined by a time and a channel. In addition a pattern ID ad a potential can be assigned to spikes.
+    These characteristics are defined as list.
+
+    Attributes
+    ----------
+    time : array
+        Time of each spike (in seconds)
+    channel : array [int]
+        Channel of each spike
+    pattern_id : array [int]
+        Pattern ID of each spike (Optional). If not defined is nan
+    potential : array
+        Spikes potential (Optional). If not defined is 0
+    n_channels : int
+        Number of channels in the spikelist
+    n_spikes : int
+        Number of spikes in the spikelist
+    name : str
+        Spikelist name
+    tmin : float
+        Starting time of the spikelist (default: 0)
+
+        .. note:: For spikelist generating by running a signal through the cochlea, the tmin attribute is not the
+                  time of the first spike but the starting time of the signal (0 usually).
+
+    tmax : float
+        Ending time of the spikelist. If not given, tmax is set to the maximal spike time
+
+        .. note:: For spikelist generating by running a signal through the cochlea, the tmax attribute should not be the
+                  time of the last spike but the ending time of the signal.
+
+    pattern_names : dict
+        Dictionnary giving a label to each pattern defined by pattern_id
+
+
+    """
+
     def __init__(self, time=[], channel=[], pattern_id=[], potential=[], n_channels=0, name='', tmin=0,
                  tmax=[], pattern_names={}):
-        time, channel, pattern_id, potential = np.array(time), np.array(channel), np.array(pattern_id, dtype=int),\
+        time, channel, pattern_id, potential = np.array(time), np.array(channel, dtype=int), np.array(pattern_id, dtype=int),\
                                                np.array(potential)
         if time.size == 0 and not channel.size == 0 or channel.size == 0 and not time.size == 0:
             raise ValueError('SpikeList time must be associated with a channel')
@@ -85,6 +123,16 @@ class SpikeList:
         return self.n_spikes
 
     def __getitem__(self, item):
+        """ Select of subset of the spikelist given the argument item
+
+          Examples
+          --------
+
+          Get the 100 first spikes ::
+
+           >>> spikelist_sel = spikelist[:100]
+
+        """
         pattern_ids = np.unique(self.pattern_id[item])
         pattern_ids = pattern_ids[~np.isnan(pattern_ids)]
         pattern_names = [self.pattern_names[pat_id] for pat_id in pattern_ids]
@@ -92,6 +140,17 @@ class SpikeList:
                          self.n_channels, self.name, self.tmin, self.tmax, dict(zip(pattern_ids, pattern_names)))
 
     def sort(self, field):
+        """ Sort the spikelist by increasing attribute, selected by field
+
+        Parameters
+        ----------
+        field : str
+            Attribute to sort the spikelist. Must be in  ['time', 'channel', 'pattern_id', 'potential']
+
+        Returns
+        -------
+
+        """
         if not isinstance(field, str) or field.lower() not in ['time', 'channel', 'pattern_id', 'potential']:
             raise ValueError('Argument field must be a string, either time, channel, pattern_id, or potential')
         if field is 'time':
@@ -105,6 +164,8 @@ class SpikeList:
         return self[sort_vect]
 
     def add_time_offset(self, t_offset):
+        """ Add a time offset to the spikes time. Used when creating list of spikelists.
+        """
         if not np.isscalar(t_offset):
             raise ValueError('Argument t_offset should be a scalar')
         spklist_offset = self
@@ -115,6 +176,34 @@ class SpikeList:
 
     def select_spike(self, time_min=[], time_max=[], channel_sel=[], potential_min=[], potential_max=[],
                      pattern_id_sel=[]):
+        """ Select a subset of the spikelist. If multiples selection parameters are given, select the spikes meeting
+        all conditions.
+
+        Parameters
+        ----------
+        time_min : float (s) | None
+            Select spikes whose time is superior or equal to time_min
+        time_max : float (s) | None
+            Select spikes whose time is inferior or equal to time_max
+        channel_sel : list | array | None
+            Select spikes whose channel is in channel_sel
+        potential_min : float | None
+            Select spikes whose potential is superior or equal to potential_min
+        potential_max : float | None
+            Select spikes whose potential is inferior or equal to potential_max
+        pattern_id_sel : int
+            Select spikes whose pattern_id is equal to pattern_id_sel
+
+        Returns
+        -------
+        sel_ind : array [bool]
+            Boolean array representing selected spikes
+        spikelist_sel : SpikeList
+            Selected SpikeList
+        n_spikes : int
+            Number of spikes in the selected spikelist
+
+        """
         time_min, time_max = np.array(time_min), np.array(time_max)
         potential_min, potential_max = np.array([potential_min]), np.array([potential_max])
         channel_sel, pattern_id_sel = np.array(channel_sel), np.array(pattern_id_sel)
@@ -142,6 +231,21 @@ class SpikeList:
         return sel_ind, spikelist_sel, n_spikes
 
     def set_pattern_id_from_time_limits(self, t_start, t_end, pattern_id, pattern_dict):
+        """ Given time limits given by t_start and t_end, set the pattern_id of spikes in this time interval.
+         Also add entries to the pattern_names dictionnary of the spikelist.
+
+        Parameters
+        ----------
+        t_start : array
+            Start of each time period (s)
+        t_end : array
+            End of each time period (s)
+        pattern_id : array [int]
+            Pattern ID of each time period
+        pattern_dict :
+            Dictionnary given the labels associated with each different pattern ID.
+
+        """
         t_start, t_end, pattern_id = np.array(t_start), np.array(t_end), np.array(pattern_id)
         t_start = np.array([t_start]) if t_start.ndim == 0 else t_start
         t_end = np.array([t_end]) if t_end.ndim == 0 else t_end
@@ -157,6 +261,7 @@ class SpikeList:
             self.pattern_id[sel_ind_i] = pattern_id[i]
 
     def set_pattern_id_from_time_limits_old(self, t_start, t_end, pattern_id, pattern_names=[]):
+        """ Deprecated - Use set_pattern_id_from_time_limits """
         t_start, t_end, pattern_id = np.array(t_start), np.array(t_end), np.array(pattern_id)
         t_start = np.array([t_start]) if t_start.ndim == 0 else t_start
         t_end = np.array([t_end]) if t_end.ndim == 0 else t_end
@@ -205,6 +310,7 @@ class SpikeList:
             Mean number of active channel across repetition for each pattern
         n_active_chan_per_chunk : array (size n_segments)
             Number of active channel for each segment
+
         """
         t_start, t_end, pattern_id = np.array(t_start), np.array(t_end), np.array(pattern_id)
         t_start = np.array([t_start]) if t_start.ndim == 0 else t_start
@@ -240,19 +346,53 @@ class SpikeList:
         return n_spikes_mean, n_spikes_per_chunk, n_active_chan_mean, n_active_chan_per_chunk
 
     def epoch(self, t_start, t_end):
+        """ Epoch the spikelist given the time periods defined by ``t_start`` and ``t_end``. Returns a SpikeList_list
+        instance.
+
+        Parameters
+        ----------
+        t_start : array
+            Start of each time period (s)
+        t_end : array
+            End of each time period (s)
+
+        Returns
+        -------
+        spikelist_list : SpikeList_list
+            A SpikeList_list instance.
+
+        """
         t_start, t_end = np.array(t_start), np.array(t_end)
         t_start = np.array([t_start]) if t_start.ndim == 0 else t_start
         t_end = np.array([t_end]) if t_end.ndim == 0 else t_end
-        if len(t_start) != len(t_end):
+        if not t_start.size == t_end.size:
             raise ValueError('Arguments t_start, t_end must have the same length')
         n_epochs = len(t_start)
-        spike_list_epochs = []
+        spikelist_epochs = []
         for i in range(0, n_epochs):
             _, epoch_i, _ = self.select_spike(time_min=t_start[i], time_max=t_end[i])
-            spike_list_epochs.append(epoch_i)
-        return SpikeList_list(spike_list_epochs, t_start, t_end)
+            spikelist_epochs.append(epoch_i)
+        return SpikeList_list(spikelist_epochs, t_start, t_end)
 
     def epoch_on_triggers(self, t_triggers, time_pre, time_post):
+        """ Apply the epoch function on each trigger whose time is defined by t_triggers.
+
+        Parameters
+        ----------
+        t_triggers : array
+            Time of each trigger (s)
+        time_pre : float
+            Time to keep before triggers
+        time_post : float
+            Time to keep after triggers
+
+        Returns
+        -------
+        spikelist_list : SpikeList_list
+            A SpikeList_list instance.
+
+
+        """
         return self.epoch(t_start=t_triggers - time_pre, t_end=t_triggers+time_post)
 
     def plot(self, bin_duration=0.002, potential_thresh=[], ax_list=[], minplot=0, tau_lif=[], pattern_id_sel=[],
@@ -315,7 +455,7 @@ class SpikeList:
                 print('No pattern with id {}'.format(pattern_id_sel))
                 pattern_id_sel = []
             else:
-                _, spike_list_pattern, _ = self.select_spike(pattern_id_sel=pattern_id_sel)
+                _, spikelist_pattern, _ = self.select_spike(pattern_id_sel=pattern_id_sel)
                 pattern_sel_pos = int(np.where(np.unique(self.pattern_id) == pattern_id_sel)[0])
         if not ax_list:
             f = plt.figure()
@@ -355,7 +495,7 @@ class SpikeList:
             spikes_per_channel = [np.sum(spklist_sel.channel == i) for i in range(0, self.n_channels)]
             ax3.barh(range(0, self.n_channels), spikes_per_channel, height=1, color=base_color, linewidth=0)
             if pattern_id_sel:
-                spikes_per_channel_pattern = [np.sum(spike_list_pattern.channel == i) for i in range(0, self.n_channels)]
+                spikes_per_channel_pattern = [np.sum(spikelist_pattern.channel == i) for i in range(0, self.n_channels)]
                 ax3.barh(range(0, self.n_channels), spikes_per_channel_pattern, height=1,
                          color=patterns_colors[pattern_sel_pos],  linewidth=0)
             ax3.set_ylim((0, self.n_channels))
@@ -368,7 +508,7 @@ class SpikeList:
             median_isi = spklist_sel.get_median_isi()
             ax4.barh(range(0, self.n_channels), 1000 * median_isi, 1, color=base_color, linewidth=0)
             if pattern_id_sel:
-                median_isi_pattern = spike_list_pattern.get_median_isi()
+                median_isi_pattern = spikelist_pattern.get_median_isi()
                 ax4.barh(range(0, self.n_channels), 1000 * median_isi_pattern, 1,
                          color=patterns_colors[pattern_sel_pos], linewidth=0)
             ax4.autoscale(axis='y', tight=True)
@@ -388,6 +528,13 @@ class SpikeList:
             return [ax0, ax1, ax3, ax4]
 
     def plot_channel_selectivity(self, title_str=''):
+        """ Plot channel selectivity. Definition ?
+
+        Parameters
+        ----------
+        title_str : str
+            Optional title for the figure
+        """
         chan_pattern_spikes, chan_pref_pattern, chan_selectivity = self.get_channel_selectivity()
         if chan_pattern_spikes.size == 0:
             return
@@ -411,6 +558,13 @@ class SpikeList:
         f.show()
 
     def get_median_isi(self):
+        """  Compute and return the median ISI (Inter-Spike-Interval) for each channel.
+
+        Returns
+        -------
+        median_isi : array
+            Median ISI for each channel of the spikelist.
+        """
         median_isi = np.zeros(self.n_channels)
         for i in range(0, self.n_channels):
             spike_times_i = self.time[self.channel == i]
@@ -419,6 +573,13 @@ class SpikeList:
         return median_isi
 
     def get_mean_isi(self):
+        """  Compute and return the mean ISI (Inter-Spike-Interval) for each channel.
+
+        Returns
+        -------
+        mean_isi : array
+            Mean ISI for each channel of the spikelist.
+        """
         mean_isi = np.zeros(self.n_channels)
         for i in range(0, self.n_channels):
             spike_times_i = self.time[self.channel == i]
@@ -426,14 +587,27 @@ class SpikeList:
                 mean_isi[i] = np.median(spike_times_i[1:] - spike_times_i[:-1])
         return mean_isi
 
-    def export(self, export_path='.', export_name='spike_list_0_', format='mat'):
+    def export(self, export_path='.', export_name='spikelist_0_'):
+        """ Export the spikelist as a .mat file
+
+        Parameters
+        ----------
+        export_path : str
+            Export directory path (default: '.')
+        export_name : str
+            Export file name
+        """
+
         spklist_ordered = self.sort('time')
         spklist_ordered.channel = spklist_ordered.channel + 1
         spike_mat = np.vstack([spklist_ordered.time, spklist_ordered.channel, spklist_ordered.pattern_id,
                                spklist_ordered.potential]).T
-        sio.savemat(os.path.join(export_path, export_name), mdict={'spike_list': spike_mat})
+        sio.savemat(os.path.join(export_path, export_name), mdict={'spikelist': spike_mat})
 
     def get_channel_selectivity(self):
+        """ Compute channel selectivity. Definition ?
+
+        """
         if not self.pattern_names:
             print('No patterns defined - cannot compute channel selectivity')
             return np.array([]), np.array([]), np.array([])
@@ -456,11 +630,19 @@ class SpikeList:
         return chan_pattern_spikes, chan_pref_pattern, chan_selectivity
 
     def to_dataframe(self):
-        df = pd.DataFrame({'time':self.time, 'channel':self.channel, 'pattern_id':self.pattern_id},
+        """ Convert the spikelist to a dataframe containing 3 fields : 'time', 'channel' and 'pattern_id'
+
+        Returns
+        -------
+        df : Pandas DataFrame
+            The spikelist as a dataframe
+        """
+        df = pd.DataFrame({'time': self.time, 'channel': self.channel, 'pattern_id': self.pattern_id},
                           columns=['time', 'channel', 'pattern_id'])
         return df
 
     def convert_to_packet(self, packet_size, overlap=0):
+        """ Deprecated. Used to convert the spikelist to spike packets """
         if not np.isscalar(packet_size):
             raise ValueError('Argument packet size must be a scalar')
         if overlap < 0 or overlap > 1:
@@ -524,6 +706,11 @@ class SpikeList:
 
 
 class SpikeList_list:
+    """ SpikeList_list Class.
+     Defines a list of SpikeList instances. Can represents differents epochs of a global spikelist, spikelists
+     corresponding to repetitions of a pattern.
+
+    """
     def __init__(self, spikelist_list, t_start=[], t_end=[]):
         t_start, t_end = np.array(t_start), np.array(t_end)
         if t_start.ndim == 0:
@@ -576,7 +763,16 @@ class SpikeList_list:
             spikelist_list_sel = [self.spikelist_list[it] for it in item]
         return SpikeList_list(spikelist_list_sel)
 
-    def plot(self, n_max_rows=3, n_max_cols=5, plot_vr_dist=0):
+    def plot(self, n_max_cols=5, plot_vr_dist=0):
+        """ Plot all the spikelist in the same figure
+
+        Parameters
+        ----------
+        n_max_cols : int
+            Maximal number of columns.
+        plot_vr_dist : bool (default: False)
+
+        """
         plot_vr_dist = 1 if not plot_vr_dist == 0 else 0
         n_rows = int(np.ceil(self.n_spikelist / (n_max_cols-plot_vr_dist)))
         n_cols = self.n_spikelist + plot_vr_dist if n_rows == 1 else n_max_cols
@@ -606,6 +802,16 @@ class SpikeList_list:
             ax.set(xlabel='Van Rossum Distance', title='Mean VR distance : {:.3f}'.format(global_vr_dist))
 
     def plot_superpose(self, plot_fano_factor=1, plot_vr_dist=1):
+        """ Plot all the spikelists of the SpikeList_list superimposed on the same axes.
+
+        Parameters
+        ----------
+        plot_fano_factor : bool (default: True)
+            If True, plot the Fano Factor
+        plot_vr_dist : bool (default: True)
+            If True, plot the mean Van-Rossum distance
+
+        """
         f = plt.figure()
         ax = plt.subplot2grid((1, 6), (0, 1), rowspan=1, colspan=4)
         colors = sns.color_palette(n_colors=self.n_spikelist)
@@ -646,7 +852,7 @@ class SpikeList_list:
         return channel_with_spikes_ratio
 
     def compute_spike_per_channel_variation(self):
-        """ Compute the coefficient of variation of the number of spikes per channel for each spike_list
+        """ Compute the coefficient of variation of the number of spikes per channel for each spikelist
 
         Returns
         -------
@@ -660,14 +866,30 @@ class SpikeList_list:
 
     def compute_vanrossum_distance(self, cos=0.1, tau=0.001):
         """
-        Compute the van Rossum distance (see: A Novel Spike Distance  - M. C. W. van Rossum). Return also the distance
-        normalized by sqrt((M+N)/2) where M and N are the number of spikes in the 2 spike trains. This way the
-        normalized distance between 2 uncorrelated Poisson spike trains in 1. The result is divided by sqrt(2) due to
-        the implementation in pymuvr to get similar results as in the original paper.
-        The function return the mean of these distance across each comparison of the spikelist_list for each channel.
-        :param cos: ??? - does not seem to have much influence
-        :param tau: Time constant for the exponential tail
-        :return: mean_vr_dist, mean_vr_dist_norm, global_vr_dist, global_vr_dist_norm
+         Compute the van Rossum distance (see: A Novel Spike Distance  - M. C. W. van Rossum).
+         Also compute the distance normalized by sqrt((M+N)/2) where M and N are the number of spikes in the 2 spike
+         trains. This way the normalized distance between 2 uncorrelated Poisson spike trains in 1. The result is
+         divided by sqrt(2) due to the implementation in pymuvr to get similar results as in the original paper.
+
+         The function return the mean of these distance across each comparison of the spikelist_list for each channel.
+
+        Parameters
+        ----------
+        cos : float
+            ??? - Does not seem to have much influence
+        tau : float
+            Time constant for the exponential tail
+
+        Returns
+        -------
+        mean_vr_dist
+
+        mean_vr_dist_norm :
+
+        global_vr_dist:
+
+        global_vr_dist_norm
+
         """
         if not HAS_PYMUVR:
             raise ImportError('pymuvr is not installed/available')
@@ -691,12 +913,18 @@ class SpikeList_list:
         return mean_vr_dist, mean_vr_dist_norm, global_vr_dist, global_vr_dist_norm
 
     def compute_fano_factor(self):
-        """
-        Compute the Fano Factor (~dispersion) of the number of spikes in each spike list, for each channel.
+        """ Compute the Fano Factor (~dispersion) of the number of spikes in each spike list, for each channel.
         Fano factor is defined as the variance divided by the mean of a random process
         The global fano factor returned is the mean across channels
-        :return: fano_factor, global_fano_factor
+
+        Returns
+        -------
+        fano_factor :
+
+        global_fano_factor :
+
         """
+
         fano_factor = np.zeros(self.n_channels)
         for i_chan in range(0, self.n_channels):
             spk_counts = np.array([np.sum(spklist.channel == i_chan) for spklist in self.spikelist_list])
@@ -712,42 +940,85 @@ class SpikeList_list:
 
 
 def import_spikelist_from_mat(import_path, n_channels):
+    """ Import a spikelist (SpikeList instance) from a .mat file.
+
+    Parameters
+    ----------
+    import_path : str
+        Spikelist file path
+    n_channels : int
+        Number of channels in the spikelist - Now is included in the spikelist.
+
+    Returns
+    -------
+    spikelist : SpikeList
+        The SpikeList instance.
+
+    """
     mat_file = sio.loadmat(import_path)
     try:
-        spike_list_data = mat_file['spike_list']
+        spikelist_data = mat_file['spikelist']
     except:
         try:
-            spike_list_data = mat_file[list(mat_file.keys())[-1]]
+            spikelist_data = mat_file[list(mat_file.keys())[-1]]
         except:
             raise ValueError('Could not read spike list')
-    if spike_list_data.shape[1] < 4:
-        potential = np.zeros(spike_list_data.shape[0])
+    if spikelist_data.shape[1] < 4:
+        potential = np.zeros(spikelist_data.shape[0])
     else:
-        potential = spike_list_data[:, 3]
-    return SpikeList(spike_list_data[:, 0], spike_list_data[:, 1] - 1, spike_list_data[:, 2], potential,
+        potential = spikelist_data[:, 3]
+    return SpikeList(spikelist_data[:, 0], spikelist_data[:, 1] - 1, spikelist_data[:, 2], potential,
                      n_channels=n_channels)
 
 
-def dual_spikelist_plot(spike_list_in, spike_list_out, potential_thresh_in=0, potential_thresh_out=0, tau_lif=[],
+def dual_spikelist_plot(spikelist_in, spikelist_out, potential_thresh_in=0, potential_thresh_out=0, tau_lif=[],
                         pattern_id_sel_in=[], pattern_id_sel_out=[]):
+    """ Dual Spikelist Plot. 
+     Plot 2 spikelists in the same figure. Useful when the two spikelist share common parameters.
+     The second spikelist can be obtained from the first one, after running a learning rule for example. 
+     First/Top spikelist is defined by spikelist_in and the second/bottom spikelist is defined by spikelist_out
+    
+    Parameters
+    ----------
+    spikelist_in : SpikeList
+        First spikelist, plot on top
+    spikelist_out : SpikeList
+        Second spikelist, plot at the bottom
+    potential_thresh_in : float
+        If defined, only spikes of spikelist_in whose threshold is superior to this value will be plot.
+    potential_thresh_out : float
+        If defined, only spikes of spikelist_out whose threshold is superior to this value will be plot.
+    tau_lif : array
+        Tau value of the LIF neurons of the cochlea (used to generate these spikelists).
+    pattern_id_sel_in : int
+        If defined, only spikes of spikelist_in with this ID will be plot
+    pattern_id_sel_out : int
+        If defined, only spikes of spikelist_out with this ID will be plot
+
+    Returns
+    -------
+    [ax0, ax1, ..., ax7] : list
+        A list of all the axes
+
+    """
     f = plt.figure()
     ax0 = plt.subplot2grid((8, 7), (0, 1), rowspan=3, colspan=5)
     ax1 = plt.subplot2grid((8, 7), (3, 1), rowspan=1, colspan=5, sharex=ax0)
     ax2 = plt.subplot2grid((8, 7), (0, 6), rowspan=3, sharey=ax0)
     ax3 = plt.subplot2grid((8, 7), (0, 0), rowspan=3, colspan=1, sharey=ax0)
-    ax_list = spike_list_in.plot(ax_list=[ax0, ax1, ax2, ax3], potential_thresh=potential_thresh_in, tau_lif=tau_lif,
+    ax_list = spikelist_in.plot(ax_list=[ax0, ax1, ax2, ax3], potential_thresh=potential_thresh_in, tau_lif=tau_lif,
                                  pattern_id_sel=pattern_id_sel_in)
-    if spike_list_in.n_spikes > 0:
+    if spikelist_in.n_spikes > 0:
         ax_list[1].set(xlabel='')
         ax0 = ax_list[0]
     ax4 = plt.subplot2grid((8, 7), (4, 1), rowspan=3, colspan=5, sharex=ax0, sharey=ax0)
     ax5 = plt.subplot2grid((8, 7), (7, 1), rowspan=1, colspan=5, sharex=ax0)
     ax6 = plt.subplot2grid((8, 7), (4, 6), rowspan=3, sharey=ax0)
     ax7 = plt.subplot2grid((8, 7), (4, 0), rowspan=3, colspan=1)
-    spike_list_out.plot(ax_list=[ax4, ax5, ax6, ax7], potential_thresh=potential_thresh_out,
+    spikelist_out.plot(ax_list=[ax4, ax5, ax6, ax7], potential_thresh=potential_thresh_out,
                         pattern_id_sel=pattern_id_sel_out)
     ax4.legend([])
-    ax4.set_xlim((spike_list_in.tmin, spike_list_in.tmax))
+    ax4.set_xlim((spikelist_in.tmin, spikelist_in.tmax))
     f.show()
     return [ax0, ax1, ax2, ax3, ax4, ax5, ax6, ax7]
 

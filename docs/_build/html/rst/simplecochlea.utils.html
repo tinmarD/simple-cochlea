@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>simplecochlea.utils package &#8212; simplecochlea  documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          simplecochlea</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="modules.html">API</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+                <li><a href="install.html">Install</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/rst/simplecochlea.utils.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">simplecochlea.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-simplecochlea.utils.utils_cochlea">simplecochlea.utils.utils_cochlea module</a></li>
+<li><a class="reference internal" href="#module-simplecochlea.utils.utils_freqanalysis">simplecochlea.utils.utils_freqanalysis module</a></li>
+<li><a class="reference internal" href="#module-simplecochlea.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../_sources/rst/simplecochlea.utils.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="simplecochlea-utils-package">
+<h1>simplecochlea.utils package<a class="headerlink" href="#simplecochlea-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simplecochlea.utils.utils_cochlea">
+<span id="simplecochlea-utils-utils-cochlea-module"></span><h2>simplecochlea.utils.utils_cochlea module<a class="headerlink" href="#module-simplecochlea.utils.utils_cochlea" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.erbscale">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">erbscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em>, <em>q_ear=9.26449</em>, <em>bw_min=24.7</em>, <em>bw_mult=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#erbscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.erbscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.erbspace">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">erbspace</code><span class="sig-paren">(</span><em>fmin_hz</em>, <em>fmax_hz</em>, <em>N</em>, <em>q_ear=9.26449</em>, <em>bw_min=24.7</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#erbspace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.erbspace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.find_equal_areas_limits">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">find_equal_areas_limits</code><span class="sig-paren">(</span><em>poly_coeff</em>, <em>n_areas</em>, <em>fmin</em>, <em>fmax</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#find_equal_areas_limits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.find_equal_areas_limits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.linearscale">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">linearscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#linearscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.linearscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.musicscale">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">musicscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em>, <em>poly_coeff=[]</em>, <em>bw_mult=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#musicscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.musicscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.normalize_vector">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">normalize_vector</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#normalize_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.normalize_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.plot_input_output">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">plot_input_output</code><span class="sig-paren">(</span><em>input_sig</em>, <em>output_sig</em>, <em>fs</em>, <em>input_sig_label</em>, <em>output_sig_label</em>, <em>same_colobar=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#plot_input_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.plot_input_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_cochlea.t_spikes_to_spikerate">
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">t_spikes_to_spikerate</code><span class="sig-paren">(</span><em>t_spikes</em>, <em>fs</em>, <em>n_pnts</em>, <em>kernel_duration=0.015</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#t_spikes_to_spikerate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.t_spikes_to_spikerate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simplecochlea.utils.utils_freqanalysis">
+<span id="simplecochlea-utils-utils-freqanalysis-module"></span><h2>simplecochlea.utils.utils_freqanalysis module<a class="headerlink" href="#module-simplecochlea.utils.utils_freqanalysis" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="simplecochlea.utils.utils_freqanalysis.find_peaks">
+<code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">find_peaks</code><span class="sig-paren">(</span><em>x</em>, <em>thresh_from_baseline</em>, <em>min_dist=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#find_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.find_peaks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_freqanalysis.find_spectrum_peaks">
+<code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">find_spectrum_peaks</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>fmin=[]</em>, <em>fmax=[]</em>, <em>nfft=4092</em>, <em>thresh_db_from_baseline=6</em>, <em>do_plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#find_spectrum_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.find_spectrum_peaks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simplecochlea.utils.utils_freqanalysis.get_spectral_features">
+<code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">get_spectral_features</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>fmin=[]</em>, <em>fmax=[]</em>, <em>nfft=2048</em>, <em>do_plot=False</em>, <em>logscale=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#get_spectral_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.get_spectral_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simplecochlea.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simplecochlea.utils" title="Permalink to this headline">¶</a></h2>
+<p>Utils fun</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018, Martin Deudon.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -18,9 +18,9 @@ The installation script needs *numpy* and *cython* packages to be installed.
 pip install numpy cython
 ```
 
-To install *simplecochlea*, open a terminal and run : 
+To install *simplecochlea*, open a terminal and run (will only work if git is installed) : 
 
 ```shell
-pip install git+https://github.com/tinmarD/simple-cochlea.git@master
+pip install git+https://github.com/tinmarD/simplecochlea.git@master
 ```
 

@@ -12,14 +12,23 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
+import sphinx_gallery
+import os
+import sys
+import sphinx_bootstrap_theme
+import matplotlib
+from numpydoc import numpydoc, docscrape # noqa
+# import simplecochlea
+
+sys.path.insert(0, os.path.abspath('../simplecochlea'))
+sys.path.insert(0, os.path.abspath('../simplecochlea/spikes'))
+sys.path.insert(0, os.path.abspath('../simplecochlea/utils'))
+sys.path.insert(0, os.path.abspath('../simplecochlea/cython'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'simple-cochlea'
+project = 'simplecochlea'
 copyright = '2018, Martin Deudon'
 author = 'Martin Deudon'
 
@@ -45,7 +54,18 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'sphinx_gallery.gen_gallery',
+    'numpydoc',
 ]
+
+sphinx_gallery_conf = {
+    # path to your examples scripts
+    'examples_dirs': '../examples',
+    # path where to save gallery generated examples
+    'gallery_dirs': 'auto_examples',
+    # Warning about it :
+    'backreferences_dir': False,
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -80,13 +100,24 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
-
+html_theme = 'bootstrap'
 # Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
+# further. For a list of options available for each theme, see the
 # documentation.
-#
-# html_theme_options = {}
+html_theme_options = {
+    'bootswatch_theme': "flatly",  # yeti paper lumen
+    'navbar_sidebarrel': False,    # Render the next/prev links in navbar?
+    'navbar_pagenav': False,
+    'navbar_class': "navbar",
+    'bootstrap_version': "3",# default
+    'navbar_links': [
+        ("API", "rst/modules"),
+        ("Examples", "auto_examples/index"),
+        ("Install", "rst/install")
+    ],
+}
+# Add any paths that contain custom themes here, relative to this directory.
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -103,11 +134,17 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+# variables to pass to HTML templating engine
+build_dev_html = bool(int(os.environ.get('BUILD_DEV_HTML', False)))
+
+def setup(app):
+    app.add_stylesheet("my-styles.css") # also can be a full URL
+
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'simple-cochleadoc'
+htmlhelp_basename = 'simplecochleadoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -134,7 +171,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'simple-cochlea.tex', 'simple-cochlea Documentation',
+    (master_doc, 'simplecochlea.tex', 'simplecochlea Documentation',
      'Martin Deudon', 'manual'),
 ]
 
@@ -144,7 +181,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'simple-cochlea', 'simple-cochlea Documentation',
+    (master_doc, 'simplecochlea', 'simplecochlea Documentation',
      [author], 1)
 ]
 
@@ -155,8 +192,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'simple-cochlea', 'simple-cochlea Documentation',
-     author, 'simple-cochlea', 'One line description of project.',
+    (master_doc, 'simplecochlea', 'simplecochlea Documentation',
+     author, 'simplecochlea', 'One line description of project.',
      'Miscellaneous'),
 ]
 
