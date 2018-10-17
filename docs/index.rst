@@ -12,7 +12,7 @@ Simplecochlea's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+.. include:: ./_static/images/install_github.png
 
 Indices and tables
 ==================

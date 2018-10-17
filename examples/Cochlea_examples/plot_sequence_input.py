@@ -13,7 +13,9 @@ import matplotlib
 matplotlib.use('TkAgg')
 import numpy as np
 from scipy.io import wavfile
+import seaborn as sns
 from simplecochlea import Cochlea
+sns.set_context('paper')
 
 #############################
 # Load the file

@@ -19,7 +19,9 @@ Create a simple cochlea model and test it on a sinusoidal input signal
     matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import numpy as np
+    import seaborn as sns
     from simplecochlea import Cochlea
+    sns.set_context('paper')
 
 
 
@@ -90,7 +92,7 @@ Process a sin input signal
 
  Out::
 
-    Function : process_input - Time elapsed : 5.552555084228516
+    Function : process_input - Time elapsed : 5.447544813156128
 
 
 Plot the output spikelist
@@ -110,7 +112,7 @@ Plot the output spikelist
 
 
 
-**Total running time of the script:** ( 0 minutes  11.478 seconds)
+**Total running time of the script:** ( 0 minutes  12.025 seconds)
 
 
 

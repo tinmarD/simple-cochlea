@@ -44,9 +44,9 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="modules.html">API</a></li>
-                <li><a href="../auto_examples/index.html">Examples</a></li>
                 <li><a href="#">Install</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+                <li><a href="modules.html">API</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -91,7 +91,13 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Installation</a></li>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#install-a-python-interpreter">1. Install a Python Interpreter</a></li>
+<li><a class="reference internal" href="#install-a-c-compiler">2. Install a C compiler</a></li>
+<li><a class="reference internal" href="#install-simplecochlea-package">3. Install simplecochlea package</a></li>
+<li><a class="reference internal" href="#test-the-installation">4. Test the installation</a></li>
+</ul>
+</li>
 </ul>
 
 <div id="sourcelink">
@@ -111,21 +117,59 @@
       
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>The simplecochlea package runs with Python 3.</p>
-<p>If you have conda installed, you can create a new environment to avoid any troubles with your current setup.</p>
+<div class="section" id="install-a-python-interpreter">
+<h2>1. Install a Python Interpreter<a class="headerlink" href="#install-a-python-interpreter" title="Permalink to this headline">¶</a></h2>
+<p>The simplecochlea package runs with Python 3.
+The <a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a> Python 3 distrubition is recommended :</p>
+<p>If you already have Anaconda installed, you can create a new environment to avoid any troubles with your current setup :</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda create --name simplecochlea_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 numpy cython
+<span class="gp">#</span> Activate the new environment
+<span class="gp">$</span> activate simplecochlea_env    <span class="c1"># on Windows systems</span>
+<span class="gp">$</span> <span class="nb">source</span> activate simplecochlea_env    <span class="c1"># on Unix systems</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="install-a-c-compiler">
+<h2>2. Install a C compiler<a class="headerlink" href="#install-a-c-compiler" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>You will need a C compiler to complete the installation, as simplecochlea uses Cython code to boost performances.</dt>
 <dd><ul class="first last simple">
-<li>In Unix systems, the gcc compiler should be installed.</li>
+<li>In Unix systems, the gcc compiler should already be installed.</li>
 <li>Windows users can download Microsoft Visual Studio which contain a compiler. See <a class="reference external" href="https://wiki.python.org/moin/WindowsCompilers">WindowsCompilers</a> to know which version is more suited to your Python version.</li>
 </ul>
 </dd>
 </dl>
-<div class="row docutils container">
-<div class="panel panel-default halfpad docutils container">
-<p>Without GIT :</p>
-<p>Eeuhhh</p>
 </div>
+<div class="section" id="install-simplecochlea-package">
+<h2>3. Install simplecochlea package<a class="headerlink" href="#install-simplecochlea-package" title="Permalink to this headline">¶</a></h2>
+<p>With pip and git :</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install git+https://github.com/tinmarD/simplecochlea.git@master
+</pre></div>
+</div>
+</div></blockquote>
+<p>From github :</p>
+<p>Download the zip file of the simplecochlea project from <a class="reference external" href="https://github.com/tinmarD/simplecochlea">github</a></p>
+<blockquote>
+<div><img alt="../_images/install_github.png" src="../_images/install_github.png" />
+</div></blockquote>
+<p>Open a terminal go to the simplecochlea root directory and run :</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="test-the-installation">
+<h2>4. Test the installation<a class="headerlink" href="#test-the-installation" title="Permalink to this headline">¶</a></h2>
+<p>Open a Python prompt and import simplecochlea</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">simplecochlea</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 

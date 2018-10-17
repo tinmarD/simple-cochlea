@@ -111,9 +111,9 @@ html_theme_options = {
     'navbar_class': "navbar",
     'bootstrap_version': "3",# default
     'navbar_links': [
-        ("API", "rst/modules"),
+        ("Install", "rst/install"),
         ("Examples", "auto_examples/index"),
-        ("Install", "rst/install")
+        ("API", "rst/modules"),
     ],
 }
 # Add any paths that contain custom themes here, relative to this directory.

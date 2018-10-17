@@ -44,9 +44,9 @@
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
             
-                <li><a href="../../rst/modules.html">API</a></li>
-                <li><a href="../index.html">Examples</a></li>
                 <li><a href="../../rst/install.html">Install</a></li>
+                <li><a href="../index.html">Examples</a></li>
+                <li><a href="../../rst/modules.html">API</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -118,7 +118,9 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">wavfile</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">simplecochlea</span> <span class="kn">import</span> <span class="n">Cochlea</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Load the file</p>
@@ -140,7 +142,7 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="p">:</span> <span class="n">process_input</span> <span class="o">-</span> <span class="n">Time</span> <span class="n">elapsed</span> <span class="p">:</span> <span class="mf">5.9040000438690186</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="p">:</span> <span class="n">process_input</span> <span class="o">-</span> <span class="n">Time</span> <span class="n">elapsed</span> <span class="p">:</span> <span class="mf">5.719572067260742</span>
 </pre></div>
 </div>
 <p>Plot the spikelist</p>
@@ -165,7 +167,7 @@ Thus we can set the pattern_id of the spikes in the output spikelist, with the s
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_sequence_input_002.png" class="align-center" src="../../_images/sphx_glr_plot_sequence_input_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  15.659 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  15.922 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_sequence_input.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_sequence_input.py</span></code></a></div>

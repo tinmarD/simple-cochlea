@@ -21,7 +21,9 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
     matplotlib.use('TkAgg')
     import numpy as np
     from scipy.io import wavfile
+    import seaborn as sns
     from simplecochlea import Cochlea
+    sns.set_context('paper')
 
 
 
@@ -79,7 +81,7 @@ Run the sequence through the cochlea
 
  Out::
 
-    Function : process_input - Time elapsed : 5.9040000438690186
+    Function : process_input - Time elapsed : 5.719572067260742
 
 
 Plot the spikelist
@@ -146,7 +148,7 @@ Replot the spikelist to see the results :
 
 
 
-**Total running time of the script:** ( 0 minutes  15.659 seconds)
+**Total running time of the script:** ( 0 minutes  15.922 seconds)
 
 
 

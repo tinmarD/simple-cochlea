@@ -4,10 +4,32 @@ from scipy.signal import gaussian
 
 
 def linearscale(fs, fmin_hz, fmax_hz, n_filters):
+    """ Design n_filters band-pass filters ranging from fmin_hz to fmax_hz with a central frequencies increases
+     linearly and with a fixed bandwidth defined such that the overlap of the frequency responses of adjacent filters
+     is equal to half the bandwidth.
+
+    Parameters
+    ----------
+    fs : float
+        Sampling frequency (Hz)
+    fmin_hz : float
+        Minimum frequency  (Hz)
+    fmax_hz : float
+        Maximum frequency (Hz)
+    n_filters : int
+        Number of filters in the range [fmin_hz, fmax_hz]
+
+    Returns
+    -------
+    wn : array [n_filters*2]
+        Normalized cutoff frequencies for all filters to be used for filter design (half-cycle / sample)
+    cf : array
+        Center frequency (Hz)
+    """
     filter_bw = 2 * (fmax_hz - fmin_hz) / n_filters
     f_start = np.linspace(fmin_hz, fmax_hz - filter_bw, n_filters)
     f_end = np.linspace(fmin_hz + filter_bw, fmax_hz, n_filters)
-    cf = np.linspace(fmin_hz + filter_bw / 2, fmax_hz - filter_bw / 2, n_filters)
+    # cf = np.linspace(fmin_hz + filter_bw / 2, fmax_hz - filter_bw / 2, n_filters)
     f_start[f_start < 0] = 0.01
     f_end[f_end > fs / 2] = fs / 2.01
     wn = np.vstack([f_start, f_end]).T * 2 / fs
@@ -38,6 +60,9 @@ def erbscale(fs, fmin_hz, fmax_hz, n_filters, q_ear=9.26449, bw_min=24.7, bw_mul
 
 
 def musicscale(fs, fmin_hz, fmax_hz, n_filters, poly_coeff=[], bw_mult=10):
+    """ Experimental - Try to compute equal-power band in a mean spectrum of music segments
+        Do not use
+    """
     poly_coeff = np.array(poly_coeff)
     if poly_coeff.size == 0:
         poly_coeff = np.array([7.84391019e-31, -1.01365138e-25, 3.78476589e-21,
