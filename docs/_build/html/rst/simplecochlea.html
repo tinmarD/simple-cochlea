@@ -46,7 +46,8 @@
             
                 <li><a href="install.html">Install</a></li>
                 <li><a href="../auto_examples/index.html">Examples</a></li>
-                <li><a href="modules.html">API</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="modules.html">API modules</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -94,7 +95,9 @@
 <li><a class="reference internal" href="#">simplecochlea package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-simplecochlea.cochlea">simplecochlea.cochlea module</a></li>
+<li><a class="reference internal" href="#module-simplecochlea.cochlea">simplecochlea.cochlea module</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-simplecochlea.generate_signals">simplecochlea.generate_signals module</a></li>
 <li><a class="reference internal" href="#module-simplecochlea.utils_freqanalysis">simplecochlea.utils_freqanalysis module</a></li>
 <li><a class="reference internal" href="#module-simplecochlea">Module contents</a></li>
@@ -158,46 +161,159 @@
 <dt id="simplecochlea.cochlea.BandPassFilterbank">
 <em class="property">class </em><code class="descclassname">simplecochlea.cochlea.</code><code class="descname">BandPassFilterbank</code><span class="sig-paren">(</span><em>order</em>, <em>wn</em>, <em>fs</em>, <em>ftype='butter'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#BandPassFilterbank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.BandPassFilterbank" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Band-pass Filterbank Class
+Defines a bank of band-pass filters. The Cochlea class uses it to model the inner hair cells.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+frequency.</p>
+</dd>
+<dt><strong>order</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Filter order</p>
+</dd>
+<dt><strong>ftype</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><dl class="first last docutils">
+<dt>Filter type. Must be in :</dt>
+<dd><ul class="first last simple">
+<li>‘butter’ : Butterworth filters</li>
+<li>‘bessel’ : Bessel filters</li>
+<li>‘fir’ : FIR filters</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>n_filters</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of band-pass filters</p>
+</dd>
+<dt><strong>a</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Filter coefficients - equal to 1 if FIR filters</p>
+</dd>
+<dt><strong>b</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Filter coefficients</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="75%" />
-<col width="25%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>filter_one_channel</strong></td>
-<td>&#160;</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.BandPassFilterbank.filter_one_channel" title="simplecochlea.cochlea.BandPassFilterbank.filter_one_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_one_channel</span></code></a>(input_sig,&nbsp;channel_pos[,&nbsp;…])</td>
+<td>Filter input signal <cite>input_sig</cite> with channel specified by <cite>channel_pos</cite></td>
 </tr>
-<tr class="row-even"><td><strong>filter_one_channel_nocheck</strong></td>
-<td>&#160;</td>
+<tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.BandPassFilterbank.filter_signal" title="simplecochlea.cochlea.BandPassFilterbank.filter_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_signal</span></code></a>(input_sig[,&nbsp;do_plot,&nbsp;zi_in])</td>
+<td>Filter input signal <cite>input_sig</cite>.</td>
 </tr>
-<tr class="row-odd"><td><strong>filter_signal</strong></td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><strong>plot_frequency_response</strong></td>
-<td>&#160;</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.BandPassFilterbank.plot_frequency_response" title="simplecochlea.cochlea.BandPassFilterbank.plot_frequency_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_frequency_response</span></code></a>([n_freqs])</td>
+<td>Plot the frequency response of the differents band-pass filters</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="simplecochlea.cochlea.BandPassFilterbank.filter_one_channel">
 <code class="descname">filter_one_channel</code><span class="sig-paren">(</span><em>input_sig</em>, <em>channel_pos</em>, <em>zi_in=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#BandPassFilterbank.filter_one_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.BandPassFilterbank.filter_one_channel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="simplecochlea.cochlea.BandPassFilterbank.filter_one_channel_nocheck">
-<code class="descname">filter_one_channel_nocheck</code><span class="sig-paren">(</span><em>input_sig</em>, <em>channel_pos</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#BandPassFilterbank.filter_one_channel_nocheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.BandPassFilterbank.filter_one_channel_nocheck" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filter input signal <cite>input_sig</cite> with channel specified by <cite>channel_pos</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>channel_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Channel position</p>
+</dd>
+<dt><strong>zi_in</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Initial conditions for the filter delays - default : None</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (1D)</span></dt>
+<dd><p class="first last">Output filtered signal</p>
+</dd>
+<dt><strong>zi_out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Final filter delay values</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.BandPassFilterbank.filter_signal">
 <code class="descname">filter_signal</code><span class="sig-paren">(</span><em>input_sig</em>, <em>do_plot=0</em>, <em>zi_in=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#BandPassFilterbank.filter_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.BandPassFilterbank.filter_signal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filter input signal <cite>input_sig</cite>.
+Input signal is passed through all the band-pass filters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>do_plot</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, plot the output filtered signals as an image.</p>
+</dd>
+<dt><strong>zi_in</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Initial conditions for the filter delays - default : None</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (2D)</span></dt>
+<dd><p class="first last">Output filtered signals [n_filters * n_pnts]</p>
+</dd>
+<dt><strong>zi_out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Final filter delay values</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.BandPassFilterbank.plot_frequency_response">
 <code class="descname">plot_frequency_response</code><span class="sig-paren">(</span><em>n_freqs=1024</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#BandPassFilterbank.plot_frequency_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.BandPassFilterbank.plot_frequency_response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Plot the frequency response of the differents band-pass filters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>n_freqs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of frequencies used to compute the frequency response - Default : 1024</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>ax</strong> <span class="classifier-delimiter">:</span> <span class="classifier">handle</span></dt>
+<dd><p class="first last">Pyplot axis handle</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -485,6 +601,7 @@ If channel_pos is provided and do_plot is True, channel evolution is plot.</p>
 <dt id="simplecochlea.cochlea.CompressionBank">
 <em class="property">class </em><code class="descclassname">simplecochlea.cochlea.</code><code class="descname">CompressionBank</code><span class="sig-paren">(</span><em>n_channels</em>, <em>fs</em>, <em>compression_factor</em>, <em>compression_gain</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#CompressionBank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.CompressionBank" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>CompressionBank Class</p>
 <p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -603,38 +720,142 @@ If channel_pos is provided and do_plot is True, channel evolution is plot.</p>
 <dt id="simplecochlea.cochlea.RectifierBank">
 <em class="property">class </em><code class="descclassname">simplecochlea.cochlea.</code><code class="descname">RectifierBank</code><span class="sig-paren">(</span><em>n_channels</em>, <em>fs</em>, <em>rtype='half'</em>, <em>lowpass_freq=[]</em>, <em>filtorder=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#RectifierBank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.RectifierBank" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>RectifierBank Class
+Rectifier Bank, possesses multilples channels. Half and full rectification are possible :</p>
+<blockquote>
+<div><ul class="simple">
+<li>half-rectification : <span class="math notranslate nohighlight">\(f(x) = x\ if\ x &gt; 0,\ 0\ otherwise\)</span></li>
+<li>full-rectification : <span class="math notranslate nohighlight">\(f(x) = abs(x)\)</span></li>
+</ul>
+</div></blockquote>
+<p>Rectification can include a low-pass filtering using a Butterworth filters. Each channel can have its own filtering
+cutoff frequency.
+The cochlea uses a rectifier bank just after the band-pass filtering step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+frequency.</p>
+</dd>
+<dt><strong>n_channels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of channels</p>
+</dd>
+<dt><strong>rtype</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><dl class="first last docutils">
+<dt>Rectification type - to choose in <span class="classifier-delimiter">:</span> <span class="classifier">(Default</span> <span class="classifier-delimiter">:</span> <span class="classifier">‘half’)</span></dt>
+<dd><ul class="first last simple">
+<li>‘half’ : <span class="math notranslate nohighlight">\(f(x) = x if x &gt; 0, 0 otherwise\)</span></li>
+<li>‘full’ : <span class="math notranslate nohighlight">\(f(x) = abs(x)\)</span></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>lowpass_freq</strong> <span class="classifier-delimiter">:</span> <span class="classifier">flaot | array | None</span></dt>
+<dd><p class="first last">Low pass filter cutoff frequency. If scalar all channels are filtered in the same way. If it contains as much
+frequencies as there are channels, each channel is filtered with its own cutoff frequency. If None, no filtering.
+Default : None</p>
+</dd>
+<dt><strong>filtorder</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Order of the low-pass filter</p>
+</dd>
+<dt><strong>filttype</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><dl class="first last docutils">
+<dt>Indicates the filtering scheme :</dt>
+<dd><ul class="first last simple">
+<li>‘global’ : all channels are filtered with the same filter</li>
+<li>‘channel’ : each channel has its own filtering parameters</li>
+<li>‘none’ : no low-pass filtering</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>a</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Low-pass filter coefficients</p>
+</dd>
+<dt><strong>b</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Low-pass filter coefficients</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="76%" />
-<col width="24%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>rectify_one_channel</strong></td>
-<td>&#160;</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.RectifierBank.rectify_one_channel" title="simplecochlea.cochlea.RectifierBank.rectify_one_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rectify_one_channel</span></code></a>(input_sig,&nbsp;channel_pos)</td>
+<td>Rectify input signal <cite>input_sig</cite> with channel specified by <cite>channel_pos</cite></td>
 </tr>
-<tr class="row-even"><td><strong>rectify_one_channel_nocheck</strong></td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><strong>rectify_signal</strong></td>
-<td>&#160;</td>
+<tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.RectifierBank.rectify_signal" title="simplecochlea.cochlea.RectifierBank.rectify_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rectify_signal</span></code></a>(input_sig[,&nbsp;do_plot])</td>
+<td>Rectify input signal <cite>input_sig</cite>.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="simplecochlea.cochlea.RectifierBank.rectify_one_channel">
 <code class="descname">rectify_one_channel</code><span class="sig-paren">(</span><em>input_sig</em>, <em>channel_pos</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#RectifierBank.rectify_one_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.RectifierBank.rectify_one_channel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="simplecochlea.cochlea.RectifierBank.rectify_one_channel_nocheck">
-<code class="descname">rectify_one_channel_nocheck</code><span class="sig-paren">(</span><em>input_sig</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#RectifierBank.rectify_one_channel_nocheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.RectifierBank.rectify_one_channel_nocheck" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rectify input signal <cite>input_sig</cite> with channel specified by <cite>channel_pos</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (1D)</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>channel_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Channel position</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (1D)</span></dt>
+<dd><p class="first last">Output rectified signal</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.RectifierBank.rectify_signal">
-<code class="descname">rectify_signal</code><span class="sig-paren">(</span><em>input_sig</em>, <em>do_plot=0</em>, <em>share_colorbar=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#RectifierBank.rectify_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.RectifierBank.rectify_signal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">rectify_signal</code><span class="sig-paren">(</span><em>input_sig</em>, <em>do_plot=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#RectifierBank.rectify_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.RectifierBank.rectify_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rectify input signal <cite>input_sig</cite>.
+Input signal is passed through all the band-pass filters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (1D)</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>do_plot</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, plot the output rectified signals as an image.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array (2D)</span></dt>
+<dd><p class="first last">Output rectified signal [n_filters * n_pnts]</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -654,7 +875,7 @@ If channel_pos is provided and do_plot is True, channel evolution is plot.</p>
 <dl class="function">
 <dt id="simplecochlea.generate_signals.delete_zero_signal">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">delete_zero_signal</code><span class="sig-paren">(</span><em>dirpath</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#delete_zero_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.delete_zero_signal" title="Permalink to this definition">¶</a></dt>
-<dd><p>There are some nulle signals (only zero amplitude) in the ABS directory. This function delete them.
+<dd><p>There are some null signals (only zero amplitude) in the ABS directory. This function delete them.
 Delete also constant signals (only one single amplitude)</p>
 </dd></dl>
 
@@ -710,22 +931,153 @@ the target sound, starting with a noise sound.</p>
 <dl class="function">
 <dt id="simplecochlea.generate_signals.generate_dirac">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">generate_dirac</code><span class="sig-paren">(</span><em>fs</em>, <em>t_offset=0.2</em>, <em>t_max=1</em>, <em>amplitude=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#generate_dirac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.generate_dirac" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generate a impulse signal (mathematically defined by the Dirac delta function)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>t_offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Time offset of the impulse - Default : 0.2</p>
+</dd>
+<dt><strong>t_max</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Duration of the output signal - Default : 1</p>
+</dd>
+<dt><strong>amplitude</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Amplitude of the impulse - Default : 1</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sig_dirac</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Output impulse signal</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.generate_signals.generate_sinus">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">generate_sinus</code><span class="sig-paren">(</span><em>fs</em>, <em>f_sin</em>, <em>t_offset=0</em>, <em>t_max=1</em>, <em>amplitude=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#generate_sinus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.generate_sinus" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generate a signal containing one or more sinusoides.
+If multiples frequencies are defined by <cite>f_sin</cite> parameter, the output signal is the sum of the different sinusoides.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>f_sin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | array</span></dt>
+<dd><p class="first last">Frequency(ies) of the sinusoide(s).</p>
+</dd>
+<dt><strong>t_offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | array</span></dt>
+<dd><p class="first last">Time offset of the origin of the sinusoide(s) - Default : 0</p>
+</dd>
+<dt><strong>t_max</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Duration of the signal (s) - Default : 1</p>
+</dd>
+<dt><strong>amplitude</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | array</span></dt>
+<dd><p class="first last">Amplitude of the sinusoide(s) - Default : 1</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>signal_out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Output sinusoidal signal</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.generate_signals.generate_step">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">generate_step</code><span class="sig-paren">(</span><em>fs</em>, <em>t_offset=0.2</em>, <em>t_max=1</em>, <em>amplitude=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#generate_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.generate_step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generate a impulse signal (mathematically defined by the Dirac delta function)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>t_offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Time offset of the impulse - Default : 1</p>
+</dd>
+<dt><strong>t_max</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Duration of the output signal - Default : 1</p>
+</dd>
+<dt><strong>amplitude</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Amplitude of the impulse - Default : 1</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sig_step</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Output step signal</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.generate_signals.get_abs_stim_params">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">get_abs_stim_params</code><span class="sig-paren">(</span><em>chunk_duration_s</em>, <em>n_repeat_target</em>, <em>n_noise_iter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#get_abs_stim_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.get_abs_stim_params" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>For a sequence when a target segment is repeating <cite>n_repeat_target</cite> timesand interleaved by <cite>n_noise_iter</cite> noise
+segments, returns the pattern of each segments</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>chunk_duration_s</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Duration of each segment (s)</p>
+</dd>
+<dt><strong>n_repeat_target</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of repetition of the target</p>
+</dd>
+<dt><strong>n_noise_iter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of noise segments between two target repetitions</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pattern_id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Pattern ID of each segment</p>
+</dd>
+<dt><strong>pattern_name_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionnary giving the label of each pattern ID</p>
+</dd>
+<dt><strong>chunk_start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Starting time of each segment</p>
+</dd>
+<dt><strong>chunk_end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Ending time of each segment</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.generate_signals.merge_wav_sound_from_dir">
@@ -776,7 +1128,8 @@ the target sound, starting with a noise sound.</p>
 <dl class="function">
 <dt id="simplecochlea.generate_signals.plot_signal">
 <code class="descclassname">simplecochlea.generate_signals.</code><code class="descname">plot_signal</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>ax=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/generate_signals.html#plot_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.generate_signals.plot_signal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Plot signal x</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-simplecochlea.utils_freqanalysis">

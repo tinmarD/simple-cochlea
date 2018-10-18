@@ -14,7 +14,46 @@ except:
     HAS_PEAKUTILS = False
 
 
-def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, logscale=1):
+def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, logscale=True):
+    """ Compute some spectral features using the `librosa <https://librosa.github.io/librosa/index.html>`_ library :
+     * Spectrum centroid
+     * Spectrum rolloff
+     * Peaks in the power spectral density
+
+    Parameters
+    ----------
+    x : array
+        Input array. Must be 1D.
+    fs : float
+        Sampling frequency (Hz)
+    fmin : float
+        Minimum frequency (Hz)
+    fmax : float
+        Maximum frequency (Hz)
+    nfft : int
+        Number of points for the FFT - Default: 2048
+    do_plot : bool
+        If true, plot the spectral features - Default: False
+    logscale : bool
+        If True, use a log-scale for the x-axis - Default : True
+
+    Returns
+    -------
+    spect_centroid : float
+        Spetrum centroid. See :func:`librosa.feature.spectral_centroid`
+    spect_rolloff : float
+        Spectrum rolloff. See :func:`librosa.feature.spectral_centroid`
+    peaks_freq : array
+        Peak in the spectrum
+    pxx_db : array
+        Power Spectral Density (PSD), in dB
+    freqs : array
+        Frequency associated with the PSD
+
+    """
+    x = np.array(x)
+    if x.ndim > 1:
+        raise ValueError('Input x must be 1D')
     if not HAS_LIBROSA:
         raise ImportError('Librosa is not installed/available')
     if fmin and fmax:
@@ -24,7 +63,7 @@ def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, log
         spect_centroid = np.mean(feature.spectral_centroid(x, fs, n_fft=nfft))
         spect_rolloff = np.mean(feature.spectral_rolloff(x, fs, n_fft=nfft))
     peaks_freq, peak_amps, pxx_db, freqs = find_spectrum_peaks(x, fs, fmin, fmax, nfft)
-    n_peaks = peaks_freq.size
+    # n_peaks = peaks_freq.size
     if do_plot:
         colors = sns.color_palette(n_colors=3)
         f = plt.figure()
@@ -43,6 +82,37 @@ def get_spectral_features(x, fs, fmin=[], fmax=[], nfft=2048, do_plot=False, log
 
 
 def find_spectrum_peaks(x, fs, fmin=[], fmax=[], nfft=4092, thresh_db_from_baseline=6, do_plot=False):
+    """ Find the peaks in the Power Spectral Density of signal `x` between `fmin` and `fmax`.
+    A peak is detected if its amplitude is over the threshold defined by `thresh_db_from_baseline`.
+
+    Parameters
+    ----------
+    x : array
+        Input signal
+    fs : float
+        Sampling frequency (Hz)
+    fmin : float
+        Lower range frequency (Hz)
+    fmax : float
+        Upper range frequency (Hz)
+    nfft : int
+        Number of points for the FFT - Default : 4092
+    thresh_db_from_baseline : float
+        Threshold for detecting peaks from the baseline, in dB - Default: 6
+    do_plot : bool
+        If True, plot the PSD and the peaks - Default : False
+
+    Returns
+    -------
+    peak_freqs : array
+        Peaks frequency (Hz)
+    peak_amps_db : array
+        Peaks amplitude (dB)
+    pxx_sel_db : array
+        Power Spectral Density (dB)
+    freqs_sel : array
+        frequency associated with the PSD
+    """
     if not fmin:
         fmin = 0
     if not fmax:
@@ -52,17 +122,37 @@ def find_spectrum_peaks(x, fs, fmin=[], fmax=[], nfft=4092, thresh_db_from_basel
     fsel_ind = (freqs >= fmin) & (freqs <= fmax)
     freqs_sel, pxx_sel = freqs[fsel_ind], pxx[fsel_ind]
     pxx_sel_db = 10*np.log10(pxx_sel)
-    peak_ind, peak_amps = find_peaks(pxx_sel_db, thresh_from_baseline=thresh_db_from_baseline)
+    peak_ind, peak_amps_db = find_peaks(pxx_sel_db, thresh_from_baseline=thresh_db_from_baseline)
     peak_freqs = freqs_sel[peak_ind]
     if do_plot:
         f = plt.figure()
         ax = f.add_subplot(111)
         ax.plot(freqs_sel, pxx_sel_db)
-        ax.scatter(peak_freqs, peak_amps)
-    return peak_freqs, peak_amps, pxx_sel_db, freqs_sel
+        ax.scatter(peak_freqs, peak_amps_db)
+    return peak_freqs, peak_amps_db, pxx_sel_db, freqs_sel
 
 
 def find_peaks(x, thresh_from_baseline, min_dist=1):
+    """ Algorithm for detecting peaks above the baseline.
+    A peak should be `thresh_from_baseline` above the baseline to be detected.
+
+    Parameters
+    ----------
+    x : array
+        Input array
+    thresh_from_baseline : float
+        Threshold for detecting peaks from the baseline, in dB
+    min_dist : int
+        Minimum distance between peak indices - Default : 1
+
+    Returns
+    -------
+    peak_indexes_sel : array
+        Peak indices
+    peak_amp : array
+        Peak amplitudes
+
+    """
     if not HAS_PEAKUTILS:
         raise ImportError('peakutils is not installed/available')
     x_scaled, old_range = peakutils.prepare.scale(x, (0, 1))

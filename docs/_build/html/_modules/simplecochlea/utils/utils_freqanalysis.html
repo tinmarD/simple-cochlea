@@ -46,7 +46,8 @@
             
                 <li><a href="../../../rst/install.html">Install</a></li>
                 <li><a href="../../../auto_examples/index.html">Examples</a></li>
-                <li><a href="../../../rst/modules.html">API</a></li>
+                <li><a href="../../../rst/api.html">API</a></li>
+                <li><a href="../../../rst/modules.html">API modules</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -115,7 +116,46 @@
     <span class="n">HAS_PEAKUTILS</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="get_spectral_features"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_freqanalysis.get_spectral_features">[docs]</a><span class="k">def</span> <span class="nf">get_spectral_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="p">[],</span> <span class="n">fmax</span><span class="o">=</span><span class="p">[],</span> <span class="n">nfft</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">do_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logscale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="get_spectral_features"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_freqanalysis.get_spectral_features">[docs]</a><span class="k">def</span> <span class="nf">get_spectral_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="p">[],</span> <span class="n">fmax</span><span class="o">=</span><span class="p">[],</span> <span class="n">nfft</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">do_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logscale</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Compute some spectral features using the `librosa &lt;https://librosa.github.io/librosa/index.html&gt;`_ library :</span>
+<span class="sd">     * Spectrum centroid</span>
+<span class="sd">     * Spectrum rolloff</span>
+<span class="sd">     * Peaks in the power spectral density</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array</span>
+<span class="sd">        Input array. Must be 1D.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency (Hz)</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        Minimum frequency (Hz)</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        Maximum frequency (Hz)</span>
+<span class="sd">    nfft : int</span>
+<span class="sd">        Number of points for the FFT - Default: 2048</span>
+<span class="sd">    do_plot : bool</span>
+<span class="sd">        If true, plot the spectral features - Default: False</span>
+<span class="sd">    logscale : bool</span>
+<span class="sd">        If True, use a log-scale for the x-axis - Default : True</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    spect_centroid : float</span>
+<span class="sd">        Spetrum centroid. See :func:`librosa.feature.spectral_centroid`</span>
+<span class="sd">    spect_rolloff : float</span>
+<span class="sd">        Spectrum rolloff. See :func:`librosa.feature.spectral_centroid`</span>
+<span class="sd">    peaks_freq : array</span>
+<span class="sd">        Peak in the spectrum</span>
+<span class="sd">    pxx_db : array</span>
+<span class="sd">        Power Spectral Density (PSD), in dB</span>
+<span class="sd">    freqs : array</span>
+<span class="sd">        Frequency associated with the PSD</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Input x must be 1D&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_LIBROSA</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;Librosa is not installed/available&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fmin</span> <span class="ow">and</span> <span class="n">fmax</span><span class="p">:</span>
@@ -125,7 +165,7 @@
         <span class="n">spect_centroid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">spectral_centroid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="n">nfft</span><span class="p">))</span>
         <span class="n">spect_rolloff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">spectral_rolloff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="n">nfft</span><span class="p">))</span>
     <span class="n">peaks_freq</span><span class="p">,</span> <span class="n">peak_amps</span><span class="p">,</span> <span class="n">pxx_db</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">find_spectrum_peaks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">nfft</span><span class="p">)</span>
-    <span class="n">n_peaks</span> <span class="o">=</span> <span class="n">peaks_freq</span><span class="o">.</span><span class="n">size</span>
+    <span class="c1"># n_peaks = peaks_freq.size</span>
     <span class="k">if</span> <span class="n">do_plot</span><span class="p">:</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="n">n_colors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -144,6 +184,37 @@
 
 
 <div class="viewcode-block" id="find_spectrum_peaks"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_freqanalysis.find_spectrum_peaks">[docs]</a><span class="k">def</span> <span class="nf">find_spectrum_peaks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="p">[],</span> <span class="n">fmax</span><span class="o">=</span><span class="p">[],</span> <span class="n">nfft</span><span class="o">=</span><span class="mi">4092</span><span class="p">,</span> <span class="n">thresh_db_from_baseline</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">do_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Find the peaks in the Power Spectral Density of signal `x` between `fmin` and `fmax`.</span>
+<span class="sd">    A peak is detected if its amplitude is over the threshold defined by `thresh_db_from_baseline`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array</span>
+<span class="sd">        Input signal</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency (Hz)</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        Lower range frequency (Hz)</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        Upper range frequency (Hz)</span>
+<span class="sd">    nfft : int</span>
+<span class="sd">        Number of points for the FFT - Default : 4092</span>
+<span class="sd">    thresh_db_from_baseline : float</span>
+<span class="sd">        Threshold for detecting peaks from the baseline, in dB - Default: 6</span>
+<span class="sd">    do_plot : bool</span>
+<span class="sd">        If True, plot the PSD and the peaks - Default : False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    peak_freqs : array</span>
+<span class="sd">        Peaks frequency (Hz)</span>
+<span class="sd">    peak_amps_db : array</span>
+<span class="sd">        Peaks amplitude (dB)</span>
+<span class="sd">    pxx_sel_db : array</span>
+<span class="sd">        Power Spectral Density (dB)</span>
+<span class="sd">    freqs_sel : array</span>
+<span class="sd">        frequency associated with the PSD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">fmin</span><span class="p">:</span>
         <span class="n">fmin</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">fmax</span><span class="p">:</span>
@@ -153,17 +224,37 @@
     <span class="n">fsel_ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">freqs</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freqs</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">)</span>
     <span class="n">freqs_sel</span><span class="p">,</span> <span class="n">pxx_sel</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="n">fsel_ind</span><span class="p">],</span> <span class="n">pxx</span><span class="p">[</span><span class="n">fsel_ind</span><span class="p">]</span>
     <span class="n">pxx_sel_db</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pxx_sel</span><span class="p">)</span>
-    <span class="n">peak_ind</span><span class="p">,</span> <span class="n">peak_amps</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">pxx_sel_db</span><span class="p">,</span> <span class="n">thresh_from_baseline</span><span class="o">=</span><span class="n">thresh_db_from_baseline</span><span class="p">)</span>
+    <span class="n">peak_ind</span><span class="p">,</span> <span class="n">peak_amps_db</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">pxx_sel_db</span><span class="p">,</span> <span class="n">thresh_from_baseline</span><span class="o">=</span><span class="n">thresh_db_from_baseline</span><span class="p">)</span>
     <span class="n">peak_freqs</span> <span class="o">=</span> <span class="n">freqs_sel</span><span class="p">[</span><span class="n">peak_ind</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">do_plot</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs_sel</span><span class="p">,</span> <span class="n">pxx_sel_db</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">peak_freqs</span><span class="p">,</span> <span class="n">peak_amps</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">peak_freqs</span><span class="p">,</span> <span class="n">peak_amps</span><span class="p">,</span> <span class="n">pxx_sel_db</span><span class="p">,</span> <span class="n">freqs_sel</span></div>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">peak_freqs</span><span class="p">,</span> <span class="n">peak_amps_db</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peak_freqs</span><span class="p">,</span> <span class="n">peak_amps_db</span><span class="p">,</span> <span class="n">pxx_sel_db</span><span class="p">,</span> <span class="n">freqs_sel</span></div>
 
 
 <div class="viewcode-block" id="find_peaks"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_freqanalysis.find_peaks">[docs]</a><span class="k">def</span> <span class="nf">find_peaks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">thresh_from_baseline</span><span class="p">,</span> <span class="n">min_dist</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Algorithm for detecting peaks above the baseline.</span>
+<span class="sd">    A peak should be `thresh_from_baseline` above the baseline to be detected.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array</span>
+<span class="sd">        Input array</span>
+<span class="sd">    thresh_from_baseline : float</span>
+<span class="sd">        Threshold for detecting peaks from the baseline, in dB</span>
+<span class="sd">    min_dist : int</span>
+<span class="sd">        Minimum distance between peak indices - Default : 1</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    peak_indexes_sel : array</span>
+<span class="sd">        Peak indices</span>
+<span class="sd">    peak_amp : array</span>
+<span class="sd">        Peak amplitudes</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_PEAKUTILS</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;peakutils is not installed/available&#39;</span><span class="p">)</span>
     <span class="n">x_scaled</span><span class="p">,</span> <span class="n">old_range</span> <span class="o">=</span> <span class="n">peakutils</span><span class="o">.</span><span class="n">prepare</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>

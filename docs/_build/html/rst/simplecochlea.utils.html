@@ -46,7 +46,8 @@
             
                 <li><a href="install.html">Install</a></li>
                 <li><a href="../auto_examples/index.html">Examples</a></li>
-                <li><a href="modules.html">API</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="modules.html">API modules</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -125,32 +126,186 @@
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.erbscale">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">erbscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em>, <em>q_ear=9.26449</em>, <em>bw_min=24.7</em>, <em>bw_mult=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#erbscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.erbscale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The erbscale gives an approximation of the bandwidth of the filters in human hearing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling Frequency (Hz)</p>
+</dd>
+<dt><strong>fmin_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum frequency  (Hz)</p>
+</dd>
+<dt><strong>fmax_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum frequency (Hz)</p>
+</dd>
+<dt><strong>n_filters</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of filters in the range [fmin_hz, fmax_hz]</p>
+</dd>
+<dt><strong>q_ear=9.26449, bw_min=24.7, bw_mult=1</strong></dt>
+<dd><p class="first last">Default Glasberg and Moore parameters.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_filters*2]</span></dt>
+<dd><p class="first last">Normalized cutoff frequencies for all filters to be used for filter design (half-cycle / sample)</p>
+</dd>
+<dt><strong>cf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Center frequency (Hz)</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.erbspace">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">erbspace</code><span class="sig-paren">(</span><em>fmin_hz</em>, <em>fmax_hz</em>, <em>N</em>, <em>q_ear=9.26449</em>, <em>bw_min=24.7</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#erbspace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.erbspace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Gives the center frequencies of N auditory filters between fmin_hz and fmax_hz using the ERB scale.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fmin_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum frequency  (Hz)</p>
+</dd>
+<dt><strong>fmax_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum frequency (Hz)</p>
+</dd>
+<dt><strong>N</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of filters in the range [fmin_hz, fmax_hz]</p>
+</dd>
+<dt><strong>q_ear=9.26449, bw_min=24.7</strong></dt>
+<dd><p class="first last">Default Glasberg and Moore parameters.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.find_equal_areas_limits">
-<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">find_equal_areas_limits</code><span class="sig-paren">(</span><em>poly_coeff</em>, <em>n_areas</em>, <em>fmin</em>, <em>fmax</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#find_equal_areas_limits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.find_equal_areas_limits" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">find_equal_areas_limits</code><span class="sig-paren">(</span><em>poly_coeff</em>, <em>n_areas</em>, <em>xmin</em>, <em>xmax</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#find_equal_areas_limits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.find_equal_areas_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a polynomial function defined by its polynomial coefficients <cite>poly_coeff</cite>, compute the limits of n_areas
+between the x-coordinate xmin and xmax, so that all these areas are equal. In other words, it divides the area under
+the curve defined by the polynomial function into n equal areas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>poly_coeff</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | list</span></dt>
+<dd><p class="first last">Polynomial coefficients</p>
+</dd>
+<dt><strong>n_areas</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of areas</p>
+</dd>
+<dt><strong>xmin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum x-coordinate</p>
+</dd>
+<dt><strong>xmax</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum x-coordinate</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>x_center</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">x-coordinates of the center of the areas</p>
+</dd>
+<dt><strong>x_start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">x-coordinates of the left limit of the areas</p>
+</dd>
+<dt><strong>x_end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">x-coordinates of the right limit of the areas</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.linearscale">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">linearscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#linearscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.linearscale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Design n_filters band-pass filters ranging from fmin_hz to fmax with a central frequencies increases
+linearly and with a fixed bandwidth defined such that the overlap of the frequency responses of adjacent filters
+is equal to half the bandwidth.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>fmin_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum frequency  (Hz)</p>
+</dd>
+<dt><strong>fmax_hz</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum frequency (Hz)</p>
+</dd>
+<dt><strong>n_filters</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of filters in the range [fmin_hz, fmax_hz]</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_filters*2]</span></dt>
+<dd><p class="first last">Normalized cutoff frequencies for all filters to be used for filter design (half-cycle / sample)</p>
+</dd>
+<dt><strong>cf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Center frequency (Hz)</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.musicscale">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">musicscale</code><span class="sig-paren">(</span><em>fs</em>, <em>fmin_hz</em>, <em>fmax_hz</em>, <em>n_filters</em>, <em>poly_coeff=[]</em>, <em>bw_mult=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#musicscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.musicscale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Experimental - Try to compute equal-power band in a mean spectrum of music segments - Do not use</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.normalize_vector">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">normalize_vector</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#normalize_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.normalize_vector" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Normalize vector x between -1 and 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | list</span></dt>
+<dd><p class="first last">input array</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>x_norm</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">normalized array</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.plot_input_output">
@@ -160,7 +315,38 @@
 <dl class="function">
 <dt id="simplecochlea.utils.utils_cochlea.t_spikes_to_spikerate">
 <code class="descclassname">simplecochlea.utils.utils_cochlea.</code><code class="descname">t_spikes_to_spikerate</code><span class="sig-paren">(</span><em>t_spikes</em>, <em>fs</em>, <em>n_pnts</em>, <em>kernel_duration=0.015</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_cochlea.html#t_spikes_to_spikerate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_cochlea.t_spikes_to_spikerate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compute a mean firing rate over time using a gaussian kernel from the spike times. The kernel duration is set
+by the <cite>kernel_duration</cite> parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>t_spikes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list <a href="#id1"><span class="problematic" id="id2">|</span></a>array</span></dt>
+<dd><p class="first last">Spike times (s)</p>
+</dd>
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>n_pnts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of points in the output signal</p>
+</dd>
+<dt><strong>kernel_duration</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Duration of the kernel (s). Default: 0.015 s</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>spiking_rate_smooth</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Smooth firing rate</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-simplecochlea.utils.utils_freqanalysis">
@@ -168,22 +354,160 @@
 <dl class="function">
 <dt id="simplecochlea.utils.utils_freqanalysis.find_peaks">
 <code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">find_peaks</code><span class="sig-paren">(</span><em>x</em>, <em>thresh_from_baseline</em>, <em>min_dist=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#find_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.find_peaks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Algorithm for detecting peaks above the baseline.
+A peak should be <cite>thresh_from_baseline</cite> above the baseline to be detected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Input array</p>
+</dd>
+<dt><strong>thresh_from_baseline</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Threshold for detecting peaks from the baseline, in dB</p>
+</dd>
+<dt><strong>min_dist</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Minimum distance between peak indices - Default : 1</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>peak_indexes_sel</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Peak indices</p>
+</dd>
+<dt><strong>peak_amp</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Peak amplitudes</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_freqanalysis.find_spectrum_peaks">
 <code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">find_spectrum_peaks</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>fmin=[]</em>, <em>fmax=[]</em>, <em>nfft=4092</em>, <em>thresh_db_from_baseline=6</em>, <em>do_plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#find_spectrum_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.find_spectrum_peaks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Find the peaks in the Power Spectral Density of signal <cite>x</cite> between <cite>fmin</cite> and <cite>fmax</cite>.
+A peak is detected if its amplitude is over the threshold defined by <cite>thresh_db_from_baseline</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>fmin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Lower range frequency (Hz)</p>
+</dd>
+<dt><strong>fmax</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Upper range frequency (Hz)</p>
+</dd>
+<dt><strong>nfft</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of points for the FFT - Default : 4092</p>
+</dd>
+<dt><strong>thresh_db_from_baseline</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Threshold for detecting peaks from the baseline, in dB - Default: 6</p>
+</dd>
+<dt><strong>do_plot</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, plot the PSD and the peaks - Default : False</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>peak_freqs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Peaks frequency (Hz)</p>
+</dd>
+<dt><strong>peak_amps_db</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Peaks amplitude (dB)</p>
+</dd>
+<dt><strong>pxx_sel_db</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Power Spectral Density (dB)</p>
+</dd>
+<dt><strong>freqs_sel</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">frequency associated with the PSD</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="simplecochlea.utils.utils_freqanalysis.get_spectral_features">
-<code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">get_spectral_features</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>fmin=[]</em>, <em>fmax=[]</em>, <em>nfft=2048</em>, <em>do_plot=False</em>, <em>logscale=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#get_spectral_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.get_spectral_features" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">simplecochlea.utils.utils_freqanalysis.</code><code class="descname">get_spectral_features</code><span class="sig-paren">(</span><em>x</em>, <em>fs</em>, <em>fmin=[]</em>, <em>fmax=[]</em>, <em>nfft=2048</em>, <em>do_plot=False</em>, <em>logscale=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/utils/utils_freqanalysis.html#get_spectral_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.utils.utils_freqanalysis.get_spectral_features" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Compute some spectral features using the <a class="reference external" href="https://librosa.github.io/librosa/index.html">librosa</a> library :</dt>
+<dd><ul class="first last simple">
+<li>Spectrum centroid</li>
+<li>Spectrum rolloff</li>
+<li>Peaks in the power spectral density</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Input array. Must be 1D.</p>
+</dd>
+<dt><strong>fs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sampling frequency (Hz)</p>
+</dd>
+<dt><strong>fmin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum frequency (Hz)</p>
+</dd>
+<dt><strong>fmax</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum frequency (Hz)</p>
+</dd>
+<dt><strong>nfft</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of points for the FFT - Default: 2048</p>
+</dd>
+<dt><strong>do_plot</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If true, plot the spectral features - Default: False</p>
+</dd>
+<dt><strong>logscale</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, use a log-scale for the x-axis - Default : True</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>spect_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Spetrum centroid. See <code class="xref py py-func docutils literal notranslate"><span class="pre">librosa.feature.spectral_centroid()</span></code></p>
+</dd>
+<dt><strong>spect_rolloff</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Spectrum rolloff. See <code class="xref py py-func docutils literal notranslate"><span class="pre">librosa.feature.spectral_centroid()</span></code></p>
+</dd>
+<dt><strong>peaks_freq</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Peak in the spectrum</p>
+</dd>
+<dt><strong>pxx_db</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Power Spectral Density (PSD), in dB</p>
+</dd>
+<dt><strong>freqs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Frequency associated with the PSD</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-simplecochlea.utils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simplecochlea.utils" title="Permalink to this headline">¶</a></h2>
-<p>Utils fun</p>
 </div>
 </div>
 

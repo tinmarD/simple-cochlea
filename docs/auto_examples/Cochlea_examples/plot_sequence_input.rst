@@ -23,7 +23,9 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
     from scipy.io import wavfile
     import seaborn as sns
     from simplecochlea import Cochlea
+    import simplecochlea
     sns.set_context('paper')
+
 
 
 
@@ -37,7 +39,8 @@ Load the file
 
 .. code-block:: python
 
-    sample_data_dir = r'C:\Users\deudon\Desktop\M4\_Scripts\_Python\simpleCochlea\examples\sample_data'
+    root_dirpath = os.path.dirname(simplecochlea.__file__)
+    sample_data_dir = os.path.join(root_dirpath, 'sample_data')
     fs, sequence = wavfile.read(os.path.join(sample_data_dir, 'sample_sequence_10_50ms_1.wav'))
 
 
@@ -81,7 +84,7 @@ Run the sequence through the cochlea
 
  Out::
 
-    Function : process_input - Time elapsed : 5.719572067260742
+    Function : process_input - Time elapsed : 6.109999895095825
 
 
 Plot the spikelist
@@ -148,7 +151,7 @@ Replot the spikelist to see the results :
 
 
 
-**Total running time of the script:** ( 0 minutes  15.922 seconds)
+**Total running time of the script:** ( 0 minutes  18.877 seconds)
 
 
 

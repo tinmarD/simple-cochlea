@@ -60,6 +60,35 @@ Create a cochlea model.
 
     <div style='clear:both'></div>
 
+Element Examples
+----------------------
+
+Find a better name ...
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Illustration of the different frequency scales">
+
+.. only:: html
+
+    .. figure:: /auto_examples/Elements/images/thumb/sphx_glr_plot_frequency_scale_thumb.png
+
+        :ref:`sphx_glr_auto_examples_Elements_plot_frequency_scale.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/Elements/plot_frequency_scale
+.. raw:: html
+
+    <div style='clear:both'></div>
+
 
 
 .. only :: html

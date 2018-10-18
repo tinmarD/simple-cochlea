@@ -34,9 +34,32 @@ def timethis(func):
 
 
 class BandPassFilterbank:
+    """ Band-pass Filterbank Class
+    Defines a bank of band-pass filters. The Cochlea class uses it to model the inner hair cells.
+
+    Attributes
+    ----------
+    fs : float
+        Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+        frequency.
+    order : int
+        Filter order
+    ftype : str
+        Filter type. Must be in :
+            * 'butter' : Butterworth filters
+            * 'bessel' : Bessel filters
+            * 'fir' : FIR filters
+    n_filters : int
+        Number of band-pass filters
+    a : array
+        Filter coefficients - equal to 1 if FIR filters
+    b : array
+        Filter coefficients
+
+    """
     def __init__(self, order, wn, fs, ftype='butter'):
         wn = np.array(wn)
-        if wn.shape[1] is not 2:
+        if wn.ndim != 2 and wn.shape[1] != 2:
             raise ValueError('wn argument must be a matrix of size [n_filters, 2]')
         self.n_filters = wn.shape[0]
         self.b = np.zeros([self.n_filters, 2 * order + 1])
@@ -59,6 +82,19 @@ class BandPassFilterbank:
         plt.rcParams['image.cmap'] = 'viridis'
 
     def plot_frequency_response(self, n_freqs=1024):
+        """ Plot the frequency response of the differents band-pass filters
+
+        Parameters
+        ----------
+        n_freqs : int
+            Number of frequencies used to compute the frequency response - Default : 1024
+
+        Returns
+        -------
+        ax : handle
+            Pyplot axis handle
+
+        """
         f = plt.figure()
         ax = f.add_subplot(111)
         for i in range(0, self.n_filters):
@@ -71,6 +107,25 @@ class BandPassFilterbank:
         return ax
 
     def filter_one_channel(self, input_sig, channel_pos, zi_in=[]):
+        """ Filter input signal `input_sig` with channel specified by `channel_pos`
+
+        Parameters
+        ----------
+        input_sig : array
+            Input signal
+        channel_pos : int
+            Channel position
+        zi_in : array
+            Initial conditions for the filter delays - default : None
+
+        Returns
+        -------
+        output : array (1D)
+            Output filtered signal
+        zi_out : array
+            Final filter delay values
+
+        """
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
         if not np.isscalar(channel_pos) or channel_pos < 0 or channel_pos > self.n_filters-1:
@@ -80,11 +135,28 @@ class BandPassFilterbank:
         output, zi_out = signal.lfilter(self.b[channel_pos, :], self.a[channel_pos, :], input_sig, zi=zi_in)
         return output, zi_out
 
-    def filter_one_channel_nocheck(self, input_sig, channel_pos):
-        output = signal.lfilter(self.b[channel_pos, :], self.a[channel_pos, :], input_sig)
-        return output
-
     def filter_signal(self, input_sig, do_plot=0, zi_in=[]):
+        """ Filter input signal `input_sig`.
+        Input signal is passed through all the band-pass filters.
+
+        Parameters
+        ----------
+        input_sig : array
+            Input signal
+        do_plot : bool
+            If True, plot the output filtered signals as an image.
+        zi_in : array
+            Initial conditions for the filter delays - default : None
+
+        Returns
+        -------
+        output : array (2D)
+            Output filtered signals [n_filters * n_pnts]
+        zi_out : array
+            Final filter delay values
+
+
+        """
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
         n_pnts = len(input_sig)
@@ -102,16 +174,50 @@ class BandPassFilterbank:
             ax1.set(ylabel='Amplitude', title='input_sig signal')
             ax1.autoscale(axis='x', tight=True)
             ax2 = plt.subplot2grid((4, 1), (1, 0), rowspan=3, colspan=1, sharex=ax1)
-            im = plt.imshow(output, aspect='auto', origin='lower', extent=(0, n_pnts/self.fs, 0, self.n_filters))
+            plt.imshow(output, aspect='auto', origin='lower', extent=(0, n_pnts/self.fs, 0, self.n_filters))
             ax2.set(xlabel='time (s)', ylabel='channel', title='Filterbank output')
             f.subplots_adjust(right=0.85)
-            cbar_ax = f.add_axes([0.90, 0.15, 0.025, 0.5])
+            f.add_axes([0.90, 0.15, 0.025, 0.5])
             f.show()
-
         return output, zi_out
 
 
 class RectifierBank:
+    """ RectifierBank Class
+    Rectifier Bank, possesses multilples channels. Half and full rectification are possible :
+        * half-rectification : :math:`f(x) = x if x > 0, 0 otherwise`
+        * full-rectification : :math:`f(x) = abs(x)`
+    Rectification can include a low-pass filtering using a Butterworth filters. Each channel can have its own filtering
+    cutoff frequency.
+    The cochlea uses a rectifier bank just after the band-pass filtering step.
+
+    Attributes
+    ----------
+    fs : float
+        Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+        frequency.
+    n_channels : int
+        Number of channels
+    rtype : str
+        Rectification type - to choose in : (Default : 'half')
+            * 'half' : :math:`f(x) = x if x > 0, 0 otherwise`
+            * 'full' : :math:`f(x) = abs(x)`
+    lowpass_freq : flaot | array | None
+        Low pass filter cutoff frequency. If scalar all channels are filtered in the same way. If it contains as much
+        frequencies as there are channels, each channel is filtered with its own cutoff frequency. If None, no filtering.
+        Default : None
+    filtorder : int
+        Order of the low-pass filter
+    filttype : str
+        Indicates the filtering scheme :
+            * 'global' : all channels are filtered with the same filter
+            * 'channel' : each channel has its own filtering parameters
+            * 'none' : no low-pass filtering
+    a : array
+        Low-pass filter coefficients
+    b : array
+        Low-pass filter coefficients
+    """
     def __init__(self, n_channels, fs, rtype='half', lowpass_freq=[], filtorder=1):
         if not rtype.lower() == 'half' and not rtype.lower() == 'full':
             raise ValueError('rtype argument can take the values : half or full')
@@ -142,6 +248,21 @@ class RectifierBank:
                    ' ({} order Butterworth filter)\n'.format(self.rtype, self.lowpass_freq, self.filtorder)
 
     def rectify_one_channel(self, input_sig, channel_pos):
+        """ Rectify input signal `input_sig` with channel specified by `channel_pos`
+
+        Parameters
+        ----------
+        input_sig : array (1D)
+            Input signal
+        channel_pos : int
+            Channel position
+
+        Returns
+        -------
+        output_sig : array (1D)
+            Output rectified signal
+
+        """
         input_sig = np.array([input_sig]).squeeze()
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
@@ -163,23 +284,23 @@ class RectifierBank:
                 output_sig = signal.lfilter(self.b[channel_pos, :], self.a[channel_pos, :], output_sig)
         return output_sig
 
-    def rectify_one_channel_nocheck(self, input_sig):
-        output_sig = input_sig
-        # Rectification
-        if self.rtype == 'half':
-            output_sig[output_sig < 0] = 0
-        elif self.rtype == 'full':
-            output_sig = np.abs(output_sig)
-        else:
-            raise ValueError('Wrong rtype argument : {}'.format(self.rtype))
-        # Low pass Filtering
-        if self.filttype == 'global':
-            output_sig = signal.lfilter(self.b, self.a, output_sig)
-        elif not self.filttype == 'none':
-            raise ValueError('Wrong filttype argument : {}'.format(self.filttype))
-        return output_sig
+    def rectify_signal(self, input_sig, do_plot=0):
+        """ Rectify input signal `input_sig`.
+        Input signal is passed through all the band-pass filters.
 
-    def rectify_signal(self, input_sig, do_plot=0, share_colorbar=1):
+        Parameters
+        ----------
+        input_sig : array (1D)
+            Input signal
+        do_plot : bool
+            If True, plot the output rectified signals as an image.
+
+        Returns
+        -------
+        output_sig : array (2D)
+            Output rectified signal [n_filters * n_pnts]
+
+        """
         input_sig = np.array([input_sig]).squeeze()
         if len(input_sig.shape) == 1:
             input_sig = np.tile(input_sig, (self.n_channels, 1))
@@ -207,6 +328,10 @@ class RectifierBank:
 
 
 class CompressionBank:
+    """ CompressionBank Class
+    Apply an amplitude compression.
+
+    """
     def __init__(self, n_channels, fs, compression_factor, compression_gain):
         self.n_channels = n_channels
         if not np.isscalar(compression_factor) and not len(compression_factor) == n_channels:
@@ -240,18 +365,6 @@ class CompressionBank:
             raise ValueError('input_sig must be a 1D array')
         if not np.isscalar(channel_pos) or channel_pos < 0 or channel_pos > self.n_channels-1:
             raise ValueError('argument channel_pos must be a scalar ranging between 0 and the number of channels-1')
-        if not np.isscalar(self.comp_factor):
-            comp_factor = self.comp_factor[channel_pos]
-        else:
-            comp_factor = self.comp_factor
-        if not np.isscalar(self.comp_gain):
-            comp_gain = self.comp_gain[channel_pos]
-        else:
-            comp_gain = self.comp_gain
-        output_sig = np.power(input_sig, comp_factor) * comp_gain
-        return output_sig
-
-    def compress_one_channel_nocheck(self, input_sig, channel_pos):
         if not np.isscalar(self.comp_factor):
             comp_factor = self.comp_factor[channel_pos]
         else:

@@ -15,11 +15,14 @@ import numpy as np
 from scipy.io import wavfile
 import seaborn as sns
 from simplecochlea import Cochlea
+import simplecochlea
 sns.set_context('paper')
+
 
 #############################
 # Load the file
-sample_data_dir = r'C:\Users\deudon\Desktop\M4\_Scripts\_Python\simpleCochlea\examples\sample_data'
+root_dirpath = os.path.dirname(simplecochlea.__file__)
+sample_data_dir = os.path.join(root_dirpath, 'sample_data')
 fs, sequence = wavfile.read(os.path.join(sample_data_dir, 'sample_sequence_10_50ms_1.wav'))
 
 #############################

@@ -46,7 +46,8 @@
             
                 <li><a href="../../../rst/install.html">Install</a></li>
                 <li><a href="../../../auto_examples/index.html">Examples</a></li>
-                <li><a href="../../../rst/modules.html">API</a></li>
+                <li><a href="../../../rst/api.html">API</a></li>
+                <li><a href="../../../rst/modules.html">API modules</a></li>
             
             
               <li class="dropdown globaltoc-container">
@@ -105,10 +106,33 @@
 
 
 <div class="viewcode-block" id="linearscale"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.linearscale">[docs]</a><span class="k">def</span> <span class="nf">linearscale</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Design n_filters band-pass filters ranging from fmin_hz to fmax with a central frequencies increases</span>
+<span class="sd">    linearly and with a fixed bandwidth defined such that the overlap of the frequency responses of adjacent filters</span>
+<span class="sd">    is equal to half the bandwidth.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency (Hz)</span>
+<span class="sd">    fmin_hz : float</span>
+<span class="sd">        Minimum frequency  (Hz)</span>
+<span class="sd">    fmax_hz : float</span>
+<span class="sd">        Maximum frequency (Hz)</span>
+<span class="sd">    n_filters : int</span>
+<span class="sd">        Number of filters in the range [fmin_hz, fmax_hz]</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    wn : array [n_filters*2]</span>
+<span class="sd">        Normalized cutoff frequencies for all filters to be used for filter design (half-cycle / sample)</span>
+<span class="sd">    cf : array</span>
+<span class="sd">        Center frequency (Hz)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">filter_bw</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">fmax_hz</span> <span class="o">-</span> <span class="n">fmin_hz</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_filters</span>
     <span class="n">f_start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span> <span class="o">-</span> <span class="n">filter_bw</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">)</span>
     <span class="n">f_end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fmin_hz</span> <span class="o">+</span> <span class="n">filter_bw</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">)</span>
-    <span class="n">cf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fmin_hz</span> <span class="o">+</span> <span class="n">filter_bw</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fmax_hz</span> <span class="o">-</span> <span class="n">filter_bw</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">)</span>
+    <span class="c1"># cf = np.linspace(fmin_hz + filter_bw / 2, fmax_hz - filter_bw / 2, n_filters)</span>
     <span class="n">f_start</span><span class="p">[</span><span class="n">f_start</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.01</span>
     <span class="n">f_end</span><span class="p">[</span><span class="n">f_end</span> <span class="o">&gt;</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">fs</span> <span class="o">/</span> <span class="mf">2.01</span>
     <span class="n">wn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">f_start</span><span class="p">,</span> <span class="n">f_end</span><span class="p">])</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">fs</span>
@@ -117,6 +141,24 @@
 
 
 <div class="viewcode-block" id="erbspace"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.erbspace">[docs]</a><span class="k">def</span> <span class="nf">erbspace</span><span class="p">(</span><span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">q_ear</span><span class="o">=</span><span class="mf">9.26449</span><span class="p">,</span> <span class="n">bw_min</span><span class="o">=</span><span class="mf">24.7</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Gives the center frequencies of N auditory filters between fmin_hz and fmax_hz using the ERB scale.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fmin_hz : float</span>
+<span class="sd">        Minimum frequency  (Hz)</span>
+<span class="sd">    fmax_hz : float</span>
+<span class="sd">        Maximum frequency (Hz)</span>
+<span class="sd">    N : int</span>
+<span class="sd">        Number of filters in the range [fmin_hz, fmax_hz]</span>
+<span class="sd">    q_ear=9.26449, bw_min=24.7</span>
+<span class="sd">        Default Glasberg and Moore parameters.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">f_vect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">cf</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">q_ear</span><span class="o">*</span><span class="n">bw_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f_vect</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fmax_hz</span> <span class="o">+</span> <span class="n">q_ear</span> <span class="o">*</span> <span class="n">bw_min</span><span class="p">)</span> <span class="o">+</span>
                                             <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fmin_hz</span> <span class="o">+</span> <span class="n">q_ear</span> <span class="o">*</span> <span class="n">bw_min</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">fmax_hz</span> <span class="o">+</span> <span class="n">q_ear</span> <span class="o">*</span> <span class="n">bw_min</span><span class="p">)</span>
@@ -124,6 +166,29 @@
 
 
 <div class="viewcode-block" id="erbscale"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.erbscale">[docs]</a><span class="k">def</span> <span class="nf">erbscale</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">,</span> <span class="n">q_ear</span><span class="o">=</span><span class="mf">9.26449</span><span class="p">,</span> <span class="n">bw_min</span><span class="o">=</span><span class="mf">24.7</span><span class="p">,</span> <span class="n">bw_mult</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; The erbscale gives an approximation of the bandwidth of the filters in human hearing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling Frequency (Hz)</span>
+<span class="sd">    fmin_hz : float</span>
+<span class="sd">        Minimum frequency  (Hz)</span>
+<span class="sd">    fmax_hz : float</span>
+<span class="sd">        Maximum frequency (Hz)</span>
+<span class="sd">    n_filters : int</span>
+<span class="sd">        Number of filters in the range [fmin_hz, fmax_hz]</span>
+<span class="sd">    q_ear=9.26449, bw_min=24.7, bw_mult=1</span>
+<span class="sd">        Default Glasberg and Moore parameters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    wn : array [n_filters*2]</span>
+<span class="sd">        Normalized cutoff frequencies for all filters to be used for filter design (half-cycle / sample)</span>
+<span class="sd">    cf : array</span>
+<span class="sd">        Center frequency (Hz)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Calcul of the central frequencies of band-pass filters</span>
     <span class="n">cf</span> <span class="o">=</span> <span class="n">erbspace</span><span class="p">(</span><span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">,</span> <span class="n">q_ear</span><span class="p">,</span> <span class="n">bw_min</span><span class="p">)</span>
     <span class="c1"># ERB bandwith</span>
@@ -139,6 +204,7 @@
 
 
 <div class="viewcode-block" id="musicscale"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.musicscale">[docs]</a><span class="k">def</span> <span class="nf">musicscale</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">fmin_hz</span><span class="p">,</span> <span class="n">fmax_hz</span><span class="p">,</span> <span class="n">n_filters</span><span class="p">,</span> <span class="n">poly_coeff</span><span class="o">=</span><span class="p">[],</span> <span class="n">bw_mult</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Experimental - Try to compute equal-power band in a mean spectrum of music segments - Do not use &quot;&quot;&quot;</span>
     <span class="n">poly_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">poly_coeff</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">poly_coeff</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">poly_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.84391019e-31</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.01365138e-25</span><span class="p">,</span> <span class="mf">3.78476589e-21</span><span class="p">,</span>
@@ -156,27 +222,52 @@
     <span class="k">return</span> <span class="n">wn</span><span class="p">,</span> <span class="n">cf</span></div>
 
 
-<div class="viewcode-block" id="find_equal_areas_limits"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.find_equal_areas_limits">[docs]</a><span class="k">def</span> <span class="nf">find_equal_areas_limits</span><span class="p">(</span><span class="n">poly_coeff</span><span class="p">,</span> <span class="n">n_areas</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">):</span>
+<div class="viewcode-block" id="find_equal_areas_limits"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.find_equal_areas_limits">[docs]</a><span class="k">def</span> <span class="nf">find_equal_areas_limits</span><span class="p">(</span><span class="n">poly_coeff</span><span class="p">,</span> <span class="n">n_areas</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a polynomial function defined by its polynomial coefficients `poly_coeff`, compute the limits of n_areas</span>
+<span class="sd">    between the x-coordinate xmin and xmax, so that all these areas are equal. In other words, it divides the area under</span>
+<span class="sd">    the curve defined by the polynomial function into n equal areas.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    poly_coeff : array | list</span>
+<span class="sd">        Polynomial coefficients</span>
+<span class="sd">    n_areas : int</span>
+<span class="sd">        Number of areas</span>
+<span class="sd">    xmin : float</span>
+<span class="sd">        Minimum x-coordinate</span>
+<span class="sd">    xmax : float</span>
+<span class="sd">        Maximum x-coordinate</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x_center : array</span>
+<span class="sd">        x-coordinates of the center of the areas</span>
+<span class="sd">    x_start : array</span>
+<span class="sd">        x-coordinates of the left limit of the areas</span>
+<span class="sd">    x_end : array</span>
+<span class="sd">        x-coordinates of the right limit of the areas</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">poly_int_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">poly_coeff</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">poly_coeff</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">area_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">fmax</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">fmin</span><span class="p">)</span>
-    <span class="n">f_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_areas</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">f_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_limits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span>
-    <span class="n">gint_fmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">fmin</span><span class="p">)</span>
+    <span class="n">area_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">xmin</span><span class="p">)</span>
+    <span class="n">x_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_areas</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_limits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span>
+    <span class="n">gint_xmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">poly_int_coeff</span><span class="p">,</span> <span class="n">xmin</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_areas</span><span class="p">):</span>
         <span class="n">poly_int_coeff_i</span> <span class="o">=</span> <span class="n">poly_int_coeff</span>
-        <span class="n">poly_int_coeff_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">gint_fmin</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">area_total</span> <span class="o">/</span> <span class="n">n_areas</span>
+        <span class="n">poly_int_coeff_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">gint_xmin</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">area_total</span> <span class="o">/</span> <span class="n">n_areas</span>
         <span class="n">roots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">poly_int_coeff_i</span><span class="p">)</span>
         <span class="n">roots_real</span> <span class="o">=</span> <span class="n">roots</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isreal</span><span class="p">(</span><span class="n">roots</span><span class="p">)]</span>
         <span class="k">if</span> <span class="n">roots_real</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No real roots&#39;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">roots_real</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">roots_real</span> <span class="o">=</span> <span class="n">roots_real</span><span class="p">[(</span><span class="n">roots_real</span> <span class="o">&gt;</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">roots_real</span> <span class="o">&lt;</span> <span class="n">fmax</span><span class="p">)]</span>
+            <span class="n">roots_real</span> <span class="o">=</span> <span class="n">roots_real</span><span class="p">[(</span><span class="n">roots_real</span> <span class="o">&gt;</span> <span class="n">xmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">roots_real</span> <span class="o">&lt;</span> <span class="n">xmax</span><span class="p">)]</span>
             <span class="k">if</span> <span class="n">roots_real</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Multiple real roots&#39;</span><span class="p">)</span>
-        <span class="n">f_limits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">roots_real</span><span class="p">)</span>
-    <span class="n">f_start</span><span class="p">,</span> <span class="n">f_end</span> <span class="o">=</span> <span class="n">f_limits</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">f_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="n">cf</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_start</span> <span class="o">+</span> <span class="n">f_end</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="n">cf</span><span class="p">,</span> <span class="n">f_start</span><span class="p">,</span> <span class="n">f_end</span></div>
+        <span class="n">x_limits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">roots_real</span><span class="p">)</span>
+    <span class="n">x_start</span><span class="p">,</span> <span class="n">x_end</span> <span class="o">=</span> <span class="n">x_limits</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">x_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_start</span> <span class="o">+</span> <span class="n">x_end</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x_center</span><span class="p">,</span> <span class="n">x_start</span><span class="p">,</span> <span class="n">x_end</span></div>
 
 
 <div class="viewcode-block" id="plot_input_output"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.plot_input_output">[docs]</a><span class="k">def</span> <span class="nf">plot_input_output</span><span class="p">(</span><span class="n">input_sig</span><span class="p">,</span> <span class="n">output_sig</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">input_sig_label</span><span class="p">,</span> <span class="n">output_sig_label</span><span class="p">,</span> <span class="n">same_colobar</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -217,6 +308,19 @@
 
 
 <div class="viewcode-block" id="normalize_vector"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.normalize_vector">[docs]</a><span class="k">def</span> <span class="nf">normalize_vector</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Normalize vector x between -1 and 1</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array | list</span>
+<span class="sd">        input array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x_norm : array</span>
+<span class="sd">        normalized array</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Input must be a vector&#39;</span><span class="p">)</span>
@@ -226,12 +330,33 @@
 
 
 <div class="viewcode-block" id="t_spikes_to_spikerate"><a class="viewcode-back" href="../../../rst/simplecochlea.utils.html#simplecochlea.utils.utils_cochlea.t_spikes_to_spikerate">[docs]</a><span class="k">def</span> <span class="nf">t_spikes_to_spikerate</span><span class="p">(</span><span class="n">t_spikes</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">n_pnts</span><span class="p">,</span> <span class="n">kernel_duration</span><span class="o">=</span><span class="mf">0.015</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Compute a mean firing rate over time using a gaussian kernel from the spike times. The kernel duration is set</span>
+<span class="sd">    by the `kernel_duration` parameter.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t_spikes : list |array</span>
+<span class="sd">        Spike times (s)</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency (Hz)</span>
+<span class="sd">    n_pnts : int</span>
+<span class="sd">        Number of points in the output signal</span>
+<span class="sd">    kernel_duration : float</span>
+<span class="sd">        Duration of the kernel (s). Default: 0.015 s</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    spiking_rate_smooth : array</span>
+<span class="sd">        Smooth firing rate</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t_spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_spikes</span><span class="p">)</span>
     <span class="n">t_vect_spk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_pnts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">t_vect_spk</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_spikes</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">kernel</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">*</span> <span class="n">kernel_duration</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">*</span> <span class="n">kernel_duration</span><span class="p">))</span>
     <span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kernel_duration</span><span class="p">)</span>
-    <span class="n">t_vect_spk_smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">t_vect_spk</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">t_vect_spk_smooth</span></div>
+    <span class="n">spiking_rate_smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">t_vect_spk</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spiking_rate_smooth</span></div>
 
 </pre></div>
 

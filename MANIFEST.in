@@ -1,0 +1,3 @@
+include simplecochlea/sample_data
+include simplecochlea/sample_data/*.p
+include simplecochlea/sample_data/*.wav

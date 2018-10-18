@@ -18,7 +18,6 @@ install_requires = [
 extra_requires = {
     "librosa": ['librosa'],
     "pymuvr": ['pymuvr'],
-
     "peakutils": ['peakutils'],
 }
 
@@ -47,4 +46,5 @@ setup(
     setup_requires=['numpy', 'cython'],
     install_requires=install_requires,
     python_requires='>=3.0',
+    include_package_data=True,
 )

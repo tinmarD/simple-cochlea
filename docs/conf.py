@@ -113,7 +113,8 @@ html_theme_options = {
     'navbar_links': [
         ("Install", "rst/install"),
         ("Examples", "auto_examples/index"),
-        ("API", "rst/modules"),
+        ("API", "rst/api"),
+        ("API modules", "rst/modules"),
     ],
 }
 # Add any paths that contain custom themes here, relative to this directory.

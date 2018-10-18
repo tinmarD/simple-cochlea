@@ -9,6 +9,28 @@ from .utils import utils_cochlea
 
 
 def generate_sinus(fs, f_sin, t_offset=0, t_max=1, amplitude=1):
+    """ Generate a signal containing one or more sinusoides.
+    If multiples frequencies are defined by `f_sin` parameter, the output signal is the sum of the different sinusoides.
+
+    Parameters
+    ----------
+    fs : float
+        Sampling frequency (Hz)
+    f_sin : float | array
+        Frequency(ies) of the sinusoide(s).
+    t_offset : float | array
+        Time offset of the origin of the sinusoide(s) - Default : 0
+    t_max : float
+        Duration of the signal (s) - Default : 1
+    amplitude : float | array
+        Amplitude of the sinusoide(s) - Default : 1
+
+    Returns
+    -------
+    signal_out : array
+        Output sinusoidal signal
+
+    """
     if np.isscalar(f_sin):
         f_sin = np.array([f_sin])
     if np.isscalar(t_offset):
@@ -29,12 +51,30 @@ def generate_sinus(fs, f_sin, t_offset=0, t_max=1, amplitude=1):
         t_post = np.linspace(t_offset[i], t_max, n_pnts-len(t_pre))
         signals[i, :] = np.hstack([np.zeros(len(t_pre)), amplitude[i] * np.sin(2 * np.pi * f_sin[i] * t_post)])
     signals = signals.squeeze()
-    if n_sin > 1:
-        signals = signals.sum(0)
-    return signals
+    signal_out = signals if n_sin == 1 else signals.sum(0)
+    return signal_out
 
 
 def generate_dirac(fs, t_offset=0.2, t_max=1, amplitude=1):
+    """ Generate a impulse signal (mathematically defined by the Dirac delta function)
+
+    Parameters
+    ----------
+    fs : float
+        Sampling frequency (Hz)
+    t_offset : float
+        Time offset of the impulse - Default : 0.2
+    t_max : float
+        Duration of the output signal - Default : 1
+    amplitude : float
+        Amplitude of the impulse - Default : 1
+
+    Returns
+    -------
+    sig_dirac : array
+        Output impulse signal
+
+    """
     t_offset, t_max, amplitude = np.atleast_1d(t_offset), np.atleast_1d(t_max), np.atleast_1d(amplitude)
     if not len(t_offset) == len(amplitude):
         raise ValueError('Arguments t_offset and amplitude must have the same size')
@@ -49,6 +89,25 @@ def generate_dirac(fs, t_offset=0.2, t_max=1, amplitude=1):
 
 
 def generate_step(fs, t_offset=0.2, t_max=1, amplitude=1):
+    """ Generate a impulse signal (mathematically defined by the Dirac delta function)
+
+    Parameters
+    ----------
+    fs : float
+        Sampling frequency (Hz)
+    t_offset : float
+        Time offset of the impulse - Default : 1
+    t_max : float
+        Duration of the output signal - Default : 1
+    amplitude : float
+        Amplitude of the impulse - Default : 1
+
+    Returns
+    -------
+    sig_step : array
+        Output step signal
+
+    """
     t_offset, t_max, amplitude = np.atleast_1d(t_offset), np.atleast_1d(t_max), np.atleast_1d(amplitude)
     if not len(t_offset) == len(amplitude):
         raise ValueError('Arguments t_offset and amplitude must have the same size')
@@ -151,6 +210,30 @@ def merge_wav_sound_from_dir(dirpath, chunk_duration, n_sounds, n_repeat_per_sou
 
 
 def get_abs_stim_params(chunk_duration_s, n_repeat_target, n_noise_iter):
+    """
+    For a sequence when a target segment is repeating `n_repeat_target` timesand interleaved by `n_noise_iter` noise
+    segments, returns the pattern of each segments
+
+    Parameters
+    ----------
+    chunk_duration_s : float
+        Duration of each segment (s)
+    n_repeat_target : int
+        Number of repetition of the target
+    n_noise_iter : int
+        Number of noise segments between two target repetitions
+
+    Returns
+    -------
+    pattern_id : array
+        Pattern ID of each segment
+    pattern_name_dict : dict
+        Dictionnary giving the label of each pattern ID
+    chunk_start : array
+        Starting time of each segment
+    chunk_end : array
+        Ending time of each segment
+    """
     n_noise_sounds = n_repeat_target*n_noise_iter
     n_chunks = n_noise_sounds + n_repeat_target     # Total number of segments
     pattern_id = np.zeros(n_chunks, dtype=int)
@@ -253,6 +336,7 @@ def generate_abs_stim(dirpath, chunk_duration, n_repeat_target, n_noise_iter=1):
 
 
 def plot_signal(x, fs, ax=[]):
+    """ Plot signal x """
     x = np.array(x)
     if not ax:
         f = plt.figure()
@@ -264,7 +348,7 @@ def plot_signal(x, fs, ax=[]):
 
 
 def delete_zero_signal(dirpath):
-    """ There are some nulle signals (only zero amplitude) in the ABS directory. This function delete them.
+    """ There are some null signals (only zero amplitude) in the ABS directory. This function delete them.
     Delete also constant signals (only one single amplitude)
     """
     file_list = os.listdir(dirpath)
