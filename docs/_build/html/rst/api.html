@@ -127,8 +127,7 @@
 <li><a class="reference internal" href="#spikelist" id="id4">SpikeList</a></li>
 </ul>
 </div>
-<p><a class="reference internal" href="#module-simplecochlea" title="simplecochlea"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea</span></code></a>:</p>
-<span class="target" id="module-simplecochlea"></span><p>Simple-Cochlea Main Package</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea</span></code>:</p>
 <div class="section" id="cochlea-sub-classes">
 <h2><a class="toc-backref" href="#id1">Cochlea Sub-Classes</a><a class="headerlink" href="#cochlea-sub-classes" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
@@ -137,16 +136,16 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.BandPassFilterbank" title="simplecochlea.cochlea.BandPassFilterbank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.BandPassFilterbank</span></code></a>(order,&nbsp;wn,&nbsp;fs[,&nbsp;…])</td>
-<td>Band-pass Filterbank Class Defines a bank of band-pass filters.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.BandPassFilterbank</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.RectifierBank" title="simplecochlea.cochlea.RectifierBank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.RectifierBank</span></code></a>(n_channels,&nbsp;fs[,&nbsp;…])</td>
-<td>RectifierBank Class Rectifier Bank, possesses multilples channels.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.RectifierBank</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.CompressionBank" title="simplecochlea.cochlea.CompressionBank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.CompressionBank</span></code></a>(n_channels,&nbsp;fs,&nbsp;…)</td>
-<td>CompressionBank Class</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.CompressionBank</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.LIFBank" title="simplecochlea.cochlea.LIFBank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.LIFBank</span></code></a>(n_channels,&nbsp;fs,&nbsp;tau[,&nbsp;…])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">cochlea.LIFBank</span></code></td>
 <td></td>
 </tr>
 </tbody>
@@ -154,32 +153,32 @@
 </div>
 <div class="section" id="cochlea-class">
 <h2><a class="toc-backref" href="#id2">Cochlea Class</a><a class="headerlink" href="#cochlea-class" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea" title="simplecochlea.cochlea.Cochlea"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.cochlea.Cochlea</span></code></a>:</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.cochlea.Cochlea</span></code>:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.process_input" title="simplecochlea.cochlea.Cochlea.process_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_input</span></code></a>(input_sig[,&nbsp;do_plot,&nbsp;samplever])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_input</span></code></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.process_input_block_ver" title="simplecochlea.cochlea.Cochlea.process_input_block_ver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_input_block_ver</span></code></a>(input_sig,&nbsp;block_len)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_input_block_ver</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.process_one_channel" title="simplecochlea.cochlea.Cochlea.process_one_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_one_channel</span></code></a>(input_sig,&nbsp;channel_pos)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_one_channel</span></code></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.process_test_signal" title="simplecochlea.cochlea.Cochlea.process_test_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_test_signal</span></code></a>(signal_type[,&nbsp;…])</td>
-<td>Run a test signal through the cochlea.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.plot_channel_evolution" title="simplecochlea.cochlea.Cochlea.plot_channel_evolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_channel_evolution</span></code></a>(input_sig[,&nbsp;channel_pos])</td>
-<td>Plot the processing of input_sig signal through the cochlea, for channels specified by channel_pos.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.plot_filterbank_frequency_response" title="simplecochlea.cochlea.Cochlea.plot_filterbank_frequency_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_filterbank_frequency_response</span></code></a>()</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_test_signal</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.cochlea.Cochlea.save" title="simplecochlea.cochlea.Cochlea.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(dirpath[,&nbsp;filename])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_channel_evolution</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_filterbank_frequency_response</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></td>
 <td></td>
 </tr>
 </tbody>
@@ -187,95 +186,87 @@
 </div>
 <div class="section" id="test-signals">
 <h2><a class="toc-backref" href="#id3">Test signals</a><a class="headerlink" href="#test-signals" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="simplecochlea.html#module-simplecochlea.generate_signals" title="simplecochlea.generate_signals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.generate_signals</span></code></a>:</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.generate_signals</span></code>:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.generate_sinus" title="simplecochlea.generate_signals.generate_sinus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_sinus</span></code></a>(fs,&nbsp;f_sin[,&nbsp;t_offset,&nbsp;t_max,&nbsp;…])</td>
-<td>Generate a signal containing one or more sinusoides.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_sinus</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.generate_dirac" title="simplecochlea.generate_signals.generate_dirac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dirac</span></code></a>(fs[,&nbsp;t_offset,&nbsp;t_max,&nbsp;amplitude])</td>
-<td>Generate a impulse signal (mathematically defined by the Dirac delta function)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_dirac</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.generate_step" title="simplecochlea.generate_signals.generate_step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_step</span></code></a>(fs[,&nbsp;t_offset,&nbsp;t_max,&nbsp;amplitude])</td>
-<td>Generate a impulse signal (mathematically defined by the Dirac delta function)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_step</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.merge_wav_sound_from_dir" title="simplecochlea.generate_signals.merge_wav_sound_from_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_wav_sound_from_dir</span></code></a>(dirpath,&nbsp;…[,&nbsp;…])</td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_wav_sound_from_dir</span></code></td>
+<td></td>
 </tr>
-</tbody>
-</table>
-</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_abs_stim</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.generate_abs_stim" title="simplecochlea.generate_signals.generate_abs_stim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_abs_stim</span></code></a>(dirpath,&nbsp;chunk_duration,&nbsp;…)</td>
-<td>Generate a stimulus used for Audio Brain Spotting (ABS).</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_abs_stim_params</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.get_abs_stim_params" title="simplecochlea.generate_signals.get_abs_stim_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_abs_stim_params</span></code></a>(chunk_duration_s,&nbsp;…)</td>
-<td>For a sequence when a target segment is repeating <cite>n_repeat_target</cite> timesand interleaved by <cite>n_noise_iter</cite> noise segments, returns the pattern of each segments</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.html#simplecochlea.generate_signals.delete_zero_signal" title="simplecochlea.generate_signals.delete_zero_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_zero_signal</span></code></a>(dirpath)</td>
-<td>There are some null signals (only zero amplitude) in the ABS directory.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_zero_signal</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="spikelist">
 <h2><a class="toc-backref" href="#id4">SpikeList</a><a class="headerlink" href="#spikelist" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="simplecochlea.spikes.html#module-simplecochlea.spikes.spikelist" title="simplecochlea.spikes.spikelist"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.spikes.spikelist</span></code></a>:</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">simplecochlea.spikes.spikelist</span></code>:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.sort" title="simplecochlea.spikes.spikelist.SpikeList.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a>(field)</td>
-<td>Sort the spikelist by increasing attribute, selected by field</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.select_spike" title="simplecochlea.spikes.spikelist.SpikeList.select_spike"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_spike</span></code></a>([time_min,&nbsp;time_max,&nbsp;…])</td>
-<td>Select a subset of the spikelist.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_spike</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.epoch" title="simplecochlea.spikes.spikelist.SpikeList.epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch</span></code></a>(t_start,&nbsp;t_end)</td>
-<td>Epoch the spikelist given the time periods defined by <code class="docutils literal notranslate"><span class="pre">t_start</span></code> and <code class="docutils literal notranslate"><span class="pre">t_end</span></code>.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.epoch_on_triggers" title="simplecochlea.spikes.spikelist.SpikeList.epoch_on_triggers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_on_triggers</span></code></a>(t_triggers,&nbsp;time_pre,&nbsp;…)</td>
-<td>Apply the epoch function on each trigger whose time is defined by t_triggers.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_on_triggers</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.export" title="simplecochlea.spikes.spikelist.SpikeList.export"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export</span></code></a>([export_path,&nbsp;export_name])</td>
-<td>Export the spikelist as a .mat file</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">export</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.to_dataframe" title="simplecochlea.spikes.spikelist.SpikeList.to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dataframe</span></code></a>()</td>
-<td>Convert the spikelist to a dataframe containing 3 fields : ‘time’, ‘channel’ and ‘pattern_id’</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_dataframe</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.plot" title="simplecochlea.spikes.spikelist.SpikeList.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([bin_duration,&nbsp;potential_thresh,&nbsp;…])</td>
-<td>Plot the spikelist.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.plot_channel_selectivity" title="simplecochlea.spikes.spikelist.SpikeList.plot_channel_selectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_channel_selectivity</span></code></a>([title_str])</td>
-<td>Plot channel selectivity.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_channel_selectivity</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.get_median_isi" title="simplecochlea.spikes.spikelist.SpikeList.get_median_isi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_median_isi</span></code></a>()</td>
-<td>Compute and return the median ISI (Inter-Spike-Interval) for each channel.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_median_isi</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.get_mean_isi" title="simplecochlea.spikes.spikelist.SpikeList.get_mean_isi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_isi</span></code></a>()</td>
-<td>Compute and return the mean ISI (Inter-Spike-Interval) for each channel.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mean_isi</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.set_pattern_id_from_time_limits" title="simplecochlea.spikes.spikelist.SpikeList.set_pattern_id_from_time_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_pattern_id_from_time_limits</span></code></a>(t_start,&nbsp;…)</td>
-<td>Given time limits given by t_start and t_end, set the pattern_id of spikes in this time interval.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_pattern_id_from_time_limits</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.get_pattern_results" title="simplecochlea.spikes.spikelist.SpikeList.get_pattern_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pattern_results</span></code></a>(t_start,&nbsp;t_end,&nbsp;pattern_id)</td>
-<td>Compute the number of spikes per segment.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pattern_results</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.get_channel_selectivity" title="simplecochlea.spikes.spikelist.SpikeList.get_channel_selectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_channel_selectivity</span></code></a>()</td>
-<td>Compute channel selectivity.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_channel_selectivity</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="simplecochlea.spikes.html#simplecochlea.spikes.spikelist.SpikeList.add_time_offset" title="simplecochlea.spikes.spikelist.SpikeList.add_time_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_time_offset</span></code></a>(t_offset)</td>
-<td>Add a time offset to the spikes time.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_time_offset</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>

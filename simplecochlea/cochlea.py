@@ -81,7 +81,7 @@ class BandPassFilterbank:
         sns.set_context('paper')
         plt.rcParams['image.cmap'] = 'viridis'
 
-    def plot_frequency_response(self, n_freqs=1024):
+    def plot_caracteristics(self, n_freqs=1024):
         """ Plot the frequency response of the differents band-pass filters
 
         Parameters
@@ -184,7 +184,8 @@ class BandPassFilterbank:
 
 class RectifierBank:
     """ RectifierBank Class
-    Rectifier Bank, possesses multilples channels. Half and full rectification are possible :
+    Parralel association of rectifier units.
+    Half and full rectification are possible :
         * half-rectification : :math:`f(x) = x if x > 0, 0 otherwise`
         * full-rectification : :math:`f(x) = abs(x)`
     Rectification can include a low-pass filtering using a Butterworth filters. Each channel can have its own filtering
@@ -194,7 +195,7 @@ class RectifierBank:
     Attributes
     ----------
     fs : float
-        Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+        Sampling frequency (Hz). Each RectifierBank instance must be applied to signals with the same sampling
         frequency.
     n_channels : int
         Number of channels
@@ -286,7 +287,7 @@ class RectifierBank:
 
     def rectify_signal(self, input_sig, do_plot=0):
         """ Rectify input signal `input_sig`.
-        Input signal is passed through all the band-pass filters.
+        Each channel of the input signal is rectified by its correponding rectifier.
 
         Parameters
         ----------
@@ -326,24 +327,56 @@ class RectifierBank:
             plot_input_output(input_sig, output_sig, self.fs, 'Input signal', 'Rectifier Output', 0)
         return output_sig
 
+    # def plot_caracteristics(self, f_sin=1000):
+    #     """ Plot the RectifierBank response to a sinusoidal signal
+    #
+    #     Parameters
+    #     ----------
+    #     f_sin : float
+    #         Sinusoid frequency (Hz). Default 1000 Hz.
+    #     """
+    #     # Create the test signal and process it
+    #     x_sin = generate_sinus(self.fs, f_sin=f_sin)
+    #     # x_sin_rect =
+    #     f = plt.figure()
+    #     ax = f.add_subplot()
+
+
+
 
 class CompressionBank:
     """ CompressionBank Class
-    Apply an amplitude compression.
+    Parralel association of compression units.
+    Apply an amplitude compression using a logarithmic transform :
+     :math:`f(x) = comp_{gain} * x^{comp_{factor}}`
+    Each channel can have a separate compression gain and compression factor.
+    In the cochlea, the compression bank follows the rectifier bank and precede the LIF bank.
+
+    Attributes
+    ----------
+    fs : float
+        Sampling frequency (Hz). Each BandPassFilterbank instance must be applied to signals with the same sampling
+        frequency.
+    n_channels : int
+        Number of channels
+    comp_factor : float | array
+        Compression factor - :math:`f(x) = comp_{gain} * x^{comp_{factor}}`
+    comp_gain : float | array
+        Compression gain - :math:`f(x) = comp_{gain} * x^{comp_{factor}}`
 
     """
-    def __init__(self, n_channels, fs, compression_factor, compression_gain):
+    def __init__(self, n_channels, fs, comp_factor, comp_gain):
         self.n_channels = n_channels
-        if not np.isscalar(compression_factor) and not len(compression_factor) == n_channels:
+        if not np.isscalar(comp_factor) and not len(comp_factor) == n_channels:
             raise ValueError('Argument compression_factor must be either a scalar or a vector of length n_channels')
-        if not np.isscalar(compression_gain) and not len(compression_gain) == n_channels:
+        if not np.isscalar(comp_gain) and not len(comp_gain) == n_channels:
             raise ValueError('Argument compression_gain must be either a scalar or a vector of length n_channels')
-        if np.isscalar(compression_factor):
-            compression_factor = np.repeat(compression_factor, self.n_channels)
-        if np.isscalar(compression_gain):
-            compression_gain = np.repeat(compression_gain, self.n_channels)
-        self.comp_factor = np.array(compression_factor)
-        self.comp_gain = np.array(compression_gain)
+        if np.isscalar(comp_factor):
+            comp_factor = np.repeat(comp_factor, self.n_channels)
+        if np.isscalar(comp_gain):
+            comp_gain = np.repeat(comp_gain, self.n_channels)
+        self.comp_factor = np.array(comp_factor)
+        self.comp_gain = np.array(comp_gain)
         self.fs = fs
 
     def __str__(self):
@@ -360,6 +393,21 @@ class CompressionBank:
         return desc_str
 
     def compress_one_channel(self, input_sig, channel_pos):
+        """ Apply the compression to input signal `input_sig` with channel specified by `channel_pos`
+
+        Parameters
+        ----------
+        input_sig : array (1D)
+            Input signal
+        channel_pos : int
+            Channel position
+
+        Returns
+        -------
+        output_sig : array (1D)
+            Output compressed signal
+
+        """
         input_sig = np.array(input_sig).squeeze()
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
@@ -377,6 +425,22 @@ class CompressionBank:
         return output_sig
 
     def compress_signal(self, input_sig, do_plot=0):
+        """ Compress input signal `input_sig`.
+        Each channel of the input signal is compressed by its correponding compression unit.
+
+        Parameters
+        ----------
+        input_sig : array (1D)
+            Input signal
+        do_plot : bool
+            If True, plot the output rectified signals as an image.
+
+        Returns
+        -------
+        output_sig : array (2D)
+            Output rectified signal [n_filters * n_pnts]
+
+        """
         input_sig = np.array(input_sig).squeeze()
         if len(input_sig.shape) == 1:
             input_sig = np.tile(input_sig, (self.n_channels, 1))
@@ -401,6 +465,59 @@ class CompressionBank:
 
 
 class LIFBank:
+    """ Leaky Integrate and Fire (LIF) Bank
+    Parralel association of LIF neuron model.
+    The LIF neuron is a simple spiking neuron model where the neuron is modeled as a leaky integrator of the input
+    synaptic current I(t).
+
+    A refractiory period can be defined preventing the neuron to fire just after emitting a spike.
+
+    By default each LIF unit (i.e. channel) is independant from the others. To model more complex comportement,
+    lateral inhibition can be added between units (channels).
+    This lateral inhibition is inspired from [1].
+
+    Adaptive threshold is another option. Instead of using a fixed spiking threshold defined bt `v_thresh`, it is
+    possible to model an adaptive threshold using the `tau_j`, `alpha_j` and `omega` attributes.
+    These variables implements the adaptive threshold model described in [2].
+
+
+    Attributes
+    -----------
+    fs : float
+        Sampling frequency (Hz). Each LIFBank instance must be applied to signals with the same sampling frequency.
+    n_channels : int
+        Number of channels
+    tau : float | array
+        Time constant (s)
+    v_thresh : float | array
+        Spiking threshold - Default : 0.020
+    v_spike : float | array
+        Spike potential - Default : 0.035
+    t_refract : float | array | None
+        Refractory period (s). If none, no refractory period - Default : None
+    v_reset : float | array | None
+        Reset potential after a spike. Can act as a adaptable refractory period.
+    inhib_type : str | None.
+        Can be 'sub_for', 'shunt_for', 'shunt_for_current' or 'spike'. If none, no inhibition.
+    inhib_vect : array
+        TODO
+    tau_j : array (1D) | None
+        Time constants for the adaptive threshold. Usually no more than 3 time constants are needed. See [2].
+    alpha_j : array (1D) | None
+        Coefficients for each time constant defined by `tau_j`.
+    omega : float
+        Threshold resting value (minimum threshold value).
+
+
+    References
+    ----------
+    .. [1] Gershon G. Furman and Lawrence S. Frishkopf. Model of Neural Inhibition in the Mammalian Cochlea.
+           The Journal of the Acoustical Society of America 1964 36:11, 2194-2201
+
+    .. [2] Kobayashi Ryota, Tsubo Yasuhiro, Shinomoto Shigeru. Made-to-order spiking neuron model equipped with a
+           multi-timescale adaptive threshold. Frontiers in Computational Neuroscience. 2009
+
+    """
     def __init__(self, n_channels, fs, tau, v_thresh=0.020, v_spike=0.035, t_refract=[], v_reset=[], inhib_type=[],
                  inhib_vect=[], tau_j=[], alpha_j=[], omega=[]):
         t_refract, v_reset, inhib_vect = np.array(t_refract), np.array(v_reset), np.array(inhib_vect)
@@ -489,7 +606,7 @@ class LIFBank:
             desc_str += 'No inhibition'
         return desc_str
 
-    def filter_signal_with_inhib_cy(self, input_sig, do_plot=0, v_init=[], t_start=0, t_last_spike=[], mp_ver=0):
+    def filter_signal_with_inhib_cy(self, input_sig, v_init=[], t_start=0, t_last_spike=[], mp_ver=0):
         input_sig = np.array(input_sig).squeeze()
         if len(input_sig.shape) == 1:
             input_sig = np.tile(input_sig, (self.n_channels, 1))
@@ -840,6 +957,7 @@ class LIFBank:
         return median_isi
 
     def plot_caracteristics(self):
+        """ Plot the LIFBank characteristics """
         f = plt.figure()
         ax1 = f.add_subplot(211)
         ax1.plot(1000 * self.tau)
@@ -892,6 +1010,17 @@ class Cochlea:
         return desc_str
 
     def save(self, dirpath, filename=[]):
+        """ Save the cochlea.
+        The cochlea model is saved as a .p (pickle) file. The filename is appended with the current date and time.
+
+        Parameters
+        ----------
+        dirpath : str
+            Directory path
+        filename : str
+            Cochlea filename.
+
+        """
         if not path.isdir(dirpath):
             print('Creating save directory : {}'.format(dirpath))
             mkdir(dirpath)
@@ -900,10 +1029,15 @@ class Cochlea:
         with open(path.join(dirpath, filename), 'wb') as f:
             _pickle.dump(self, f)
 
-    def plot_filterbank_frequency_response(self):
-        ax = self.filterbank.plot_frequency_response()
-        ax.set(title='Filters frequency responses - {} - {} filters in [{}, {} Hz] - order {}'.format(
-            self.freq_scale, self.n_channels, self.fmin, self.fmax, self.forder))
+    # def plot_filterbank_frequency_response(self):
+    #     ax = self.filterbank.plot_frequency_response()
+    #     ax.set(title='Filters frequency responses - {} - {} filters in [{}, {} Hz] - order {}'.format(
+    #            self.freq_scale, self.n_channels, self.fmin, self.fmax, self.forder))
+
+    # def plot(self, same_figure=1):
+    #     if same_figure
+    #     f = plt.figure()
+    #     ax =
 
     def plot_channel_evolution(self, input_sig, channel_pos=[]):
         """ Plot the processing of input_sig signal through the cochlea, for channels specified by channel_pos.
@@ -1015,7 +1149,26 @@ class Cochlea:
     #     return spike_list, lif_out_sig
 
     @timethis
-    def process_input(self, input_sig, do_plot=0, samplever=1):
+    def process_input(self, input_sig, do_plot=False, samplever=1):
+        """ Process input signal through the Cochlea
+
+        Parameters
+        ----------
+        input_sig : array (1D)
+            Input signal
+        do_plot : bool
+            If True, plot the differents steps of the cochlea
+        samplever : bool
+            Useful ?
+
+        Returns
+        -------
+        spikelist : SpikeList
+            Output spikelist
+        (sig_filtered, sig_rectified, sig_comp, lif_out_sig) : tuple
+            Contains the intermediary signals correponding to the different steps of the cochlea
+
+        """
         input_sig = np.array(input_sig)
         if not input_sig.ndim == 1:
             raise ValueError('Argument input_sig should be 1D')
@@ -1031,9 +1184,9 @@ class Cochlea:
         else:
             lif_out_sig, spikes, _ = self.lifbank.filter_signal(sig_comp, do_plot=do_plot)
         tmin, tmax = 0, input_sig.size / self.fs
-        spike_list = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__(),
-                               tmin=tmin, tmax=tmax)
-        return spike_list
+        spikelist = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__(),
+                              tmin=tmin, tmax=tmax)
+        return spikelist, (sig_filtered, sig_rectified, sig_comp, lif_out_sig)
 
 
     @timethis
@@ -1068,13 +1221,21 @@ class Cochlea:
         Parameters
         ----------
         signal_type : str
-            Test signal type. Can be
-        channel_pos :
-        do_plot :
+            Test signal type. To choose between :
+             * 'sin' or 'sinus' : Sinusoidal signal
+             * 'dirac' or 'impulse': Impulse signal
+             * 'step' : Step signal
+        channel_pos : int
+            Channel position
+        do_plot : bool
+            If True, plot the results
         kwargs :
+            Test signal parameters : 't_offset', 't_max', 'amplitude', 'f_sin' (for sinusoids only)
 
         Returns
         -------
+        spikelist : SpikeList
+            Output spikelist
 
         """
         channel_pos = np.atleast_1d(channel_pos)
@@ -1092,12 +1253,12 @@ class Cochlea:
             x_test = generate_step(self.fs, t_offset, t_max, amplitude)
         # Run the test signal through the cochlea
         if channel_pos.size == 0:
-            spike_list = self.process_input(x_test, do_plot=do_plot)
+            spikelist = self.process_input(x_test, do_plot=do_plot)
         else:
-            spike_list = self.process_input(x_test, do_plot=False)
+            spikelist = self.process_input(x_test, do_plot=False)
             if do_plot:
                 self.plot_channel_evolution(x_test, channel_pos)
-        return spike_list
+        return spikelist
 
     def process_input_block_ver(self, input_sig, block_len, plot_spikes=1):
         n_blocks = int(np.ceil(len(input_sig) / block_len))
@@ -1123,6 +1284,7 @@ class Cochlea:
 
 
 def load_cochlea(dirpath, filename):
+    """ Load the cochlea in pickle format (.p) defined by `filename` in `dirpath` """
     with open(path.join(dirpath, filename), 'rb') as f:
         return _pickle.load(f)
 

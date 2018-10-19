@@ -85,6 +85,26 @@ Find a better name ...
    :hidden:
 
    /auto_examples/Elements/plot_frequency_scale
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Analysis of the implementation of the neural inhibition described in [1]. These different types...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/Elements/images/thumb/sphx_glr_plot_LIF_bank_inhibition_thumb.png
+
+        :ref:`sphx_glr_auto_examples_Elements_plot_LIF_bank_inhibition.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/Elements/plot_LIF_bank_inhibition
 .. raw:: html
 
     <div style='clear:both'></div>

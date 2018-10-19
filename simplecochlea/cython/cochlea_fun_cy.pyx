@@ -407,7 +407,7 @@ cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refr
 cpdef lif_filter_inhib_shuntfor_current_mpver_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,
                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
                     double t_start=0, t_last_spike_p=[]):
-    print('Inhibition Sunting Forward Current')
+    print('Inhibition Sunting Forward Current - Parralel version')
     cdef Py_ssize_t i, j, c, c_j
     cdef double t
     cdef double dt = 1.0 / fs
@@ -451,7 +451,6 @@ cpdef lif_filter_inhib_shuntfor_current_mpver_cy(int fs, double[:, :] isyn_v, in
             inhib_vect_norm_mult[c] = inhib_vect_sum /  np.array(inhib_vect[n_inhib_half-c:n_inhib_half+c+1]).sum()
         elif (n_chan - n_inhib_half) <= c < (n_chan - 1):
             inhib_vect_norm_mult[c] = inhib_vect_sum / np.array(inhib_vect[c+1-n_chan+n_inhib_half:n_chan-1-c+n_inhib_half]).sum()
-
 
     for i in range(n_pnts):
         t = tvect_v[i]
