@@ -36,7 +36,7 @@ generate_signals.plot_signal(test_sig, fs)
 
 ##########################################
 # Construct a cochlea without inhibition :
-fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 1000
+fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 100
 comp_factor, comp_gain = 0.3, 1.5
 tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), np.linspace(0.3, 0.17, n_channels), 0.5
 
