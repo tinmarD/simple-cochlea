@@ -18,7 +18,7 @@ from .utils.utils_cochlea import *
 from .cython.cochlea_fun_cy import *
 from .utils.utils_freqanalysis import *
 
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 sns.set()
 sns.set_context('paper')
 
