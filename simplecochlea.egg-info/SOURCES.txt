@@ -3,6 +3,7 @@ README.md
 setup.py
 simplecochlea/__init__.py
 simplecochlea/cochlea.py
+simplecochlea/cochlea_backup.py
 simplecochlea/generate_signals.py
 simplecochlea.egg-info/PKG-INFO
 simplecochlea.egg-info/SOURCES.txt
@@ -10,11 +11,10 @@ simplecochlea.egg-info/dependency_links.txt
 simplecochlea.egg-info/requires.txt
 simplecochlea.egg-info/top_level.txt
 simplecochlea/cython/cochlea_fun_cy.c
-simplecochlea/cython/lif_adaptthresh_fun_cy.c
 simplecochlea/cython/__init__.py
 simplecochlea/cython/cochlea_fun_cy.c
-simplecochlea/cython/lif_adaptthresh_fun_cy.c
 simplecochlea/sample_data/cochlea_model_1.p
+simplecochlea/sample_data/cochlea_test.p
 simplecochlea/sample_data/sample_sequence_10_50ms_1.wav
 simplecochlea/spikes/__init__.py
 simplecochlea/spikes/spikelist.py

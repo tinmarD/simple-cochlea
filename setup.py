@@ -22,13 +22,16 @@ extra_requires = {
 }
 
 cmdclass = {}
+# ext_modules = [Extension("simplecochlea.cython.cochlea_fun_cy",
+#                          ["simplecochlea/cython/cochlea_fun_cy.pyx"],
+#                          include_dirs=[numpy.get_include()]),
+#                Extension("simplecochlea.cython.lif_adaptthresh_fun_cy",
+#                          ["simplecochlea/cython/lif_adaptthresh_fun_cy.pyx"],
+#                          include_dirs=[numpy.get_include()]),
+#                ]
 ext_modules = [Extension("simplecochlea.cython.cochlea_fun_cy",
                          ["simplecochlea/cython/cochlea_fun_cy.pyx"],
-                         include_dirs=[numpy.get_include()]),
-               Extension("simplecochlea.cython.lif_adaptthresh_fun_cy",
-                         ["simplecochlea/cython/lif_adaptthresh_fun_cy.pyx"],
-                         include_dirs=[numpy.get_include()]),
-               ]
+                         include_dirs=[numpy.get_include()])]
 cmdclass.update({'build_ext': build_ext})
 
 setup(

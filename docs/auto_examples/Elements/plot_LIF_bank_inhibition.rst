@@ -10,12 +10,7 @@
 Analysis of the implementation of the neural inhibition described in [1]. These different types of connection are
 supposed to produce contrast enhancement, i.e. for the cochlea it can lead to a sharpening of its frequency sensitivity.
 
-Four types of inhibition are described :
- * Forward-subtractive inhibition
- * Backward-subtractive inhibition
- * Forward-shunting inhibition
- * Backward-shunting inhibition
-
+We selected one model of lateral inhibition : the forward-shunting inhibition
 
 References
 ----------
@@ -29,27 +24,19 @@ References
 .. code-block:: python
 
 
+    import matplotlib
+    matplotlib.use('TkAgg')
     import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    from scipy import signal
     from simplecochlea import Cochlea
     from simplecochlea import generate_signals
+    sns.set()
+    sns.set_context('paper')
 
 
 
-
-
-
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "C:\Users\deudon\Desktop\M4\_Scripts\_Python\simpleCochlea\examples\Elements\plot_LIF_bank_inhibition.py", line 25, in <module>
-        from simplecochlea import Cochlea
-      File "C:\Users\deudon\AppData\Local\Continuum\Anaconda3\lib\site-packages\simplecochlea-0.1.13-py3.6-win-amd64.egg\simplecochlea\__init__.py", line 3, in <module>
-        from .cochlea import Cochlea, CochleaEstimator, load_cochlea
-      File "C:\Users\deudon\AppData\Local\Continuum\Anaconda3\lib\site-packages\simplecochlea-0.1.13-py3.6-win-amd64.egg\simplecochlea\cochlea.py", line 15, in <module>
-        from .generate_signals import *
-      File "C:\Users\deudon\AppData\Local\Continuum\Anaconda3\lib\site-packages\simplecochlea-0.1.13-py3.6-win-amd64.egg\simplecochlea\generate_signals.py", line 8, in <module>
-        from .utils import utils_cochlea
-    ModuleNotFoundError: No module named 'simplecochlea.utils'
 
 
 
@@ -66,7 +53,12 @@ For testing the inhibition, we will use a signal composed of 3 sinusoids close i
 
 
 
-Construct the cochlea :
+
+
+
+
+
+Construct a cochlea without inhibition :
 
 
 
@@ -83,7 +75,97 @@ Construct the cochlea :
 
 
 
-**Total running time of the script:** ( 0 minutes  0.000 seconds)
+
+
+Construct a second cochlea with inhibition
+ We will use a forward-shunting type of inhibition
+###########################################
+ We define an inhibition vector which gives the strenght of the inhibition of channel i related with its neighbours
+
+
+
+.. code-block:: python
+
+    N, inhib_sum = 50, 1
+    inhib_vect = signal.gaussian(2*N+1, std=15)
+    inhib_vect[N] = -2
+    inhib_vect_norm = inhib_sum * inhib_vect / inhib_vect.sum()
+
+
+
+
+
+
+Let's plot the normalized inhibition vector
+
+
+
+.. code-block:: python
+
+    f = plt.figure()
+    plt.plot(np.arange(-N, N+1), inhib_vect_norm)
+
+    cochlea_with_inhib = Cochlea(n_channels, fs, fmin, fmax, freq_scale, comp_factor=comp_factor, comp_gain=comp_gain,
+                                 lif_tau=tau, lif_v_thresh=v_thresh, lif_v_spike=v_spike, inhib_vect=inhib_vect_norm)
+
+
+
+
+
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_001.png
+    :align: center
+
+
+
+
+Run the test signal through the 2 cochleas
+
+
+
+.. code-block:: python
+
+    spikelist_sin, _ = cochlea.process_input(test_sig)
+    spikelist_sin.plot()
+
+
+
+
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_002.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    Function : process_input - Time elapsed : 6.962000131607056
+
+
+With inhibition :
+
+
+
+.. code-block:: python
+
+    spikelist_sin_inhib, _ = cochlea_with_inhib.process_input(test_sig)
+    spikelist_sin_inhib.plot()
+
+
+
+
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_003.png
+    :align: center
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    Inhibition Shunting Forward Current
+    Function : process_input - Time elapsed : 26.534559965133667
+
+
+**Total running time of the script:** ( 1 minutes  8.111 seconds)
 
 
 

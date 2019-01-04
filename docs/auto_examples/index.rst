@@ -39,6 +39,26 @@ Create a cochlea model.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Create a simple cochlea model and test it on a sinusoidal input signal">
+
+.. only:: html
+
+    .. figure:: /auto_examples/Cochlea_examples/images/thumb/sphx_glr_plot_cochlea_with_adaptive_threshold_creation_thumb.png
+
+        :ref:`sphx_glr_auto_examples_Cochlea_examples_plot_cochlea_with_adaptive_threshold_creation.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/Cochlea_examples/plot_cochlea_with_adaptive_threshold_creation
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Run the cochlea on a sequence composed of 1 repeating pattern This pattern of 50ms appears 10 t...">
 
 .. only:: html

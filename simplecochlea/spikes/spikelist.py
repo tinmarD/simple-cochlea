@@ -484,11 +484,11 @@ class SpikeList:
         ax0.set_ylim(0, self.n_channels)
         ax0.set(title='Raster plot - {}'.format(self.name))
         if minplot:
-            plt.show()
+            # plt.show()
             return [ax0, [], [], []]
         else:
             ax1 = plt.subplot2grid((4, 7), (3, 1), rowspan=1, colspan=5, sharex=ax0) if not ax_list else ax1
-            ax1.hist(spklist_sel.time, bins=int((self.tmax - self.tmin) / bin_duration), color=base_color, rwidth=1)
+            ax1.hist(spklist_sel.time, bins=int((self.tmax - self.tmin) / bin_duration), color=base_color, rwidth=1, linewidth=0)
             ax1.set_xlim(self.tmin, self.tmax)
             ax1.set(xlabel='Time (s)', ylabel='count')
             ax3 = plt.subplot2grid((4, 7), (0, 6), rowspan=3, sharey=ax0) if not ax_list else ax3
@@ -524,7 +524,7 @@ class SpikeList:
                 ax5.autoscale(axis='y', tight=True)
                 ax5.set(xlabel='$ISI_{{med}} / \\tau_{{LIF}}$')
                 ax5.set_xlim([0, 10])
-            plt.show()
+            # plt.show()
             return [ax0, ax1, ax3, ax4]
 
     def plot_channel_selectivity(self, title_str=''):

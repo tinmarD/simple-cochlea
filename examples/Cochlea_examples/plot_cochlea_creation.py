@@ -24,14 +24,13 @@ tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), np.linspace(0.3
 cochlea_simp = Cochlea(n_channels, fs, fmin, fmax, freq_scale, comp_factor=comp_factor, comp_gain=comp_gain,
                        lif_tau=tau, lif_v_thresh=v_thresh, lif_v_spike=v_spike)
 
-
 ###############################
 # Print the description
 print(cochlea_simp)
 
 ###############################
 # Process a sin input signal
-spikelist_sin = cochlea_simp.process_test_signal('sin', channel_pos=50, f_sin=400)
+spikelist_sin, _ = cochlea_simp.process_test_signal('sin', f_sin=400)
 
 ###############################
 # Plot the output spikelist

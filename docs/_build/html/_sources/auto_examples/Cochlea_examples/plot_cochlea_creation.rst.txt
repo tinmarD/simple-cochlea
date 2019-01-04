@@ -48,7 +48,6 @@ Create the cochlea
 
 
 
-
 Print the description
 
 
@@ -79,20 +78,35 @@ Process a sin input signal
 
 .. code-block:: python
 
-    spikelist_sin = cochlea_simp.process_test_signal('sin', channel_pos=50, f_sin=400)
+    spikelist_sin, _ = cochlea_simp.process_test_signal('sin', f_sin=400)
 
 
 
 
-.. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_001.png
-    :align: center
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_001.png
+            :scale: 47
+
+    *
+
+      .. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_002.png
+            :scale: 47
+
+    *
+
+      .. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_003.png
+            :scale: 47
 
 
 .. rst-class:: sphx-glr-script-out
 
  Out::
 
-    Function : process_input - Time elapsed : 5.447544813156128
+    Function : process_input - Time elapsed : 9.782999992370605
 
 
 Plot the output spikelist
@@ -106,13 +120,13 @@ Plot the output spikelist
 
 
 
-.. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_002.png
+.. image:: /auto_examples/Cochlea_examples/images/sphx_glr_plot_cochlea_creation_004.png
     :align: center
 
 
 
 
-**Total running time of the script:** ( 0 minutes  12.025 seconds)
+**Total running time of the script:** ( 0 minutes  16.086 seconds)
 
 
 

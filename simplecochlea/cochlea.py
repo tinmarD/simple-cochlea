@@ -18,7 +18,7 @@ from .utils.utils_cochlea import *
 from .cython.cochlea_fun_cy import *
 from .utils.utils_freqanalysis import *
 
-matplotlib.use('agg')
+matplotlib.use('TkAgg')
 sns.set()
 sns.set_context('paper')
 
@@ -497,10 +497,8 @@ class LIFBank:
         Refractory period (s). If none, no refractory period - Default : None
     v_reset : float | array | None
         Reset potential after a spike. Can act as a adaptable refractory period.
-    inhib_type : str | None.
-        Can be 'sub_for', 'shunt_for', 'shunt_for_current' or 'spike'. If none, no inhibition.
-    inhib_vect : array
-        TODO
+    inhib_vect : array | None - Default : None
+        If defined, lateral inhibition is activated. If none, no lateral inhibition
     tau_j : array (1D) | None
         Time constants for the adaptive threshold. Usually no more than 3 time constants are needed. See [2].
     alpha_j : array (1D) | None
@@ -518,7 +516,7 @@ class LIFBank:
            multi-timescale adaptive threshold. Frontiers in Computational Neuroscience. 2009
 
     """
-    def __init__(self, n_channels, fs, tau, v_thresh=0.020, v_spike=0.035, t_refract=[], v_reset=[], inhib_type=[],
+    def __init__(self, n_channels, fs, tau, v_thresh=0.020, v_spike=0.035, t_refract=[], v_reset=[],
                  inhib_vect=[], tau_j=[], alpha_j=[], omega=[]):
         t_refract, v_reset, inhib_vect = np.array(t_refract), np.array(v_reset), np.array(inhib_vect)
         if t_refract.size == 0 and v_reset.size == 0:
@@ -552,21 +550,22 @@ class LIFBank:
             self.refract_period = True
             self.v_reset = v_reset
             self.t_refract = t_refract
-        self.tau = tau
-        self.v_thresh = v_thresh
-        self.v_spike = v_spike
-        self.fs = fs
-        if inhib_type:
-            if inhib_type not in ['sub_for', 'shunt_for', 'shunt_for_current', 'spike']:
-                raise ValueError('Wrong inhib_type arguement : {}. Possible values are {}'
-                                 .format(inhib_type, ['sub_for', 'shunt_for', 'shunt_for_current' 'spike']))
-            if inhib_vect.size % 2 == 0:
-                raise ValueError('Length of argument inhib_vect should be odd')
-        self.inhib_type = inhib_type
-        self.inhib_vect = inhib_vect if inhib_type else []
-        self.tau_j, self.alpha_j, self.omega = np.array(tau_j), np.array(alpha_j), np.array(omega)
+        self.tau = np.float64(tau)
+        self.v_thresh = np.float64(v_thresh)
+        self.v_spike = np.float64(v_spike)
+        self.fs = np.float64(fs)
+        self.inhib_vect = np.float64(inhib_vect)
+        if self.inhib_vect.size > 0:
+            self.inhib_on = 1
+        else:
+            self.inhib_on = 0
+        self.tau_j, self.alpha_j, self.omega = np.float64(tau_j), np.float64(alpha_j), np.float64(omega)
+        if self.tau_j.size > 0:
+            self.adaptive_threshold = 1
+        else:
+            self.adaptive_threshold = 0
         if self.omega.size == 1:
-            self.omega = np.repeat(self.omega, self.n_channels)
+            self.omega = np.float64(np.repeat(self.omega, self.n_channels))
         if not self.tau_j.size == self.alpha_j.size:
             raise ValueError('Arguments tau_j and alpha_j must have the same size')
 
@@ -599,142 +598,73 @@ class LIFBank:
             desc_str += 'Refractory period : {}s\n'.format(float(unique_t_refract))
         else:
             desc_str += 'Refractory period : [{}, {}s]\n'.format(self.t_refract[0], self.t_refract[-1])
-        if hasattr(self, 'inhib_type') and self.inhib_type:
-            desc_str += 'Inhibition mode : {}. Length of inhibition vector : {}'.format(self.inhib_type,
-                                                                                        self.inhib_vect.size)
+        if self.inhib_on:
+            desc_str += 'Lateral inhibition activated. Length of inhibition vector : {}'.format(self.inhib_vect.size)
         else:
             desc_str += 'No inhibition'
         return desc_str
 
-    def filter_signal_with_inhib_cy(self, input_sig, v_init=[], t_start=0, t_last_spike=[], mp_ver=0):
+    def filter_signal(self, input_sig, v_init=[], t_start=0, t_last_spike=[]):
+        """
+
+        Parameters
+        ----------
+        input_sig : array [1D]
+            Input signal
+        v_init : array
+            Initial LIF potential
+        t_start :
+        t_last_spike :
+
+        Returns
+        -------
+
+        """
         input_sig = np.array(input_sig).squeeze()
         if len(input_sig.shape) == 1:
             input_sig = np.tile(input_sig, (self.n_channels, 1))
         if not input_sig.shape[0] == self.n_channels:
             raise ValueError('input_sig must be a [n_channels, n_pnts] matrice')
         if not np.array(v_init).any():
-            v_init = np.zeros(self.n_channels)
+            v_init = np.zeros(self.n_channels, dtype=np.float64)
         elif not np.array(v_init).shape[0] == self.n_channels:
             raise ValueError('v_init must be a [n_channels, 1] array')
         if not np.array(t_last_spike).any():
-            t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
+            t_last_spike = np.float64(-2 * self.t_refract * np.ones(self.n_channels))
         elif not t_last_spike.shape[0] == self.n_channels:
             raise ValueError('t_last_spike must be a [n_channels, 1] array')
-        if self.inhib_type == 'sub_for':
-            output_sig, t_spikes, chan_spikes = lif_filter_inhib_subfor_cy\
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract), np.float64(self.tau),
-                 np.float64(self.v_thresh), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.inhib_vect), t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-        elif self.inhib_type == 'shunt_for':
-            output_sig, t_spikes, chan_spikes = lif_filter_inhib_shuntfor_cy\
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract), np.float64(self.tau),
-                 np.float64(self.v_thresh), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.inhib_vect), t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-        elif self.inhib_type == 'shunt_for_current':
-            if mp_ver:
-                output_sig, t_spikes, chan_spikes = lif_filter_inhib_shuntfor_current_mpver_cy\
-                    (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract), np.float64(self.tau),
-                     np.float64(self.v_thresh), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                     np.float64(self.inhib_vect), t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-            else:
-                output_sig, t_spikes, chan_spikes = lif_filter_inhib_shuntfor_current_cy\
-                    (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract), np.float64(self.tau),
-                     np.float64(self.v_thresh), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                     np.float64(self.inhib_vect), t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-        elif self.inhib_type == 'spike':
-            output_sig, t_spikes, chan_spikes = lif_filter_spike_inhib_cy\
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract), np.float64(self.tau),
-                 np.float64(self.v_thresh), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.inhib_vect), t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
+        # Call cython function given the inhibition type :
+        if not self.inhib_on:
+            output_sig, t_spikes, chan_spikes = lif_filter_cy \
+                (self.fs, input_sig, self.refract_period, self.t_refract, self.tau, self.v_thresh, self.v_spike,
+                 self.v_reset, v_init, self.adaptive_threshold, self.tau_j, self.alpha_j,  self.omega,
+                 t_start, t_last_spike)
         else:
-            raise ValueError('Wrong argument inhib_type : {}'.format(inhib_type))
+            output_sig, t_spikes, chan_spikes = lif_filter_inhib_shuntfor_current_cy \
+                (self.fs, input_sig, self.refract_period, self.t_refract, self.tau, self.v_thresh, self.v_spike,
+                 self.v_reset, v_init, self.inhib_vect, self.adaptive_threshold, self.tau_j, self.alpha_j,  self.omega,
+                 t_start, t_last_spike)
         spikes = np.vstack([t_spikes, chan_spikes]).T
         return output_sig, spikes, []
 
-    def filter_signal_adaptive_threshold(self, input_sig, v_init=[], t_start=0, t_last_spike=[], samplever=1,
-                                         inhib_shuntfor=0):
-        input_sig = np.array(input_sig).squeeze()
-        if len(input_sig.shape) == 1:
-            input_sig = np.tile(input_sig, (self.n_channels, 1))
-        if not input_sig.shape[0] == self.n_channels:
-            raise ValueError('input_sig must be a [n_channels, n_pnts] matrice')
-        if not np.array(v_init).any():
-            v_init = np.zeros(self.n_channels)
-        elif not np.array(v_init).shape[0] == self.n_channels:
-            raise ValueError('v_init must be a [n_channels, 1] array')
-        if not np.array(t_last_spike).any():
-            t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
-        elif not t_last_spike.shape[0] == self.n_channels:
-            raise ValueError('t_last_spike must be a [n_channels, 1] array')
-
-        if inhib_shuntfor:
-            output_sig, t_spikes, chan_spikes, threshold = lif_filter_adaptive_threshold_samplever_inhib_shuntfor_current_cy \
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract),
-                 np.float64(self.tau), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.tau_j), np.float64(self.alpha_j), np.float64(self.omega), np.float64(self.inhib_vect),
-                 t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-
-        elif samplever:
-            output_sig, t_spikes, chan_spikes, threshold = lif_filter_adaptive_threshold_samplever_cy \
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract),
-                 np.float64(self.tau), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.tau_j), np.float64(self.alpha_j), np.float64(self.omega),
-                 t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-        else:
-            output_sig, t_spikes, chan_spikes, threshold = lif_filter_adaptive_threshold_cy \
-                (int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract),
-                 np.float64(self.tau), np.float64(self.v_spike), np.float64(self.v_reset), np.float64(v_init),
-                 np.float64(self.tau_j), np.float64(self.alpha_j), np.float64(self.omega),
-                 t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike))
-        spikes = np.vstack([t_spikes, chan_spikes]).T
-        return output_sig, spikes, threshold
-
-    def filter_signal(self, input_sig, do_plot=0, v_init=[], t_start=0, t_last_spike=[], n_processes=[]):
-        input_sig = np.array(input_sig).squeeze()
-        if len(input_sig.shape) == 1:
-            input_sig = np.tile(input_sig, (self.n_channels, 1))
-        if not input_sig.shape[0] == self.n_channels:
-            raise ValueError('input_sig must be a [n_channels, n_pnts] matrice')
-        if not np.array(v_init).any():
-            v_init = np.zeros(self.n_channels)
-        elif not np.array(v_init).shape[0] == self.n_channels:
-            raise ValueError('v_init must be a [n_channels, 1] array')
-        if not np.array(t_last_spike).any():
-            t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
-        elif not t_last_spike.shape[0] == self.n_channels:
-            raise ValueError('t_last_spike must be a [n_channels, 1] array')
-        n_pnts = input_sig.shape[1]
-        output_sig = np.zeros((self.n_channels, n_pnts))
-        if not n_processes:
-            t_last_spike_out = np.zeros(self.n_channels)
-            spikes = []
-            for i in range(0, self.n_channels):
-                output_sig[i, :], t_spikes_i = lif_filter_1d_signal_cy(self.fs, input_sig[i, :], self.refract_period, self.t_refract[i],
-                                                                       self.tau[i], self.v_thresh[i], self.v_spike[i],
-                                                                       self.v_reset[i], v_init[i], t_start=np.float64(t_start),
-                                                                       t_last_spike_p=np.float64(t_last_spike[i]))
-                spikes_i = np.vstack([t_spikes_i, i*np.ones(len(t_spikes_i))]).T
-                t_last_spike_out[i] = t_spikes_i[-1] if spikes_i.any() else -2*self.t_refract[i]
-                spikes.append(spikes_i)
-            spikes = np.vstack(np.array(spikes))
-        else:
-            pool = mp.Pool(processes=n_processes)
-            async_out = [pool.apply_async(lif_filter_1d_signal_cy,
-                                          args=(self.fs, input_sig[i, :], self.refract_period, self.t_refract[i],
-                                                self.tau[i], self.v_thresh[i], self.v_spike[i], self.v_reset[i], v_init[i],
-                                                np.float64(t_start), np.float64(t_last_spike[i])))
-                         for i in range(0, self.n_channels)]
-            lif_output = [p.get() for p in async_out]
-            output_sig = [lif_output[i][0] for i in range(self.n_channels)]
-            t_spikes = [lif_output[i][1] for i in range(self.n_channels)]
-            spikes = np.vstack([np.array([t_spikes[i], i*np.ones(t_spikes[i].size, dtype=int)]).T for i in range(self.n_channels)])
-            t_last_spike_out = np.array([t_spikes[i][-1] if t_spikes[i].any() else -2 * self.t_refract[i]] for i in range(self.n_channels))
-
-        if do_plot:
-            self.plot_spikes(spikes[:, 0], spikes[:, 1], tmin=0, tmax=n_pnts/self.fs, potential=output_sig)
-        return output_sig, spikes, t_last_spike_out
-
     def filter_one_channel(self, input_sig, i, v_init=[], t_start=0, t_last_spike=[]):
+        """ Filter one channel
+
+        Parameters
+        ----------
+        input_sig : 1D array
+            Input vector to be passed through the LIF
+        i : int
+            Channel position
+        v_init : array
+            Initial LIF potential
+        t_start :
+        t_last_spike :
+
+        Returns
+        -------
+
+        """
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
             raise ValueError('input_sig must be a 1D array')
         if not np.isscalar(i) or i < 0 or i > self.n_channels-1:
@@ -747,214 +677,12 @@ class LIFBank:
             t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
         elif not t_last_spike.shape[0] == self.n_channels:
             raise ValueError('t_last_spike must be a [n_channels, 1] array')
-        v_out, t_spikes = lif_filter_1d_signal_cy(self.fs, input_sig, self.refract_period, self.t_refract[i],
-                                                  self.tau[i], self.v_thresh[i], self.v_spike[i], self.v_reset[i],
-                                                  v_init[i], t_start=np.float64(t_start),
-                                                  t_last_spike_p=np.float64(t_last_spike[i]))
+        if not self.inhib_on:
+            v_out, t_spikes = lif_filter_1d_signal_cy(self.fs, input_sig, self.refract_period, self.t_refract[i],
+                                                      self.tau[i], self.v_thresh[i], self.v_spike[i], self.v_reset[i],
+                                                      v_init[i], self.adaptive_threshold, self.tau_j, self.alpha_j,
+                                                      self.omega, t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike[i]))
         return v_out, t_spikes
-
-    def filter_one_channel_adaptive_threshold(self, input_sig, i, v_init=[], t_start=0, t_last_spike=[]):
-        if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
-            raise ValueError('input_sig must be a 1D array')
-        if not np.isscalar(i) or i < 0 or i > self.n_channels-1:
-            raise ValueError('argument channel_pos must be a scalar ranging between 0 and the number of channels-1')
-        if not np.array(v_init).any():
-            v_init = np.zeros(self.n_channels)
-        elif not np.array(v_init).shape[0] == self.n_channels:
-            raise ValueError('v_init must be a [n_channels, 1] array')
-        if not np.array(t_last_spike).any():
-            t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
-        elif not t_last_spike.shape[0] == self.n_channels:
-            raise ValueError('t_last_spike must be a [n_channels, 1] array')
-        v_out, t_spikes, threshold = lif_filter_one_channel_adaptive_threshold_cy(
-            self.fs, input_sig, self.refract_period, self.t_refract[i], self.tau[i], self.v_spike[i], self.v_reset[i],
-            v_init[i], self.tau_j, self.alpha_j, self.omega[i],  t_start=np.float64(t_start),
-            t_last_spike_p=np.float64(t_last_spike[i]))
-
-        return v_out, t_spikes, threshold
-
-    # def filter_one_channel_nocheck(self, input_sig, i, v_init=0, t_start=0, t_last_spike=[]):
-    #     if not t_last_spike:
-    #         t_last_spike = -2 * self.t_refract[i]
-    #     _, t_spikes = lif_filter_1d_signal_cy(self.fs, input_sig, self.refract_period, self.t_refract[i],
-    #                                               self.tau[i], self.v_thresh[i], self.v_spike[i], self.v_reset[i],
-    #                                               v_init, t_start=np.float64(t_start),
-    #                                               t_last_spike_p=np.float64(t_last_spike))
-    #     return t_spikes
-
-    # def filter_signal_2(self, input_sig, do_plot=0, v_init=[], t_start=0, t_last_spike=[]):
-    #     """ Filter all the channels at the same time and not 1 by 1 """
-    #     input_sig = np.array(input_sig).squeeze()
-    #     if len(input_sig.shape) == 1:
-    #         input_sig = np.tile(input_sig, (self.n_channels, 1))
-    #     if not input_sig.shape[0] == self.n_channels:
-    #         raise ValueError('input_sig must be a [n_channels, n_pnts] matrice')
-    #     if not np.array(v_init).any():
-    #         v_init = np.zeros(self.n_channels)
-    #     elif not np.array(v_init).shape[0] == self.n_channels:
-    #         raise ValueError('v_init must be a [n_channels, 1] array')
-    #     if not np.array(t_last_spike).any():
-    #         t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
-    #     elif not t_last_spike.shape[0] == self.n_channels:
-    #         raise ValueError('t_last_spike must be a [n_channels, 1] array')
-    #
-    #     n_pnts, n_chan = input_sig.shape[1], self.n_channels
-    #     output_sig = np.zeros((self.n_channels, n_pnts))
-    #     t_last_spike_out = np.zeros(self.n_channels)
-    #     spike_time, spike_chan = [], []
-    #     dt = 1/self.fs
-    #     t_last_spike = t_start - 2 * self.t_refract * np.ones(n_chan)
-    #     v_init = 0
-    #     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
-    #     v_out = np.zeros((n_chan, n_pnts))
-    #
-    #     v_mult = (self.tau / dt) / (self.tau / dt + 1)
-    #     i_mult = 1 / (1 + self.tau / dt)
-    #     i_syn = input_sig
-    #
-    #     for i, t in enumerate(tvect):
-    #         for c in range(n_chan):
-    #             if self.refract_period and t < (t_last_spike[c] + self.t_refract[c]):  # in refractory period
-    #                 v_out[c, i] = 0
-    #             elif i > 0 and t_last_spike[c] == tvect[i-1]:  # Reset potential mode Spiking activity just occured
-    #                 v_out[c, i] = self.v_reset[c]
-    #             else:
-    #                 if i == 0:
-    #                     v_out[c, i] = v_init * v_mult[c] + i_syn[c, i - 1] * i_mult[c]
-    #                 else:
-    #                     v_out[c, i] = v_out[c, i - 1] * v_mult[c] + i_syn[c, i - 1] * i_mult[c]
-    #                 if v_out[c, i] > self.v_thresh[c]:  # Spike
-    #                     v_out[c, i] = self.v_spike[c]
-    #                     t_last_spike[c] = t
-    #                     spike_time.append(t)
-    #                     spike_chan.append(c)
-    #     spikes = np.vstack([np.array(spike_time), np.array(spike_chan)]).T
-    #     return v_out, spikes, t_last_spike
-
-    # def filter_signal_with_inhib(self, input_sig, do_plot=0, v_init=[], t_start=0, t_last_spike=[], inhib_vect=[]):
-    #     """ Filter all the channels at the same time and not 1 by 1 """
-    #     input_sig = np.array(input_sig).squeeze()
-    #     if len(input_sig.shape) == 1:
-    #         input_sig = np.tile(input_sig, (self.n_channels, 1))
-    #     if not input_sig.shape[0] == self.n_channels:
-    #         raise ValueError('input_sig must be a [n_channels, n_pnts] matrice')
-    #     if not np.array(v_init).any():
-    #         v_init = np.zeros(self.n_channels)
-    #     elif not np.array(v_init).shape[0] == self.n_channels:
-    #         raise ValueError('v_init must be a [n_channels, 1] array')
-    #     if not np.array(t_last_spike).any():
-    #         t_last_spike = -2 * self.t_refract * np.ones(self.n_channels)
-    #     elif not t_last_spike.shape[0] == self.n_channels:
-    #         raise ValueError('t_last_spike must be a [n_channels, 1] array')
-    #
-    #     n_pnts, n_chan = input_sig.shape[1], self.n_channels
-    #     spike_time, spike_chan = [], []
-    #     dt = 1/self.fs
-    #     t_last_spike = t_start - 2 * self.t_refract * np.ones(n_chan)
-    #     v_init = 0
-    #     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
-    #     v_temp, v_out = np.zeros((2, n_chan, n_pnts))
-    #
-    #     v_mult = (self.tau / dt) / (self.tau / dt + 1)
-    #     i_mult = 1 / (1 + self.tau / dt)
-    #     i_syn = input_sig
-    #     n_inhib = int(np.round(len(inhib_vect)/2))
-    #     for i, t in enumerate(tvect):
-    #         for c in range(n_chan):
-    #             if self.refract_period and t < (t_last_spike[c] + self.t_refract[c]):  # in refractory period
-    #                 v_temp[c, i] = 0
-    #             elif i > 0 and t_last_spike[c] == tvect[i-1]:  # Reset potential mode Spiking activity just occured
-    #                 v_temp[c, i] = self.v_reset[c]
-    #             else:
-    #                 if i == 0:
-    #                     v_temp[c, i] = v_init * v_mult[c] + i_syn[c, i - 1] * i_mult[c]
-    #                 else:
-    #                     v_temp[c, i] = v_out[c, i - 1] * v_mult[c] + i_syn[c, i - 1] * i_mult[c]
-    #         # Do inhibition :
-    #         for c in range(n_chan):
-    #             if self.refract_period and t < (t_last_spike[c] + self.t_refract[c]):  # in refractory period
-    #                 v_out[c, i] = v_temp[c, i]
-    #             elif i > 0 and t_last_spike[c] == tvect[i-1]:  # Reset potential mode Spiking activity just occured
-    #                 v_out[c, i] = v_temp[c, i]
-    #             else:
-    #                 if i == 0:
-    #                     v_out[c, i] = v_temp[c, i]
-    #                 else:  # Inhibition
-    #                     if n_inhib <= c < (n_chan-n_inhib):
-    #                         v_out[c, i] = v_temp[c, i] + np.sum(v_temp[c-n_inhib:c+1+n_inhib, i] * inhib_vect)
-    #                 if v_out[c, i] > self.v_thresh[c]:  # Spike
-    #                     v_temp[c, i] = self.v_spike[c]
-    #                     t_last_spike[c] = t
-    #                     spike_time.append(t)
-    #                     spike_chan.append(c)
-    #
-    #     spikes = np.vstack([np.array(spike_time), np.array(spike_chan)]).T
-    #     return v_out, spikes, t_last_spike
-
-    # def filter_1d_signal(self, isyn, tau, v_thresh, v_spike, t_refract, v_reset, v_init=0, t_start=0, t_last_spike=[]):
-    #     dt = 1/self.fs
-    #     tvect = np.linspace(t_start, t_start + len(isyn) * dt, len(isyn))
-    #     v_mult = (tau/dt) / (tau/dt + 1)
-    #     i_mult = 1 / (1 + tau/dt)
-    #     if not t_last_spike:
-    #         t_last_spike = t_start - 2 * t_refract
-    #     t_spikes = []
-    #     v_out = np.zeros(len(isyn))
-    #     for i, t in enumerate(tvect):
-    #         if self.refract_period and t < (t_last_spike + t_refract):  # Refractory period
-    #             v_out[i] = 0
-    #         elif not self.refract_period and i > 0 and t_last_spike == tvect[i-1]:  # Spiking activity just occured
-    #             v_out[i] = v_reset
-    #         else:
-    #             if i == 0:
-    #                 v_out[i] = v_init * v_mult + isyn[i-1] * i_mult
-    #             else:
-    #                 v_out[i] = v_out[i-1] * v_mult + isyn[i-1] * i_mult
-    #             if v_out[i] > v_thresh:  # Spike
-    #                 v_out[i] = v_spike
-    #                 t_last_spike = t
-    #                 t_spikes.append(t)
-    #     return v_out, t_spikes
-
-    def plot_spikes(self, spike_time, spike_channel, tmin, tmax, bin_duration=0.002, potential=[]):
-        fig = plt.figure()
-        ax0 = plt.subplot2grid((4, 7), (0, 1), rowspan=3, colspan=5)
-        if np.array(potential).any():
-            plt.plot(spike_time, spike_channel, 'w.', markersize=4)
-        else:
-            plt.plot(spike_time, spike_channel, '.', markersize=4)
-        ax0.set_ylim(0, self.n_channels)
-        ax0.set(title='Raster plot')
-        if np.array(potential).any():
-            im_pot = ax0.imshow(potential, origin='lower', aspect='auto', extent=(tmin, tmax, 0, self.n_channels), alpha=1)
-            ax0.grid(False)
-            cb_ax = fig.add_axes((0.845, 0.13, 0.02, 0.12))
-            plt.colorbar(im_pot, cax=cb_ax)
-        ax1 = plt.subplot2grid((4, 7), (3, 1), rowspan=1, colspan=5, sharex=ax0)
-        ax1.hist(spike_time, bins=int((tmax - tmin) / bin_duration))
-        ax1.set_xlim(tmin, tmax)
-        ax1.set(xlabel='Time (s)', ylabel='count')
-        ax3 = plt.subplot2grid((4, 7), (0, 6), rowspan=3, sharey=ax0)
-        spikes_per_channel = [np.sum(spike_channel == i) for i in range(0, self.n_channels)]
-        ax3.barh(range(0, self.n_channels), spikes_per_channel, height=1)
-        ax3.set_ylim((0, self.n_channels))
-        ax3.set(xlabel='count', ylabel='Channel')
-        ax3.invert_xaxis()
-        ax3.yaxis.set_label_position("right")
-        ax3.yaxis.tick_right()
-        ax4 = plt.subplot2grid((4, 7), (0, 0), rowspan=3, colspan=1, sharey=ax0)
-        ax4.set(ylabel='Channel', xlabel='Median ISI (ms)')
-        ax4.barh(range(0, self.n_channels), 1000 * self.get_median_isi(spike_time, spike_channel), 1)
-        ax4.autoscale(axis='y', tight=True)
-        fig.show()
-
-    def get_median_isi(self, spike_time, spike_channel):
-        median_isi = np.zeros(self.n_channels)
-        for i in range(0, self.n_channels):
-            spike_times_i = spike_time[spike_channel == i]
-            if len(spike_times_i) > 1:
-                median_isi[i] = np.median(spike_times_i[1:] - spike_times_i[:-1])
-        return median_isi
 
     def plot_caracteristics(self):
         """ Plot the LIFBank characteristics """
@@ -979,7 +707,7 @@ class Cochlea:
 
     def __init__(self, n_channels, fs, fmin, fmax, freq_scale, order=2, fbank_type='butter', rect_type='full',
                  rect_lowpass_freq=[], comp_factor=1.0/3, comp_gain=1, lif_tau=0.010, lif_v_thresh=0.020,
-                 lif_v_spike=0.035, lif_t_refract=0.001, lif_v_reset=[], inhib_type=[], inhib_vect=[],
+                 lif_v_spike=0.035, lif_t_refract=0.001, lif_v_reset=[], inhib_vect=[],
                  tau_j=[], alpha_j=[], omega=[]):
         if freq_scale.lower() not in ['erbscale', 'linearscale', 'musicscale']:
             raise ValueError('freq_scale argument can take the values : erbscale or linearscale or musicscale')
@@ -999,7 +727,7 @@ class Cochlea:
         self.rectifierbank = RectifierBank(n_channels, fs, rect_type, rect_lowpass_freq)
         self.compressionbank = CompressionBank(n_channels, fs, comp_factor, comp_gain)
         self.lifbank = LIFBank(n_channels, fs, lif_tau, lif_v_thresh, lif_v_spike, lif_t_refract, lif_v_reset,
-                               inhib_type, inhib_vect, alpha_j=alpha_j, tau_j=tau_j, omega=omega)
+                               inhib_vect, alpha_j=alpha_j, tau_j=tau_j, omega=omega)
 
     def __str__(self):
         desc_str = 'Cochlea model - {} channels [{} - {} Hz] - {} - {} order Butterworth filters\n'.format(
@@ -1029,16 +757,6 @@ class Cochlea:
         with open(path.join(dirpath, filename), 'wb') as f:
             _pickle.dump(self, f)
 
-    # def plot_filterbank_frequency_response(self):
-    #     ax = self.filterbank.plot_frequency_response()
-    #     ax.set(title='Filters frequency responses - {} - {} filters in [{}, {} Hz] - order {}'.format(
-    #            self.freq_scale, self.n_channels, self.fmin, self.fmax, self.forder))
-
-    # def plot(self, same_figure=1):
-    #     if same_figure
-    #     f = plt.figure()
-    #     ax =
-
     def plot_channel_evolution(self, input_sig, channel_pos=[]):
         """ Plot the processing of input_sig signal through the cochlea, for channels specified by channel_pos.
         If channel_pos is not provided, 4 channels are selected ranging from low-frequency channel to high-frequency
@@ -1048,7 +766,7 @@ class Cochlea:
         ----------
         input_sig : array [1D]
             Input signal
-        channel_pos : scalar | array | list
+        channel_pos : scalar | array | list | None
             Position of the channel(s) to plot. If multiples channels are selected, plot one figure per channel.
             If none,  4 channels are selected ranging from low-frequency channel to high-frequency channel.
 
@@ -1097,8 +815,31 @@ class Cochlea:
             ax2.set(title='Cochlea signals', ylabel='Amplitude', xlabel='Time (s)')
             f.show()
 
-    def process_one_channel(self, input_sig, channel_pos, do_lif=1):
-        v_out, spikes, threshold = [], [], []
+    def process_one_channel(self, input_sig, channel_pos):
+        """ Process a signal with 1 channel of the cochlea
+
+        Parameters
+        ----------
+        input_sig : array [1D]
+            Input signal
+        channel_pos : scalar | array | list | None
+            Position of the channel(s) to plot. If multiples channels are selected, plot one figure per channel.
+            If none,  4 channels are selected ranging from low-frequency channel to high-frequency channel.
+
+        Returns
+        -------
+        sig_filtered : array [n_chan, n_pnts]
+            Signals after the band pass filterbank
+        sig_rectiry : array [n_chan, n_pnts]
+            Signals after the rectifier bank
+        sig_compressed : array [n_chan, n_pnts]
+            Signals after the compression bank
+        lif_out_sig : array [n_chan, n_pnts]
+            Signals after the LIF bank (Membrane potential)
+        t_spikes : array
+            Spikes time (s)
+
+        """
         input_sig = np.array(input_sig)
         if not input_sig.ndim == 1:
             raise ValueError('Argument input_sig should be 1D')
@@ -1107,49 +848,11 @@ class Cochlea:
         sig_filtered, _ = self.filterbank.filter_one_channel(input_sig, channel_pos)
         sig_rectify = self.rectifierbank.rectify_one_channel(sig_filtered, channel_pos)
         sig_compressed = self.compressionbank.compress_one_channel(sig_rectify, channel_pos)
-        if do_lif:
-            if hasattr(self.lifbank, 'tau_j') and self.lifbank.tau_j.size > 0:
-                v_out, t_spikes, threshold = self.lifbank.filter_one_channel_adaptive_threshold(sig_compressed, channel_pos)
-            else:
-                v_out, t_spikes = self.lifbank.filter_one_channel(sig_compressed, channel_pos)
-        return sig_filtered, sig_rectify, sig_compressed, v_out, threshold, t_spikes
-        # return spikes, sig_compressed
-
-    # def process_one_channel_adaptive_threshold(self, input_sig, channel_pos, do_lif=1):
-    #     input_sig = np.array(input_sig)
-    #     if not input_sig.ndim == 1:
-    #         raise ValueError('Argument input_sig should be 1D')
-    #     if input_sig.max() > 10 or input_sig.min() < -10:
-    #         print('Be sure to normalize the signal before applying the cochlea')
-    #     sig_filtered, _ = self.filterbank.filter_one_channel(input_sig, channel_pos)
-    #     sig_rectify = self.rectifierbank.rectify_one_channel(sig_filtered, channel_pos)
-    #     sig_compressed = self.compressionbank.compress_one_channel(sig_rectify, channel_pos)
-    #     if do_lif:
-    #         v_out, t_spikes, threshold = self.lifbank.filter_one_channel_adaptive_threshold(sig_compressed, channel_pos)
-
-        # return sig_filtered, sig_rectify, sig_compressed, v_out, spikes
-        # return t_spikes, v_out, sig_compressed, threshold
-
-
-    # @timethis
-    # def process_input_with_inhib(self, input_sig, do_plot=0, inhib_type='sub_for', inhib_vect=[]):
-    #     if not input_sig.ndim == 1:
-    #         raise ValueError('Argument input_sig should be 1D')
-    #     inhib_vect = np.array(inhib_vect)
-    #     if inhib_vect.size == 0:
-    #         raise ValueError('Argument inhib_vect must be defined')
-    #     sig_filtered, _ = self.filterbank.filter_signal(input_sig, do_plot=do_plot)
-    #     sig_rectified = self.rectifierbank.rectify_signal(sig_filtered, do_plot=do_plot)
-    #     sig_comp = self.compressionbank.compress_signal(sig_rectified, do_plot=do_plot)
-    #     lif_out_sig, spikes, _ = self.lifbank.filter_signal_with_inhib_cy(sig_comp, do_plot=do_plot,
-    #                                                                       inhib_type=inhib_type, inhib_vect=inhib_vect)
-    #     tmin, tmax = 0, input_sig.size / self.fs
-    #     spike_list = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__(),
-    #                            tmin=tmin, tmax=tmax)
-    #     return spike_list, lif_out_sig
+        lif_out_sig, t_spikes = self.lifbank.filter_one_channel(sig_compressed, channel_pos)
+        return sig_filtered, sig_rectify, sig_compressed, lif_out_sig, t_spikes
 
     @timethis
-    def process_input(self, input_sig, do_plot=False, samplever=1):
+    def process_input(self, input_sig, do_plot=False):
         """ Process input signal through the Cochlea
 
         Parameters
@@ -1158,8 +861,6 @@ class Cochlea:
             Input signal
         do_plot : bool
             If True, plot the differents steps of the cochlea
-        samplever : bool
-            Useful ?
 
         Returns
         -------
@@ -1175,43 +876,11 @@ class Cochlea:
         sig_filtered, _ = self.filterbank.filter_signal(input_sig, do_plot=do_plot)
         sig_rectified = self.rectifierbank.rectify_signal(sig_filtered, do_plot=do_plot)
         sig_comp = self.compressionbank.compress_signal(sig_rectified, do_plot=do_plot)
-        if hasattr(self.lifbank, 'inhib_type') and self.lifbank.inhib_type and hasattr(self.lifbank, 'tau_j') and self.lifbank.tau_j.size > 0:
-            lif_out_sig, spikes, threshold = self.lifbank.filter_signal_adaptive_threshold(sig_comp, samplever=samplever, inhib_shuntfor=1)
-        elif hasattr(self.lifbank, 'inhib_type') and self.lifbank.inhib_type:
-            lif_out_sig, spikes, _ = self.lifbank.filter_signal_with_inhib_cy(sig_comp, do_plot=do_plot, mp_ver=1)
-        elif hasattr(self.lifbank, 'tau_j') and self.lifbank.tau_j.size > 0:
-            lif_out_sig, spikes, threshold = self.lifbank.filter_signal_adaptive_threshold(sig_comp, samplever=samplever)
-        else:
-            lif_out_sig, spikes, _ = self.lifbank.filter_signal(sig_comp, do_plot=do_plot)
+        lif_out_sig, spikes, _ = self.lifbank.filter_signal(sig_comp)
         tmin, tmax = 0, input_sig.size / self.fs
         spikelist = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__(),
                               tmin=tmin, tmax=tmax)
         return spikelist, (sig_filtered, sig_rectified, sig_comp, lif_out_sig)
-
-
-    @timethis
-    def process_input_mpver(self, input_sig, n_processes=6):
-        """ Process an input signal channel by channel using the multiprocessing module"""
-        input_sig = np.array(input_sig)
-        if not input_sig.ndim == 1:
-            raise ValueError('Argument input_sig should be 1D')
-        tmin, tmax = 0, input_sig.size / self.fs
-        pool = mp.Pool(processes=n_processes)
-        if hasattr(self.lifbank, 'inhib_type') and self.lifbank.inhib_type:
-            async_out = [pool.apply_async(self.process_one_channel, args=(input_sig, i, 0)) for i in
-                         range(self.n_channels)]
-            sig_comp = np.vstack([p.get()[2] for p in async_out])
-            _, spikes, _ = self.lifbank.filter_signal_with_inhib_cy(sig_comp, mp_ver=1)
-            spike_list = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels,
-                                   name=self.__str__(), tmin=tmin, tmax=tmax)
-        else:
-            async_out = [pool.apply_async(self.process_one_channel, args=(input_sig, i)) for i in range(self.n_channels)]
-            t_spikes = [p.get()[-1] for p in async_out]
-            t_spikes_arr = np.hstack(t_spikes)
-            spike_channel = np.hstack([i * np.ones(t_spikes[i].size) for i in range(self.n_channels)])
-            spike_list = SpikeList(time=t_spikes_arr, channel=spike_channel, n_channels=self.n_channels,
-                                   name=self.__str__(), tmin=tmin, tmax=tmax)
-        return spike_list
 
     def process_test_signal(self, signal_type, channel_pos=[], do_plot=True, **kwargs):
         """ Run a test signal through the cochlea. Test signals can be a sinusoidal signal, a step or an impulse signal.
@@ -1260,27 +929,27 @@ class Cochlea:
                 self.plot_channel_evolution(x_test, channel_pos)
         return spikelist
 
-    def process_input_block_ver(self, input_sig, block_len, plot_spikes=1):
-        n_blocks = int(np.ceil(len(input_sig) / block_len))
-        block_duration = block_len / self.fs
-        zi, t_last_spikes = [], []
-        v_init = np.zeros(self.n_channels)
-        spikes = []
-        for i in range(0, n_blocks):
-            block_i = input_sig[i*block_len: np.min([len(input_sig), (i+1)*block_len])]
-            block_i_filtered, zi = self.filterbank.filter_signal(block_i, do_plot=0, zi_in=zi)
-            block_i_rectified = self.rectifierbank.rectify_signal(block_i_filtered, do_plot=0)
-            block_i_compressed = self.compressionbank.compress_signal(block_i_rectified, do_plot=0)
-            v_out_i, spikes_i, t_last_spikes = self.lifbank.filter_signal(block_i_compressed, do_plot=0, v_init=v_init,
-                                                                          t_start=i*block_duration,
-                                                                          t_last_spike=t_last_spikes)
-            v_init = v_out_i[:, -1]
-            spikes.append(spikes_i)
-        spikes = np.vstack(np.array(spikes))
-        spike_list = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__())
-        if plot_spikes:
-            spike_list.plot()
-        return spike_list, _
+    # def process_input_block_ver(self, input_sig, block_len, plot_spikes=1):
+    #     n_blocks = int(np.ceil(len(input_sig) / block_len))
+    #     block_duration = block_len / self.fs
+    #     zi, t_last_spikes = [], []
+    #     v_init = np.zeros(self.n_channels)
+    #     spikes = []
+    #     for i in range(0, n_blocks):
+    #         block_i = input_sig[i*block_len: np.min([len(input_sig), (i+1)*block_len])]
+    #         block_i_filtered, zi = self.filterbank.filter_signal(block_i, do_plot=0, zi_in=zi)
+    #         block_i_rectified = self.rectifierbank.rectify_signal(block_i_filtered, do_plot=0)
+    #         block_i_compressed = self.compressionbank.compress_signal(block_i_rectified, do_plot=0)
+    #         v_out_i, spikes_i, t_last_spikes = self.lifbank.filter_signal(block_i_compressed, do_plot=0, v_init=v_init,
+    #                                                                       t_start=i*block_duration,
+    #                                                                       t_last_spike=t_last_spikes)
+    #         v_init = v_out_i[:, -1]
+    #         spikes.append(spikes_i)
+    #     spikes = np.vstack(np.array(spikes))
+    #     spike_list = SpikeList(time=spikes[:, 0], channel=spikes[:, 1], n_channels=self.n_channels, name=self.__str__())
+    #     if plot_spikes:
+    #         spike_list.plot()
+    #     return spike_list, _
 
 
 def load_cochlea(dirpath, filename):
