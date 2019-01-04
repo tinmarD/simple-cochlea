@@ -9,8 +9,8 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
 """
 
 import os
-import matplotlib
-matplotlib.use('TkAgg')
+# import matplotlib
+# matplotlib.use('TkAgg')
 import numpy as np
 from scipy.io import wavfile
 import seaborn as sns

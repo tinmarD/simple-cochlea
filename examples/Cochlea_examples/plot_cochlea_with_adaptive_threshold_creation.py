@@ -7,8 +7,8 @@ Create a simple cochlea model and test it on a sinusoidal input signal
 
 """
 
-import matplotlib
-matplotlib.use('TkAgg')
+# import matplotlib
+# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
