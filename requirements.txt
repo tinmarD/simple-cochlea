@@ -8,3 +8,4 @@ peakutils
 librosa
 cython
 sphinx_gallery
+sphinx_bootstrap_theme
