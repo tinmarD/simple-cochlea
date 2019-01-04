@@ -183,7 +183,7 @@ cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t
     cdef double[:, :] v_out_v = v_out
     cdef int out_list_size = int(0.1*n_pnts*n_chan)
     t_spikes = np.zeros(out_list_size)
-    chan_spikes = np.zeros(out_list_size, dtype=int)
+    chan_spikes = np.zeros(out_list_size, dtype=np.int32)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
     cdef Py_ssize_t spike_inc = 0
@@ -273,7 +273,7 @@ cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refr
     cdef double v_divide
     cdef int out_list_size = int(0.1*n_pnts*n_chan)
     t_spikes = np.zeros(out_list_size)
-    chan_spikes = np.zeros(out_list_size, dtype=int)
+    chan_spikes = np.zeros(out_list_size, dtype=np.int32)
     cdef double[:] t_spikes_v = t_spikes
     cdef int[:] chan_spikes_v = chan_spikes
     cdef Py_ssize_t spike_inc = 0
