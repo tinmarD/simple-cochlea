@@ -4,6 +4,5 @@ scipy
 seaborn
 scikit-learn
 tqdm
-pymuvr
 peakutils
 librosa
