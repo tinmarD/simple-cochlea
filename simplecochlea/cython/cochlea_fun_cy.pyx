@@ -102,8 +102,8 @@ cdef get_h_t_coeffs(double delay_max_s, double fs, double[:] tau_j, alpha_j):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,
-                              double v_spike, double v_reset, double v_init=0, int adaptive_threshold, double[:] tau_j,
-                              double[:] alpha_j, double[:] omega, double t_start=0, t_last_spike_p=[]):
+                              double v_spike, double v_reset, double v_init, int adaptive_threshold, double[:] tau_j,
+                              double[:] alpha_j, double omega, double t_start=0, t_last_spike_p=[]):
     cdef Py_ssize_t i, n_pnts
     cdef double t
     cdef double dt = 1.0 / fs
@@ -137,7 +137,7 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
     for i in range(n_pnts):
         t = tvect_v[i]
         if adaptive_threshold:
-            threshold_v = get_threshold(t_spikes_v[:spike_inc], t, delay_max, tau_j, alpha_j, omega)
+            threshold_v = get_threshold(t_spikes_v[:spike_inc], t, delay_max_s, tau_j, alpha_j, omega)
 
         if refract_period and t < (t_last_spike + t_refract):  # Refractory period
             v_out_v[i] = v_reset
