@@ -4,7 +4,9 @@ SimpleCochlea is a basic cochlea model for transforming an input sound into a sp
 
 ![](images/cochlea_schema.png)
 
+## Documentation 
 
+The doc is here : https://simplecochlea.readthedocs.io/en/latest/
 
 ## Installation
 
