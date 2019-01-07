@@ -2,7 +2,7 @@ import numpy as np
 from os import path, mkdir
 import pandas as pd
 from scipy import signal
-import _pickle
+import pickle
 from datetime import datetime
 import tqdm
 import time
@@ -670,7 +670,7 @@ class LIFBank:
         if not np.isscalar(i) or i < 0 or i > self.n_channels-1:
             raise ValueError('argument channel_pos must be a scalar ranging between 0 and the number of channels-1')
         if not np.array(v_init).any():
-            v_init = np.zeros(self.n_channels)
+            v_init = np.zeros(self.n_channels, dtype=np.float64)
         elif not np.array(v_init).shape[0] == self.n_channels:
             raise ValueError('v_init must be a [n_channels, 1] array')
         if not np.array(t_last_spike).any():
@@ -678,11 +678,11 @@ class LIFBank:
         elif not t_last_spike.shape[0] == self.n_channels:
             raise ValueError('t_last_spike must be a [n_channels, 1] array')
         if not self.inhib_on:
-            v_out, t_spikes = lif_filter_1d_signal_cy(self.fs, input_sig, self.refract_period, self.t_refract[i],
+            v_out, t_spikes, threshold = lif_filter_1d_signal_cy(int(self.fs), np.float64(input_sig), int(self.refract_period), np.float64(self.t_refract[i]),
                                                       self.tau[i], self.v_thresh[i], self.v_spike[i], self.v_reset[i],
                                                       v_init[i], self.adaptive_threshold, self.tau_j, self.alpha_j,
-                                                      self.omega, t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike[i]))
-        return v_out, t_spikes
+                                                      self.omega[i], t_start=np.float64(t_start), t_last_spike_p=np.float64(t_last_spike[i]))
+        return v_out, t_spikes, threshold
 
     def plot_caracteristics(self):
         """ Plot the LIFBank characteristics """
@@ -755,7 +755,7 @@ class Cochlea:
         if not filename:
             filename = 'cochlea_model_{}.p'.format(datetime.strftime(datetime.now(), '%d%m%y_%H%M'))
         with open(path.join(dirpath, filename), 'wb') as f:
-            _pickle.dump(self, f)
+            pickle.dump(self, f)
 
     def plot_channel_evolution(self, input_sig, channel_pos=[]):
         """ Plot the processing of input_sig signal through the cochlea, for channels specified by channel_pos.
@@ -779,7 +779,7 @@ class Cochlea:
             for chan_pos in channel_pos:
                 self.plot_channel_evolution(input_sig, chan_pos)
         else:
-            y_filt, y_rect, y_comp, v_out, threshold, t_spikes = self.process_one_channel(input_sig, channel_pos)
+            y_filt, y_rect, y_comp, v_out, t_spikes, threshold = self.process_one_channel(input_sig, channel_pos)
             tvect = np.linspace(0, len(input_sig) / self.fs, len(input_sig))
             # Plot
             f = plt.figure()
@@ -792,6 +792,7 @@ class Cochlea:
             axx = ax.twinx()
             spkrate = t_spikes_to_spikerate(t_spikes, self.fs, input_sig.size)
             axx.plot(tvect, spkrate, color='r', alpha=0.5)
+            axx.set_ylabel('Mean Spikerate (Hz)')
             axx.grid(False)
             ax2 = plt.subplot2grid((3, 1), (1, 0), rowspan=2, sharex=ax)
             ax2.plot(tvect, y_filt, alpha=0.8)
@@ -848,8 +849,8 @@ class Cochlea:
         sig_filtered, _ = self.filterbank.filter_one_channel(input_sig, channel_pos)
         sig_rectify = self.rectifierbank.rectify_one_channel(sig_filtered, channel_pos)
         sig_compressed = self.compressionbank.compress_one_channel(sig_rectify, channel_pos)
-        lif_out_sig, t_spikes = self.lifbank.filter_one_channel(sig_compressed, channel_pos)
-        return sig_filtered, sig_rectify, sig_compressed, lif_out_sig, t_spikes
+        lif_out_sig, t_spikes, threshold = self.lifbank.filter_one_channel(sig_compressed, channel_pos)
+        return sig_filtered, sig_rectify, sig_compressed, lif_out_sig, t_spikes, threshold
 
     @timethis
     def process_input(self, input_sig, do_plot=False):
@@ -955,7 +956,7 @@ class Cochlea:
 def load_cochlea(dirpath, filename):
     """ Load the cochlea in pickle format (.p) defined by `filename` in `dirpath` """
     with open(path.join(dirpath, filename), 'rb') as f:
-        return _pickle.load(f)
+        return pickle.load(f)
 
 
 class CochleaEstimator:

@@ -17,8 +17,8 @@ cdef extern from "math.h":
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau_j, double[:] alpha_j, double omega):
-    cdef int n_spikes = t_spikes.shape[0]
-    cdef int n_tau = tau_j.shape[0]
+    cdef int n_spikes = t_spikes.size
+    cdef int n_tau = tau_j.size
     cdef double threshold = omega
     cdef double delay_i
     cdef Py_ssize_t i, j
@@ -120,7 +120,8 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
     cdef double[:] t_spikes_v = t_spikes
     cdef Py_ssize_t spike_inc = 0
     #-- ADAPTIVE THRESHOLD
-    cdef double[:] threshold_v
+    threshold_ev = np.zeros(n_pnts, dtype=np.float64)
+    cdef double[:] threshold_ev_v = threshold_ev
     cdef double delay_max_s
     if adaptive_threshold:
         delay_max_s = 5 * max(tau_j)
@@ -137,7 +138,8 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
     for i in range(n_pnts):
         t = tvect_v[i]
         if adaptive_threshold:
-            threshold_v = get_threshold(t_spikes_v[:spike_inc], t, delay_max_s, tau_j, alpha_j, omega)
+            threshold = get_threshold(t_spikes_v[:spike_inc], t, delay_max_s, tau_j, alpha_j, omega)
+            threshold_ev_v[i] = threshold
 
         if refract_period and t < (t_last_spike + t_refract):  # Refractory period
             v_out_v[i] = v_reset
@@ -155,7 +157,7 @@ cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, doub
                 spike_inc += 1
 
     t_spikes_v = t_spikes_v[:spike_inc]
-    return np.array(v_out_v), np.array(t_spikes_v)
+    return np.array(v_out_v), np.array(t_spikes_v), np.array(threshold_ev_v)
 
 
 # LIF model for multiples channels
