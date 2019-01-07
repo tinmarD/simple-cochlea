@@ -16,8 +16,8 @@ References
 
 """
 
-import matplotlib
-matplotlib.use('TkAgg')
+# import matplotlib
+# matplotlib.use('TkAgg')
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -36,7 +36,7 @@ generate_signals.plot_signal(test_sig, fs)
 
 ##########################################
 # Construct a cochlea without inhibition :
-fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 1000
+fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 100
 comp_factor, comp_gain = 0.3, 1.5
 tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), np.linspace(0.3, 0.17, n_channels), 0.5
 
@@ -45,7 +45,6 @@ cochlea = Cochlea(n_channels, fs, fmin, fmax, freq_scale, comp_factor=comp_facto
 
 ############################################
 # Construct a second cochlea with inhibition
-# We will use a forward-shunting type of inhibition
 ############################################
 # We define an inhibition vector which gives the strenght of the inhibition of channel i related with its neighbours
 N, inhib_sum = 50, 1

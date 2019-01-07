@@ -24,8 +24,8 @@ References
 .. code-block:: python
 
 
-    import matplotlib
-    matplotlib.use('TkAgg')
+    # import matplotlib
+    # matplotlib.use('TkAgg')
     import numpy as np
     import matplotlib.pyplot as plt
     import seaborn as sns
@@ -55,6 +55,9 @@ For testing the inhibition, we will use a signal composed of 3 sinusoids close i
 
 
 
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_001.png
+    :align: center
+
 
 
 
@@ -64,7 +67,7 @@ Construct a cochlea without inhibition :
 
 .. code-block:: python
 
-    fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 1000
+    fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 100
     comp_factor, comp_gain = 0.3, 1.5
     tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), np.linspace(0.3, 0.17, n_channels), 0.5
 
@@ -78,7 +81,6 @@ Construct a cochlea without inhibition :
 
 
 Construct a second cochlea with inhibition
- We will use a forward-shunting type of inhibition
 ###########################################
  We define an inhibition vector which gives the strenght of the inhibition of channel i related with its neighbours
 
@@ -112,7 +114,7 @@ Let's plot the normalized inhibition vector
 
 
 
-.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_001.png
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_002.png
     :align: center
 
 
@@ -130,7 +132,7 @@ Run the test signal through the 2 cochleas
 
 
 
-.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_002.png
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_003.png
     :align: center
 
 
@@ -138,7 +140,7 @@ Run the test signal through the 2 cochleas
 
  Out::
 
-    Function : process_input - Time elapsed : 6.962000131607056
+    Function : process_input - Time elapsed : 0.6430642604827881
 
 
 With inhibition :
@@ -153,7 +155,7 @@ With inhibition :
 
 
 
-.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_003.png
+.. image:: /auto_examples/Elements/images/sphx_glr_plot_LIF_bank_inhibition_004.png
     :align: center
 
 
@@ -162,10 +164,10 @@ With inhibition :
  Out::
 
     Inhibition Shunting Forward Current
-    Function : process_input - Time elapsed : 26.534559965133667
+    Function : process_input - Time elapsed : 11.464146375656128
 
 
-**Total running time of the script:** ( 1 minutes  8.111 seconds)
+**Total running time of the script:** ( 0 minutes  13.835 seconds)
 
 
 

@@ -15,8 +15,8 @@ Create a simple cochlea model and test it on a sinusoidal input signal
 .. code-block:: python
 
 
-    import matplotlib
-    matplotlib.use('TkAgg')
+    # import matplotlib
+    # matplotlib.use('TkAgg')
     import matplotlib.pyplot as plt
     import numpy as np
     import seaborn as sns
@@ -35,7 +35,7 @@ Create the cochlea
 
 .. code-block:: python
 
-    fs, fmin, fmax, freq_scale, n_channels = 44100, 200, 8000, 'erbscale', 1000
+    fs, fmin, fmax, freq_scale, n_channels = 44100, 200, 8000, 'erbscale', 100
     comp_factor, comp_gain = 0.3, 1.5
     tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), 0, 0.5
     # Adaptive threshold parameters
@@ -68,7 +68,7 @@ Print the description
 
  Out::
 
-    Cochlea model - 1000 channels [200 - 8000 Hz] - erbscale - 2 order Butterworth filters
+    Cochlea model - 100 channels [200 - 8000 Hz] - erbscale - 2 order Butterworth filters
     Rectifier Bank - full rectification - No low-pass filtering
     Compression Bank : y = 1.5 * x ^ 0.3
     LIF bank - Tau = [1.00, 0.40] ms - 
@@ -83,7 +83,7 @@ Process a sin input signal
 
 .. code-block:: python
 
-    spikelist_sin, _ = cochlea_adaptive_thresh.process_test_signal('sin', f_sin=400, do_plot=0)
+    spikelist_sin, _ = cochlea_adaptive_thresh.process_test_signal('sin', f_sin=400, t_offset=0, t_max=0.5, do_plot=0)
 
 
 
@@ -93,7 +93,7 @@ Process a sin input signal
 
  Out::
 
-    Function : process_input - Time elapsed : 20.37000012397766
+    Function : process_input - Time elapsed : 1.7061705589294434
 
 
 Plot the output spikelist
@@ -113,7 +113,7 @@ Plot the output spikelist
 
 
 
-**Total running time of the script:** ( 0 minutes  24.185 seconds)
+**Total running time of the script:** ( 0 minutes  2.435 seconds)
 
 
 

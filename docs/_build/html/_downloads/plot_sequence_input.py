@@ -9,8 +9,8 @@ This pattern of 50ms appears 10 times and each repetition is separated by a nois
 """
 
 import os
-import matplotlib
-matplotlib.use('TkAgg')
+# import matplotlib
+# matplotlib.use('TkAgg')
 import numpy as np
 from scipy.io import wavfile
 import seaborn as sns
@@ -27,7 +27,7 @@ fs, sequence = wavfile.read(os.path.join(sample_data_dir, 'sample_sequence_10_50
 
 #############################
 # Create the cochlea
-fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 1000
+fmin, fmax, freq_scale, n_channels = 200, 8000, 'erbscale', 100
 comp_factor, comp_gain = 0.3, 1.5
 tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), np.linspace(0.3, 0.17, n_channels), 0.5
 
@@ -36,7 +36,7 @@ cochlea = Cochlea(n_channels, fs, fmin, fmax, freq_scale, comp_factor=comp_facto
 
 #############################
 # Run the sequence through the cochlea
-spikelist_seq = cochlea.process_input(sequence)
+spikelist_seq, _ = cochlea.process_input(sequence)
 
 #############################
 # Plot the spikelist

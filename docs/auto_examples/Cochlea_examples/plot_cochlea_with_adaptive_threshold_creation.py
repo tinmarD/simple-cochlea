@@ -7,8 +7,8 @@ Create a simple cochlea model and test it on a sinusoidal input signal
 
 """
 
-import matplotlib
-matplotlib.use('TkAgg')
+# import matplotlib
+# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -17,7 +17,7 @@ sns.set_context('paper')
 
 ############################
 # Create the cochlea
-fs, fmin, fmax, freq_scale, n_channels = 44100, 200, 8000, 'erbscale', 1000
+fs, fmin, fmax, freq_scale, n_channels = 44100, 200, 8000, 'erbscale', 100
 comp_factor, comp_gain = 0.3, 1.5
 tau, v_thresh, v_spike = np.linspace(0.001, 0.0004, n_channels), 0, 0.5
 # Adaptive threshold parameters
@@ -34,7 +34,7 @@ print(cochlea_adaptive_thresh)
 
 ###############################
 # Process a sin input signal
-spikelist_sin, _ = cochlea_adaptive_thresh.process_test_signal('sin', f_sin=400, do_plot=0)
+spikelist_sin, _ = cochlea_adaptive_thresh.process_test_signal('sin', f_sin=400, t_offset=0, t_max=0.5, do_plot=0)
 
 ###############################
 # Plot the output spikelist

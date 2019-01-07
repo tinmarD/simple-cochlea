@@ -113,8 +113,8 @@
   <div class="section" id="cochlea-creation-with-adpative-threshold">
 <span id="sphx-glr-auto-examples-cochlea-examples-plot-cochlea-with-adaptive-threshold-creation-py"></span><h1>Cochlea Creation with Adpative Threshold<a class="headerlink" href="#cochlea-creation-with-adpative-threshold" title="Permalink to this headline">¶</a></h1>
 <p>Create a simple cochlea model and test it on a sinusoidal input signal</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib</span>
+<span class="c1"># matplotlib.use(&#39;TkAgg&#39;)</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
@@ -123,7 +123,7 @@
 </pre></div>
 </div>
 <p>Create the cochlea</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">freq_scale</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="s1">&#39;erbscale&#39;</span><span class="p">,</span> <span class="mi">1000</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">freq_scale</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="s1">&#39;erbscale&#39;</span><span class="p">,</span> <span class="mi">100</span>
 <span class="n">comp_factor</span><span class="p">,</span> <span class="n">comp_gain</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.5</span>
 <span class="n">tau</span><span class="p">,</span> <span class="n">v_thresh</span><span class="p">,</span> <span class="n">v_spike</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span>
 <span class="c1"># Adaptive threshold parameters</span>
@@ -140,7 +140,7 @@
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cochlea</span> <span class="n">model</span> <span class="o">-</span> <span class="mi">1000</span> <span class="n">channels</span> <span class="p">[</span><span class="mi">200</span> <span class="o">-</span> <span class="mi">8000</span> <span class="n">Hz</span><span class="p">]</span> <span class="o">-</span> <span class="n">erbscale</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">order</span> <span class="n">Butterworth</span> <span class="n">filters</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cochlea</span> <span class="n">model</span> <span class="o">-</span> <span class="mi">100</span> <span class="n">channels</span> <span class="p">[</span><span class="mi">200</span> <span class="o">-</span> <span class="mi">8000</span> <span class="n">Hz</span><span class="p">]</span> <span class="o">-</span> <span class="n">erbscale</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">order</span> <span class="n">Butterworth</span> <span class="n">filters</span>
 <span class="n">Rectifier</span> <span class="n">Bank</span> <span class="o">-</span> <span class="n">full</span> <span class="n">rectification</span> <span class="o">-</span> <span class="n">No</span> <span class="n">low</span><span class="o">-</span><span class="k">pass</span> <span class="n">filtering</span>
 <span class="n">Compression</span> <span class="n">Bank</span> <span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">^</span> <span class="mf">0.3</span>
 <span class="n">LIF</span> <span class="n">bank</span> <span class="o">-</span> <span class="n">Tau</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">]</span> <span class="n">ms</span> <span class="o">-</span>
@@ -150,11 +150,11 @@
 </pre></div>
 </div>
 <p>Process a sin input signal</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spikelist_sin</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cochlea_adaptive_thresh</span><span class="o">.</span><span class="n">process_test_signal</span><span class="p">(</span><span class="s1">&#39;sin&#39;</span><span class="p">,</span> <span class="n">f_sin</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">do_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spikelist_sin</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cochlea_adaptive_thresh</span><span class="o">.</span><span class="n">process_test_signal</span><span class="p">(</span><span class="s1">&#39;sin&#39;</span><span class="p">,</span> <span class="n">f_sin</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">t_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">do_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="p">:</span> <span class="n">process_input</span> <span class="o">-</span> <span class="n">Time</span> <span class="n">elapsed</span> <span class="p">:</span> <span class="mf">20.37000012397766</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="p">:</span> <span class="n">process_input</span> <span class="o">-</span> <span class="n">Time</span> <span class="n">elapsed</span> <span class="p">:</span> <span class="mf">1.7061705589294434</span>
 </pre></div>
 </div>
 <p>Plot the output spikelist</p>
@@ -162,7 +162,7 @@
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_cochlea_with_adaptive_threshold_creation_001.png" class="align-center" src="../../_images/sphx_glr_plot_cochlea_with_adaptive_threshold_creation_001.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  24.185 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  2.435 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_cochlea_with_adaptive_threshold_creation.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cochlea_with_adaptive_threshold_creation.py</span></code></a></div>

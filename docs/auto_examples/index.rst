@@ -76,6 +76,26 @@ Create a cochlea model.
    :hidden:
 
    /auto_examples/Cochlea_examples/plot_sequence_input
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example show how to run a signal through a specific channel of the cochlea">
+
+.. only:: html
+
+    .. figure:: /auto_examples/Cochlea_examples/images/thumb/sphx_glr_plot_cochlea_process_one_channel_thumb.png
+
+        :ref:`sphx_glr_auto_examples_Cochlea_examples_plot_cochlea_process_one_channel.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/Cochlea_examples/plot_cochlea_process_one_channel
 .. raw:: html
 
     <div style='clear:both'></div>

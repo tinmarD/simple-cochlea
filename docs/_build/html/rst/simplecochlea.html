@@ -366,22 +366,14 @@ Input signal is passed through all the band-pass filters.</p>
 <tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.process_input" title="simplecochlea.cochlea.Cochlea.process_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_input</span></code></a>(input_sig[,&nbsp;do_plot])</td>
 <td>Process input signal through the Cochlea</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.process_test_signal" title="simplecochlea.cochlea.Cochlea.process_test_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_test_signal</span></code></a>(signal_type[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.process_one_channel" title="simplecochlea.cochlea.Cochlea.process_one_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_one_channel</span></code></a>(input_sig,&nbsp;channel_pos)</td>
+<td>Process a signal with 1 channel of the cochlea</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.process_test_signal" title="simplecochlea.cochlea.Cochlea.process_test_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_test_signal</span></code></a>(signal_type[,&nbsp;…])</td>
 <td>Run a test signal through the cochlea.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.save" title="simplecochlea.cochlea.Cochlea.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(dirpath[,&nbsp;filename])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.Cochlea.save" title="simplecochlea.cochlea.Cochlea.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(dirpath[,&nbsp;filename])</td>
 <td>Save the cochlea.</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="70%" />
-<col width="30%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>process_one_channel</strong></td>
-<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -449,7 +441,7 @@ channel.</p>
 <dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [1D]</span></dt>
 <dd><p class="first last">Input signal</p>
 </dd>
-<dt><strong>channel_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar | array | list</span></dt>
+<dt><strong>channel_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar | array | list | None</span></dt>
 <dd><p class="first last">Position of the channel(s) to plot. If multiples channels are selected, plot one figure per channel.
 If none,  4 channels are selected ranging from low-frequency channel to high-frequency channel.</p>
 </dd>
@@ -494,8 +486,45 @@ If none,  4 channels are selected ranging from low-frequency channel to high-fre
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.Cochlea.process_one_channel">
-<code class="descname">process_one_channel</code><span class="sig-paren">(</span><em>input_sig</em>, <em>channel_pos</em>, <em>do_lif=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#Cochlea.process_one_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.Cochlea.process_one_channel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">process_one_channel</code><span class="sig-paren">(</span><em>input_sig</em>, <em>channel_pos</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#Cochlea.process_one_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.Cochlea.process_one_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a signal with 1 channel of the cochlea</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [1D]</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>channel_pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar | array | list | None</span></dt>
+<dd><p class="first last">Position of the channel(s) to plot. If multiples channels are selected, plot one figure per channel.
+If none,  4 channels are selected ranging from low-frequency channel to high-frequency channel.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sig_filtered</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_chan, n_pnts]</span></dt>
+<dd><p class="first last">Signals after the band pass filterbank</p>
+</dd>
+<dt><strong>sig_rectiry</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_chan, n_pnts]</span></dt>
+<dd><p class="first last">Signals after the rectifier bank</p>
+</dd>
+<dt><strong>sig_compressed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_chan, n_pnts]</span></dt>
+<dd><p class="first last">Signals after the compression bank</p>
+</dd>
+<dt><strong>lif_out_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [n_chan, n_pnts]</span></dt>
+<dd><p class="first last">Signals after the LIF bank (Membrane potential)</p>
+</dd>
+<dt><strong>t_spikes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Spikes time (s)</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.Cochlea.process_test_signal">
@@ -825,34 +854,78 @@ multi-timescale adaptive threshold. Frontiers in Computational Neuroscience. 200
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.LIFBank.plot_caracteristics" title="simplecochlea.cochlea.LIFBank.plot_caracteristics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_caracteristics</span></code></a>()</td>
-<td>Plot the LIFBank characteristics</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.LIFBank.filter_one_channel" title="simplecochlea.cochlea.LIFBank.filter_one_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_one_channel</span></code></a>(input_sig,&nbsp;i[,&nbsp;v_init,&nbsp;…])</td>
+<td>Filter one channel</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#simplecochlea.cochlea.LIFBank.filter_signal" title="simplecochlea.cochlea.LIFBank.filter_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_signal</span></code></a>(input_sig[,&nbsp;v_init,&nbsp;t_start,&nbsp;…])</td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils">
-<colgroup>
-<col width="69%" />
-<col width="31%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>filter_one_channel</strong></td>
-<td>&#160;</td>
+</td>
 </tr>
-<tr class="row-even"><td><strong>filter_signal</strong></td>
-<td>&#160;</td>
+<tr class="row-odd"><td><a class="reference internal" href="#simplecochlea.cochlea.LIFBank.plot_caracteristics" title="simplecochlea.cochlea.LIFBank.plot_caracteristics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_caracteristics</span></code></a>()</td>
+<td>Plot the LIFBank characteristics</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="simplecochlea.cochlea.LIFBank.filter_one_channel">
 <code class="descname">filter_one_channel</code><span class="sig-paren">(</span><em>input_sig</em>, <em>i</em>, <em>v_init=[]</em>, <em>t_start=0</em>, <em>t_last_spike=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#LIFBank.filter_one_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.LIFBank.filter_one_channel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Filter one channel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">1D array</span></dt>
+<dd><p class="first last">Input vector to be passed through the LIF</p>
+</dd>
+<dt><strong>i</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Channel position</p>
+</dd>
+<dt><strong>v_init</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Initial LIF potential</p>
+</dd>
+<dt><strong>t_start :</strong></dt>
+<dd></dd>
+<dt><strong>t_last_spike :</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.LIFBank.filter_signal">
 <code class="descname">filter_signal</code><span class="sig-paren">(</span><em>input_sig</em>, <em>v_init=[]</em>, <em>t_start=0</em>, <em>t_last_spike=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simplecochlea/cochlea.html#LIFBank.filter_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simplecochlea.cochlea.LIFBank.filter_signal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>input_sig</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array [1D]</span></dt>
+<dd><p class="first last">Input signal</p>
+</dd>
+<dt><strong>v_init</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Initial LIF potential</p>
+</dd>
+<dt><strong>t_start :</strong></dt>
+<dd></dd>
+<dt><strong>t_last_spike :</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="simplecochlea.cochlea.LIFBank.plot_caracteristics">
