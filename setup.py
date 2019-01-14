@@ -36,7 +36,7 @@ cmdclass.update({'build_ext': build_ext})
 
 setup(
     name='simplecochlea',
-    version='0.1.13',
+    version='1.0.0',
     description='Simple cochlea model for sound-to-spikes conversion',
     long_description='',
     author='Martin Deudon',
@@ -44,7 +44,7 @@ setup(
     cmdclass=cmdclass,
     ext_modules=cythonize(ext_modules),
     url='',
-    license='MIT',
+    license='GPL',
     packages=find_packages(exclude=('docs', 'examples')),
     setup_requires=['numpy', 'cython'],
     install_requires=install_requires,

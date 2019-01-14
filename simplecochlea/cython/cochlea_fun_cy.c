@@ -1185,7 +1185,7 @@ struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_sig
 struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy;
 struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inhib_shuntfor_current_cy;
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":104
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":121
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,             # <<<<<<<<<<<<<<
@@ -1198,7 +1198,7 @@ struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_sig
   PyObject *t_last_spike_p;
 };
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":166
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":183
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -1211,7 +1211,7 @@ struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy {
   PyObject *t_last_spike_p;
 };
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":243
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":260
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -2301,6 +2301,7 @@ static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cyt
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
+static const char __pyx_k_This_file_is_part_of_simplecoch[] = "\nThis file is part of simplecochlea.\n\nsimplecochlea is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nsimplecochlea is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with simplecochlea.  If not, see <https://www.gnu.org/licenses/>.\n";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
@@ -2554,7 +2555,7 @@ static PyObject *__pyx_tuple__41;
 static PyObject *__pyx_codeobj__42;
 /* Late includes */
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":19
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":36
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau_j, double[:] alpha_j, double omega):             # <<<<<<<<<<<<<<
@@ -2585,39 +2586,39 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
   double __pyx_t_12;
   __Pyx_RefNannySetupContext("get_threshold", 0);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":20
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":37
  * @cython.wraparound(False)
  * cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau_j, double[:] alpha_j, double omega):
  *     cdef int n_spikes = t_spikes.size             # <<<<<<<<<<<<<<
  *     cdef int n_tau = tau_j.size
  *     cdef double threshold = omega
  */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_t_spikes, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_t_spikes, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_n_spikes = __pyx_t_3;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":21
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":38
  * cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau_j, double[:] alpha_j, double omega):
  *     cdef int n_spikes = t_spikes.size
  *     cdef int n_tau = tau_j.size             # <<<<<<<<<<<<<<
  *     cdef double threshold = omega
  *     cdef double delay_i
  */
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_tau = __pyx_t_3;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":22
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":39
  *     cdef int n_spikes = t_spikes.size
  *     cdef int n_tau = tau_j.size
  *     cdef double threshold = omega             # <<<<<<<<<<<<<<
@@ -2626,7 +2627,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
  */
   __pyx_v_threshold = __pyx_v_omega;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":25
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":42
  *     cdef double delay_i
  *     cdef Py_ssize_t i, j
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -2636,7 +2637,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
   __pyx_t_4 = ((__pyx_v_n_spikes > 0) != 0);
   if (__pyx_t_4) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":26
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":43
  *     cdef Py_ssize_t i, j
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):             # <<<<<<<<<<<<<<
@@ -2646,7 +2647,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
     for (__pyx_t_5 = (__pyx_v_n_spikes - 1); __pyx_t_5 > -1L; __pyx_t_5-=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":27
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":44
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):
  *             delay_i = t - t_spikes[i]             # <<<<<<<<<<<<<<
@@ -2656,7 +2657,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
       __pyx_t_6 = __pyx_v_i;
       __pyx_v_delay_i = (__pyx_v_t - (*((double *) ( /* dim=0 */ (__pyx_v_t_spikes.data + __pyx_t_6 * __pyx_v_t_spikes.strides[0]) ))));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":28
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":45
  *         for i in range(n_spikes-1, -1, -1):
  *             delay_i = t - t_spikes[i]
  *             if delay_i > delay_max:             # <<<<<<<<<<<<<<
@@ -2666,7 +2667,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
       __pyx_t_4 = ((__pyx_v_delay_i > __pyx_v_delay_max) != 0);
       if (__pyx_t_4) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":29
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":46
  *             delay_i = t - t_spikes[i]
  *             if delay_i > delay_max:
  *                 break             # <<<<<<<<<<<<<<
@@ -2675,7 +2676,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
  */
         goto __pyx_L5_break;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":28
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":45
  *         for i in range(n_spikes-1, -1, -1):
  *             delay_i = t - t_spikes[i]
  *             if delay_i > delay_max:             # <<<<<<<<<<<<<<
@@ -2684,7 +2685,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
  */
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":30
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":47
  *             if delay_i > delay_max:
  *                 break
  *             for j in range(n_tau):             # <<<<<<<<<<<<<<
@@ -2696,7 +2697,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
       for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
         __pyx_v_j = __pyx_t_8;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":31
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":48
  *                 break
  *             for j in range(n_tau):
  *                 threshold = threshold + alpha_j[j] * exp(- delay_i / tau_j[j])             # <<<<<<<<<<<<<<
@@ -2709,14 +2710,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
         __pyx_t_12 = (*((double *) ( /* dim=0 */ (__pyx_v_tau_j.data + __pyx_t_11 * __pyx_v_tau_j.strides[0]) )));
         if (unlikely(__pyx_t_12 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 31, __pyx_L1_error)
+          __PYX_ERR(0, 48, __pyx_L1_error)
         }
         __pyx_v_threshold = (__pyx_v_threshold + ((*((double *) ( /* dim=0 */ (__pyx_v_alpha_j.data + __pyx_t_9 * __pyx_v_alpha_j.strides[0]) ))) * exp((__pyx_t_10 / __pyx_t_12))));
       }
     }
     __pyx_L5_break:;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":25
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":42
  *     cdef double delay_i
  *     cdef Py_ssize_t i, j
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -2725,7 +2726,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
  */
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":32
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":49
  *             for j in range(n_tau):
  *                 threshold = threshold + alpha_j[j] * exp(- delay_i / tau_j[j])
  *     return threshold             # <<<<<<<<<<<<<<
@@ -2733,13 +2734,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_threshold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_threshold); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":19
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":36
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold(double[:] t_spikes, double t, double delay_max, double[:] tau_j, double[:] alpha_j, double omega):             # <<<<<<<<<<<<<<
@@ -2759,7 +2760,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":37
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":54
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold_multichan_v2(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,             # <<<<<<<<<<<<<<
@@ -2800,7 +2801,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   Py_ssize_t __pyx_t_19;
   __Pyx_RefNannySetupContext("get_threshold_multichan_v2", 0);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":39
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":56
  * cdef get_threshold_multichan_v2(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,
  *                              double[:] tau_j, double[:] alpha_j, double[:] omega):
  *     cdef int n_spikes = t_spikes.shape[0]             # <<<<<<<<<<<<<<
@@ -2809,7 +2810,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
   __pyx_v_n_spikes = (__pyx_v_t_spikes.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":40
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":57
  *                              double[:] tau_j, double[:] alpha_j, double[:] omega):
  *     cdef int n_spikes = t_spikes.shape[0]
  *     cdef int n_tau = tau_j.shape[0]             # <<<<<<<<<<<<<<
@@ -2818,21 +2819,21 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
   __pyx_v_n_tau = (__pyx_v_tau_j.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":41
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":58
  *     cdef int n_spikes = t_spikes.shape[0]
  *     cdef int n_tau = tau_j.shape[0]
  *     cdef threshold = omega * np.ones(n_chan)             # <<<<<<<<<<<<<<
  *     cdef double[:] threshold_v = threshold
  *     cdef double delay_max = 5*np.max(tau_j)
  */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_omega, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_omega, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_chan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_chan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -2845,14 +2846,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2861,57 +2862,57 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_threshold = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":42
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":59
  *     cdef int n_tau = tau_j.shape[0]
  *     cdef threshold = omega * np.ones(n_chan)
  *     cdef double[:] threshold_v = threshold             # <<<<<<<<<<<<<<
  *     cdef double delay_max = 5*np.max(tau_j)
  *     cdef double delay
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 59, __pyx_L1_error)
   __pyx_v_threshold_v = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":43
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":60
  *     cdef threshold = omega * np.ones(n_chan)
  *     cdef double[:] threshold_v = threshold
  *     cdef double delay_max = 5*np.max(tau_j)             # <<<<<<<<<<<<<<
  *     cdef double delay
  *     cdef Py_ssize_t i, j
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -2924,14 +2925,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_2};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2940,33 +2941,33 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_2};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_int_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_int_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_delay_max = __pyx_t_8;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":47
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":64
  *     cdef Py_ssize_t i, j
  *     cdef int c
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -2976,7 +2977,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   __pyx_t_9 = ((__pyx_v_n_spikes > 0) != 0);
   if (__pyx_t_9) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":48
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":65
  *     cdef int c
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):             # <<<<<<<<<<<<<<
@@ -2986,7 +2987,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     for (__pyx_t_10 = (__pyx_v_n_spikes - 1); __pyx_t_10 > -1L; __pyx_t_10-=1) {
       __pyx_v_i = __pyx_t_10;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":49
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":66
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):
  *             delay = t - t_spikes[i]             # <<<<<<<<<<<<<<
@@ -2996,7 +2997,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_11 = __pyx_v_i;
       __pyx_v_delay = (__pyx_v_t - (*((double *) ( /* dim=0 */ (__pyx_v_t_spikes.data + __pyx_t_11 * __pyx_v_t_spikes.strides[0]) ))));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":50
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":67
  *         for i in range(n_spikes-1, -1, -1):
  *             delay = t - t_spikes[i]
  *             c = chan_spikes[i]             # <<<<<<<<<<<<<<
@@ -3006,7 +3007,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_12 = __pyx_v_i;
       __pyx_v_c = (*((int *) ( /* dim=0 */ (__pyx_v_chan_spikes.data + __pyx_t_12 * __pyx_v_chan_spikes.strides[0]) )));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":51
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":68
  *             delay = t - t_spikes[i]
  *             c = chan_spikes[i]
  *             if delay > delay_max:             # <<<<<<<<<<<<<<
@@ -3016,7 +3017,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_9 = ((__pyx_v_delay > __pyx_v_delay_max) != 0);
       if (__pyx_t_9) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":52
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":69
  *             c = chan_spikes[i]
  *             if delay > delay_max:
  *                 break             # <<<<<<<<<<<<<<
@@ -3025,7 +3026,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
         goto __pyx_L5_break;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":51
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":68
  *             delay = t - t_spikes[i]
  *             c = chan_spikes[i]
  *             if delay > delay_max:             # <<<<<<<<<<<<<<
@@ -3034,7 +3035,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":54
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":71
  *                 break
  *             else:
  *                 for j in range(n_tau):             # <<<<<<<<<<<<<<
@@ -3047,7 +3048,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
           __pyx_v_j = __pyx_t_15;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":55
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":72
  *             else:
  *                 for j in range(n_tau):
  *                     threshold_v[c] += alpha_j[j] * exp(- delay / tau_j[j])             # <<<<<<<<<<<<<<
@@ -3060,7 +3061,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
           __pyx_t_18 = (*((double *) ( /* dim=0 */ (__pyx_v_tau_j.data + __pyx_t_17 * __pyx_v_tau_j.strides[0]) )));
           if (unlikely(__pyx_t_18 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 55, __pyx_L1_error)
+            __PYX_ERR(0, 72, __pyx_L1_error)
           }
           __pyx_t_19 = __pyx_v_c;
           *((double *) ( /* dim=0 */ (__pyx_v_threshold_v.data + __pyx_t_19 * __pyx_v_threshold_v.strides[0]) )) += ((*((double *) ( /* dim=0 */ (__pyx_v_alpha_j.data + __pyx_t_16 * __pyx_v_alpha_j.strides[0]) ))) * exp((__pyx_t_8 / __pyx_t_18)));
@@ -3069,7 +3070,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     }
     __pyx_L5_break:;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":47
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":64
  *     cdef Py_ssize_t i, j
  *     cdef int c
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -3078,7 +3079,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":56
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":73
  *                 for j in range(n_tau):
  *                     threshold_v[c] += alpha_j[j] * exp(- delay / tau_j[j])
  *     return threshold_v             # <<<<<<<<<<<<<<
@@ -3086,13 +3087,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  * @cython.boundscheck(False)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_threshold_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_threshold_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":37
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":54
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold_multichan_v2(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,             # <<<<<<<<<<<<<<
@@ -3119,7 +3120,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":60
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":77
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold_multichan(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,             # <<<<<<<<<<<<<<
@@ -3152,7 +3153,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   Py_ssize_t __pyx_t_13;
   __Pyx_RefNannySetupContext("get_threshold_multichan", 0);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":62
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":79
  * cdef get_threshold_multichan(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,
  *                                 double[:] h_t_v, int fs, double delay_max, double[:] omega):
  *     cdef int n_spikes = t_spikes.shape[0]             # <<<<<<<<<<<<<<
@@ -3161,21 +3162,21 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
   __pyx_v_n_spikes = (__pyx_v_t_spikes.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":63
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":80
  *                                 double[:] h_t_v, int fs, double delay_max, double[:] omega):
  *     cdef int n_spikes = t_spikes.shape[0]
  *     cdef threshold = omega * np.ones(n_chan)             # <<<<<<<<<<<<<<
  *     cdef double[:] threshold_v = threshold
  *     cdef double delay
  */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_omega, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_omega, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ones); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_chan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n_chan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -3188,14 +3189,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3204,45 +3205,45 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_threshold = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":64
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":81
  *     cdef int n_spikes = t_spikes.shape[0]
  *     cdef threshold = omega * np.ones(n_chan)
  *     cdef double[:] threshold_v = threshold             # <<<<<<<<<<<<<<
  *     cdef double delay
  *     cdef Py_ssize_t i
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 81, __pyx_L1_error)
   __pyx_v_threshold_v = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":68
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":85
  *     cdef Py_ssize_t i
  *     cdef int c, delay_samp
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -3252,7 +3253,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   __pyx_t_8 = ((__pyx_v_n_spikes > 0) != 0);
   if (__pyx_t_8) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":69
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":86
  *     cdef int c, delay_samp
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):             # <<<<<<<<<<<<<<
@@ -3262,7 +3263,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     for (__pyx_t_9 = (__pyx_v_n_spikes - 1); __pyx_t_9 > -1L; __pyx_t_9-=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":70
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":87
  *     if n_spikes > 0:
  *         for i in range(n_spikes-1, -1, -1):
  *             delay = t - t_spikes[i]             # <<<<<<<<<<<<<<
@@ -3272,7 +3273,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_10 = __pyx_v_i;
       __pyx_v_delay = (__pyx_v_t - (*((double *) ( /* dim=0 */ (__pyx_v_t_spikes.data + __pyx_t_10 * __pyx_v_t_spikes.strides[0]) ))));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":71
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":88
  *         for i in range(n_spikes-1, -1, -1):
  *             delay = t - t_spikes[i]
  *             delay_samp = int(delay*fs)             # <<<<<<<<<<<<<<
@@ -3281,7 +3282,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
       __pyx_v_delay_samp = ((int)(__pyx_v_delay * __pyx_v_fs));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":72
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":89
  *             delay = t - t_spikes[i]
  *             delay_samp = int(delay*fs)
  *             c = chan_spikes[i]             # <<<<<<<<<<<<<<
@@ -3291,7 +3292,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_11 = __pyx_v_i;
       __pyx_v_c = (*((int *) ( /* dim=0 */ (__pyx_v_chan_spikes.data + __pyx_t_11 * __pyx_v_chan_spikes.strides[0]) )));
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":73
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":90
  *             delay_samp = int(delay*fs)
  *             c = chan_spikes[i]
  *             if delay > delay_max:             # <<<<<<<<<<<<<<
@@ -3301,7 +3302,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
       __pyx_t_8 = ((__pyx_v_delay > __pyx_v_delay_max) != 0);
       if (__pyx_t_8) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":74
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":91
  *             c = chan_spikes[i]
  *             if delay > delay_max:
  *                 break             # <<<<<<<<<<<<<<
@@ -3310,7 +3311,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
         goto __pyx_L5_break;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":73
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":90
  *             delay_samp = int(delay*fs)
  *             c = chan_spikes[i]
  *             if delay > delay_max:             # <<<<<<<<<<<<<<
@@ -3319,7 +3320,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":76
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":93
  *                 break
  *             else:
  *                 threshold_v[c] += h_t_v[delay_samp]             # <<<<<<<<<<<<<<
@@ -3334,7 +3335,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
     }
     __pyx_L5_break:;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":68
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":85
  *     cdef Py_ssize_t i
  *     cdef int c, delay_samp
  *     if n_spikes > 0:             # <<<<<<<<<<<<<<
@@ -3343,7 +3344,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  */
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":77
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":94
  *             else:
  *                 threshold_v[c] += h_t_v[delay_samp]
  *     return threshold_v             # <<<<<<<<<<<<<<
@@ -3351,13 +3352,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
  * @cython.boundscheck(False)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_threshold_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_threshold_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":60
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":77
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_threshold_multichan(int n_chan, double[:] t_spikes, int[:] chan_spikes, double t,             # <<<<<<<<<<<<<<
@@ -3384,7 +3385,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":81
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":98
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_h_t_coeffs(double delay_max_s, double fs, double[:] tau_j, alpha_j):             # <<<<<<<<<<<<<<
@@ -3421,7 +3422,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
   Py_ssize_t __pyx_t_17;
   __Pyx_RefNannySetupContext("get_h_t_coeffs", 0);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":82
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":99
  * @cython.wraparound(False)
  * cdef get_h_t_coeffs(double delay_max_s, double fs, double[:] tau_j, alpha_j):
  *     cdef int i_delay_max = int(delay_max_s * fs)             # <<<<<<<<<<<<<<
@@ -3430,35 +3431,35 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
  */
   __pyx_v_i_delay_max = ((int)(__pyx_v_delay_max_s * __pyx_v_fs));
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":83
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":100
  * cdef get_h_t_coeffs(double delay_max_s, double fs, double[:] tau_j, alpha_j):
  *     cdef int i_delay_max = int(delay_max_s * fs)
  *     cdef h_t = np.zeros(i_delay_max, dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef double[:] h_t_v = h_t
  *     cdef double t
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i_delay_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i_delay_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3466,19 +3467,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
   __pyx_v_h_t = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":84
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":101
  *     cdef int i_delay_max = int(delay_max_s * fs)
  *     cdef h_t = np.zeros(i_delay_max, dtype=np.float64)
  *     cdef double[:] h_t_v = h_t             # <<<<<<<<<<<<<<
  *     cdef double t
  *     cdef int i, j
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 101, __pyx_L1_error)
   __pyx_v_h_t_v = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":87
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":104
  *     cdef double t
  *     cdef int i, j
  *     cdef int n_tau = tau_j.shape[0]             # <<<<<<<<<<<<<<
@@ -3487,7 +3488,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
  */
   __pyx_v_n_tau = (__pyx_v_tau_j.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":88
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":105
  *     cdef int i, j
  *     cdef int n_tau = tau_j.shape[0]
  *     for i in range(i_delay_max):             # <<<<<<<<<<<<<<
@@ -3499,19 +3500,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":89
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":106
  *     cdef int n_tau = tau_j.shape[0]
  *     for i in range(i_delay_max):
  *         t = np.float64(i) / fs             # <<<<<<<<<<<<<<
  *         for j in range(n_tau):
  *             h_t_v[i] = h_t_v[i] + alpha_j[j] * exp(- t / tau_j[j])
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3524,14 +3525,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_1};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3540,36 +3541,36 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_1};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_GIVEREF(__pyx_t_1);
         PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_fs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_t = __pyx_t_10;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":90
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":107
  *     for i in range(i_delay_max):
  *         t = np.float64(i) / fs
  *         for j in range(n_tau):             # <<<<<<<<<<<<<<
@@ -3581,7 +3582,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":91
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":108
  *         t = np.float64(i) / fs
  *         for j in range(n_tau):
  *             h_t_v[i] = h_t_v[i] + alpha_j[j] * exp(- t / tau_j[j])             # <<<<<<<<<<<<<<
@@ -3589,35 +3590,35 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
  * 
  */
       __pyx_t_14 = __pyx_v_i;
-      __pyx_t_4 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_h_t_v.data + __pyx_t_14 * __pyx_v_h_t_v.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_4 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_h_t_v.data + __pyx_t_14 * __pyx_v_h_t_v.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_alpha_j, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_alpha_j, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = (-__pyx_v_t);
       __pyx_t_15 = __pyx_v_j;
       __pyx_t_16 = (*((double *) ( /* dim=0 */ (__pyx_v_tau_j.data + __pyx_t_15 * __pyx_v_tau_j.strides[0]) )));
       if (unlikely(__pyx_t_16 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 91, __pyx_L1_error)
+        __PYX_ERR(0, 108, __pyx_L1_error)
       }
-      __pyx_t_5 = PyFloat_FromDouble(exp((__pyx_t_10 / __pyx_t_16))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_5 = PyFloat_FromDouble(exp((__pyx_t_10 / __pyx_t_16))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_16 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_16 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_16 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_17 = __pyx_v_i;
       *((double *) ( /* dim=0 */ (__pyx_v_h_t_v.data + __pyx_t_17 * __pyx_v_h_t_v.strides[0]) )) = __pyx_t_16;
     }
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":92
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":109
  *         for j in range(n_tau):
  *             h_t_v[i] = h_t_v[i] + alpha_j[j] * exp(- t / tau_j[j])
  *     return h_t_v             # <<<<<<<<<<<<<<
@@ -3625,13 +3626,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
  * #############################################
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_h_t_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_h_t_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":81
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":98
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef get_h_t_coeffs(double delay_max_s, double fs, double[:] tau_j, alpha_j):             # <<<<<<<<<<<<<<
@@ -3657,7 +3658,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":104
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":121
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,             # <<<<<<<<<<<<<<
@@ -3730,7 +3731,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     }
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":109
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":126
  *     cdef Py_ssize_t i, n_pnts
  *     cdef double t
  *     cdef double dt = 1.0 / fs             # <<<<<<<<<<<<<<
@@ -3739,23 +3740,23 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
  */
   if (unlikely(__pyx_v_fs == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 109, __pyx_L1_error)
+    __PYX_ERR(0, 126, __pyx_L1_error)
   }
   __pyx_v_dt = (1.0 / __pyx_v_fs);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":110
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":127
  *     cdef double t
  *     cdef double dt = 1.0 / fs
  *     n_pnts = np.array(isyn_v).size             # <<<<<<<<<<<<<<
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_isyn_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_isyn_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3768,14 +3769,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3784,49 +3785,49 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_3); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_3); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_n_pnts = __pyx_t_6;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":111
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":128
  *     cdef double dt = 1.0 / fs
  *     n_pnts = np.array(isyn_v).size
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)             # <<<<<<<<<<<<<<
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (tau / dt) / (tau / dt + 1.0)
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_linspace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_linspace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -3843,7 +3844,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_1, __pyx_t_2, __pyx_t_4};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3854,7 +3855,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_1, __pyx_t_2, __pyx_t_4};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3863,7 +3864,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 128, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -3877,7 +3878,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     __pyx_t_1 = 0;
     __pyx_t_2 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -3885,19 +3886,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_v_tvect = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":112
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":129
  *     n_pnts = np.array(isyn_v).size
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect             # <<<<<<<<<<<<<<
  *     v_mult = (tau / dt) / (tau / dt + 1.0)
  *     i_mult = 1 / (1 + tau / dt)
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 129, __pyx_L1_error)
   __pyx_v_tvect_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":113
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":130
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (tau / dt) / (tau / dt + 1.0)             # <<<<<<<<<<<<<<
@@ -3906,21 +3907,21 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
  */
   if (unlikely(__pyx_v_dt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 113, __pyx_L1_error)
+    __PYX_ERR(0, 130, __pyx_L1_error)
   }
   __pyx_t_11 = (__pyx_v_tau / __pyx_v_dt);
   if (unlikely(__pyx_v_dt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 113, __pyx_L1_error)
+    __PYX_ERR(0, 130, __pyx_L1_error)
   }
   __pyx_t_12 = ((__pyx_v_tau / __pyx_v_dt) + 1.0);
   if (unlikely(__pyx_t_12 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 113, __pyx_L1_error)
+    __PYX_ERR(0, 130, __pyx_L1_error)
   }
   __pyx_v_v_mult = (__pyx_t_11 / __pyx_t_12);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":114
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":131
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (tau / dt) / (tau / dt + 1.0)
  *     i_mult = 1 / (1 + tau / dt)             # <<<<<<<<<<<<<<
@@ -3929,44 +3930,44 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
  */
   if (unlikely(__pyx_v_dt == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 114, __pyx_L1_error)
+    __PYX_ERR(0, 131, __pyx_L1_error)
   }
   __pyx_t_12 = (1.0 + (__pyx_v_tau / __pyx_v_dt));
   if (unlikely(__pyx_t_12 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 114, __pyx_L1_error)
+    __PYX_ERR(0, 131, __pyx_L1_error)
   }
   __pyx_v_i_mult = (1.0 / __pyx_t_12);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":116
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":133
  *     i_mult = 1 / (1 + tau / dt)
  *     cdef double t_last_spike
  *     t_last_spike = t_last_spike_p if t_last_spike_p else t_start - 2.0 * t_refract             # <<<<<<<<<<<<<<
  *     v_out = np.zeros(n_pnts)
  *     cdef double[:] v_out_v = v_out
  */
-  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_t_last_spike_p); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_t_last_spike_p); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
   if (__pyx_t_13) {
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_t_last_spike_p); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_t_last_spike_p); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
     __pyx_t_12 = __pyx_t_11;
   } else {
     __pyx_t_12 = (__pyx_v_t_start - (2.0 * __pyx_v_t_refract));
   }
   __pyx_v_t_last_spike = __pyx_t_12;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":117
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":134
  *     cdef double t_last_spike
  *     t_last_spike = t_last_spike_p if t_last_spike_p else t_start - 2.0 * t_refract
  *     v_out = np.zeros(n_pnts)             # <<<<<<<<<<<<<<
  *     cdef double[:] v_out_v = v_out
  *     t_spikes = np.zeros(n_pnts)
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -3979,14 +3980,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3995,20 +3996,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -4017,31 +4018,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_v_v_out = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":118
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":135
  *     t_last_spike = t_last_spike_p if t_last_spike_p else t_start - 2.0 * t_refract
  *     v_out = np.zeros(n_pnts)
  *     cdef double[:] v_out_v = v_out             # <<<<<<<<<<<<<<
  *     t_spikes = np.zeros(n_pnts)
  *     cdef double[:] t_spikes_v = t_spikes
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 135, __pyx_L1_error)
   __pyx_v_v_out_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":119
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":136
  *     v_out = np.zeros(n_pnts)
  *     cdef double[:] v_out_v = v_out
  *     t_spikes = np.zeros(n_pnts)             # <<<<<<<<<<<<<<
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef Py_ssize_t spike_inc = 0
  */
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -4054,14 +4055,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_9};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4070,20 +4071,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_9};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_9);
       __pyx_t_9 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -4092,19 +4093,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_v_t_spikes = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":120
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":137
  *     cdef double[:] v_out_v = v_out
  *     t_spikes = np.zeros(n_pnts)
  *     cdef double[:] t_spikes_v = t_spikes             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t spike_inc = 0
  *     #-- ADAPTIVE THRESHOLD
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 137, __pyx_L1_error)
   __pyx_v_t_spikes_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":121
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":138
  *     t_spikes = np.zeros(n_pnts)
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef Py_ssize_t spike_inc = 0             # <<<<<<<<<<<<<<
@@ -4113,35 +4114,35 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
  */
   __pyx_v_spike_inc = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":123
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":140
  *     cdef Py_ssize_t spike_inc = 0
  *     #-- ADAPTIVE THRESHOLD
  *     threshold_ev = np.zeros(n_pnts, dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef double[:] threshold_ev_v = threshold_ev
  *     cdef double delay_max_s
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4149,19 +4150,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_v_threshold_ev = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":124
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":141
  *     #-- ADAPTIVE THRESHOLD
  *     threshold_ev = np.zeros(n_pnts, dtype=np.float64)
  *     cdef double[:] threshold_ev_v = threshold_ev             # <<<<<<<<<<<<<<
  *     cdef double delay_max_s
  *     if adaptive_threshold:
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold_ev, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold_ev, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 141, __pyx_L1_error)
   __pyx_v_threshold_ev_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":126
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":143
  *     cdef double[:] threshold_ev_v = threshold_ev
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4171,26 +4172,26 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_t_13 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_13) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":127
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":144
  *     cdef double delay_max_s
  *     if adaptive_threshold:
  *         delay_max_s = 5 * max(tau_j)             # <<<<<<<<<<<<<<
  *     else:
  *         delay_max_s = 0
  */
-    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyNumber_Multiply(__pyx_int_5, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Multiply(__pyx_int_5, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_delay_max_s = __pyx_t_12;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":126
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":143
  *     cdef double[:] threshold_ev_v = threshold_ev
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4200,7 +4201,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     goto __pyx_L3;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":129
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":146
  *         delay_max_s = 5 * max(tau_j)
  *     else:
  *         delay_max_s = 0             # <<<<<<<<<<<<<<
@@ -4212,19 +4213,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   }
   __pyx_L3:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":130
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":147
  *     else:
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))             # <<<<<<<<<<<<<<
  *     cdef double[:] h_t_v = h_t
  *     cdef double threshold = 0.0
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -4237,14 +4238,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4253,20 +4254,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
@@ -4275,19 +4276,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_v_h_t = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":131
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":148
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t             # <<<<<<<<<<<<<<
  *     cdef double threshold = 0.0
  *     if adaptive_threshold:
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 148, __pyx_L1_error)
   __pyx_v_h_t_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":132
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":149
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t
  *     cdef double threshold = 0.0             # <<<<<<<<<<<<<<
@@ -4296,7 +4297,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
  */
   __pyx_v_threshold = 0.0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":133
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":150
  *     cdef double[:] h_t_v = h_t
  *     cdef double threshold = 0.0
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4306,19 +4307,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   __pyx_t_13 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_13) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":134
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":151
  *     cdef double threshold = 0.0
  *     if adaptive_threshold:
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)             # <<<<<<<<<<<<<<
  *     else:
  *         threshold = v_thresh
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -4331,14 +4332,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4347,40 +4348,40 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else
       #endif
       {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_12, __pyx_v_tau_j, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_12, __pyx_v_tau_j, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_h_t_v, 1);
     __pyx_v_h_t_v = __pyx_t_10;
     __pyx_t_10.memview = NULL;
     __pyx_t_10.data = NULL;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":133
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":150
  *     cdef double[:] h_t_v = h_t
  *     cdef double threshold = 0.0
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4390,7 +4391,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     goto __pyx_L4;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":136
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":153
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  *     else:
  *         threshold = v_thresh             # <<<<<<<<<<<<<<
@@ -4402,7 +4403,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   }
   __pyx_L4:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":138
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":155
  *         threshold = v_thresh
  * 
  *     for i in range(n_pnts):             # <<<<<<<<<<<<<<
@@ -4414,7 +4415,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":139
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":156
  * 
  *     for i in range(n_pnts):
  *         t = tvect_v[i]             # <<<<<<<<<<<<<<
@@ -4424,7 +4425,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     __pyx_t_16 = __pyx_v_i;
     __pyx_v_t = (*((double *) ( /* dim=0 */ (__pyx_v_tvect_v.data + __pyx_t_16 * __pyx_v_tvect_v.strides[0]) )));
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":140
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":157
  *     for i in range(n_pnts):
  *         t = tvect_v[i]
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4434,7 +4435,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     __pyx_t_13 = (__pyx_v_adaptive_threshold != 0);
     if (__pyx_t_13) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":141
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":158
  *         t = tvect_v[i]
  *         if adaptive_threshold:
  *             threshold = get_threshold(t_spikes_v[:spike_inc], t, delay_max_s, tau_j, alpha_j, omega)             # <<<<<<<<<<<<<<
@@ -4459,19 +4460,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 141, __pyx_L1_error)
+    __PYX_ERR(0, 158, __pyx_L1_error)
 }
 
-__pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx_t_10, __pyx_v_t, __pyx_v_delay_max_s, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 141, __pyx_L1_error)
+__pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx_t_10, __pyx_v_t, __pyx_v_delay_max_s, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
       __pyx_t_10.memview = NULL;
       __pyx_t_10.data = NULL;
-      __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_9); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_9); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_threshold = __pyx_t_12;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":142
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":159
  *         if adaptive_threshold:
  *             threshold = get_threshold(t_spikes_v[:spike_inc], t, delay_max_s, tau_j, alpha_j, omega)
  *             threshold_ev_v[i] = threshold             # <<<<<<<<<<<<<<
@@ -4481,7 +4482,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       __pyx_t_17 = __pyx_v_i;
       *((double *) ( /* dim=0 */ (__pyx_v_threshold_ev_v.data + __pyx_t_17 * __pyx_v_threshold_ev_v.strides[0]) )) = __pyx_v_threshold;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":140
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":157
  *     for i in range(n_pnts):
  *         t = tvect_v[i]
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -4490,7 +4491,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
  */
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":144
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":161
  *             threshold_ev_v[i] = threshold
  * 
  *         if refract_period and t < (t_last_spike + t_refract):  # Refractory period             # <<<<<<<<<<<<<<
@@ -4508,7 +4509,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_13) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":145
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":162
  * 
  *         if refract_period and t < (t_last_spike + t_refract):  # Refractory period
  *             v_out_v[i] = v_reset             # <<<<<<<<<<<<<<
@@ -4518,7 +4519,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       __pyx_t_19 = __pyx_v_i;
       *((double *) ( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_19 * __pyx_v_v_out_v.strides[0]) )) = __pyx_v_v_reset;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":144
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":161
  *             threshold_ev_v[i] = threshold
  * 
  *         if refract_period and t < (t_last_spike + t_refract):  # Refractory period             # <<<<<<<<<<<<<<
@@ -4528,7 +4529,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       goto __pyx_L8;
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":146
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":163
  *         if refract_period and t < (t_last_spike + t_refract):  # Refractory period
  *             v_out_v[i] = v_reset
  *         elif not refract_period and i > 0 and t_last_spike == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -4553,7 +4554,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
     __pyx_L11_bool_binop_done:;
     if (__pyx_t_13) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":147
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":164
  *             v_out_v[i] = v_reset
  *         elif not refract_period and i > 0 and t_last_spike == tvect_v[i - 1]:  # Spiking activity just occured
  *             v_out_v[i] = v_reset             # <<<<<<<<<<<<<<
@@ -4563,7 +4564,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       __pyx_t_21 = __pyx_v_i;
       *((double *) ( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_21 * __pyx_v_v_out_v.strides[0]) )) = __pyx_v_v_reset;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":146
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":163
  *         if refract_period and t < (t_last_spike + t_refract):  # Refractory period
  *             v_out_v[i] = v_reset
  *         elif not refract_period and i > 0 and t_last_spike == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -4573,7 +4574,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       goto __pyx_L8;
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":149
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":166
  *             v_out_v[i] = v_reset
  *         else:
  *             if i == 0:             # <<<<<<<<<<<<<<
@@ -4584,7 +4585,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       __pyx_t_13 = ((__pyx_v_i == 0) != 0);
       if (__pyx_t_13) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":150
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":167
  *         else:
  *             if i == 0:
  *                 v_out_v[i] = v_init * v_mult + isyn_v[i - 1] * i_mult             # <<<<<<<<<<<<<<
@@ -4595,7 +4596,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
         __pyx_t_23 = __pyx_v_i;
         *((double *) ( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_23 * __pyx_v_v_out_v.strides[0]) )) = ((__pyx_v_v_init * __pyx_v_v_mult) + ((*((double *) ( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_22 * __pyx_v_isyn_v.strides[0]) ))) * __pyx_v_i_mult));
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":149
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":166
  *             v_out_v[i] = v_reset
  *         else:
  *             if i == 0:             # <<<<<<<<<<<<<<
@@ -4605,7 +4606,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
         goto __pyx_L14;
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":152
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":169
  *                 v_out_v[i] = v_init * v_mult + isyn_v[i - 1] * i_mult
  *             else:
  *                 v_out_v[i] = v_out_v[i - 1] * v_mult + isyn_v[i - 1] * i_mult             # <<<<<<<<<<<<<<
@@ -4620,7 +4621,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       }
       __pyx_L14:;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":153
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":170
  *             else:
  *                 v_out_v[i] = v_out_v[i - 1] * v_mult + isyn_v[i - 1] * i_mult
  *             if v_out_v[i] > threshold:  # Spike             # <<<<<<<<<<<<<<
@@ -4631,7 +4632,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
       __pyx_t_13 = (((*((double *) ( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_27 * __pyx_v_v_out_v.strides[0]) ))) > __pyx_v_threshold) != 0);
       if (__pyx_t_13) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":154
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":171
  *                 v_out_v[i] = v_out_v[i - 1] * v_mult + isyn_v[i - 1] * i_mult
  *             if v_out_v[i] > threshold:  # Spike
  *                 v_out_v[i] = v_spike             # <<<<<<<<<<<<<<
@@ -4641,7 +4642,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
         __pyx_t_28 = __pyx_v_i;
         *((double *) ( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_28 * __pyx_v_v_out_v.strides[0]) )) = __pyx_v_v_spike;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":155
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":172
  *             if v_out_v[i] > threshold:  # Spike
  *                 v_out_v[i] = v_spike
  *                 t_last_spike = t             # <<<<<<<<<<<<<<
@@ -4650,7 +4651,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
  */
         __pyx_v_t_last_spike = __pyx_v_t;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":156
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":173
  *                 v_out_v[i] = v_spike
  *                 t_last_spike = t
  *                 t_spikes_v[spike_inc] = t             # <<<<<<<<<<<<<<
@@ -4660,7 +4661,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
         __pyx_t_29 = __pyx_v_spike_inc;
         *((double *) ( /* dim=0 */ (__pyx_v_t_spikes_v.data + __pyx_t_29 * __pyx_v_t_spikes_v.strides[0]) )) = __pyx_v_t;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":157
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":174
  *                 t_last_spike = t
  *                 t_spikes_v[spike_inc] = t
  *                 spike_inc += 1             # <<<<<<<<<<<<<<
@@ -4669,7 +4670,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
  */
         __pyx_v_spike_inc = (__pyx_v_spike_inc + 1);
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":153
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":170
  *             else:
  *                 v_out_v[i] = v_out_v[i - 1] * v_mult + isyn_v[i - 1] * i_mult
  *             if v_out_v[i] > threshold:  # Spike             # <<<<<<<<<<<<<<
@@ -4681,7 +4682,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
     __pyx_L8:;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":159
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":176
  *                 spike_inc += 1
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]             # <<<<<<<<<<<<<<
@@ -4706,7 +4707,7 @@ __pyx_t_9 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold(__pyx
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 159, __pyx_L1_error)
+    __PYX_ERR(0, 176, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
@@ -4714,7 +4715,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":160
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":177
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  *     return np.array(v_out_v), np.array(t_spikes_v), np.array(threshold_ev_v)             # <<<<<<<<<<<<<<
@@ -4722,12 +4723,12 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -4740,14 +4741,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_9);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4756,31 +4757,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -4793,14 +4794,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4809,31 +4810,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_threshold_ev_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_threshold_ev_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -4846,14 +4847,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4862,26 +4863,26 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9);
@@ -4896,7 +4897,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":104
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":121
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,             # <<<<<<<<<<<<<<
@@ -5003,73 +5004,73 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_1lif_filter_1
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_isyn_v)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 1); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 1); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_refract_period)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 2); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 2); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t_refract)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 3); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 3); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 4); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 4); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_thresh)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 5); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 5); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_spike)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 6); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 6); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_reset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 7); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 7); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_init)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 8); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 8); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_adaptive_threshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 9); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 9); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 10); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 10); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 11); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 11); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_omega)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 12); __PYX_ERR(0, 104, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, 12); __PYX_ERR(0, 121, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -5085,7 +5086,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_1lif_filter_1
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_1d_signal_cy") < 0)) __PYX_ERR(0, 104, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_1d_signal_cy") < 0)) __PYX_ERR(0, 121, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5110,21 +5111,21 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_1lif_filter_1
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_t_refract = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_t_refract == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_tau = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_tau == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_v_thresh = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_v_thresh == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L3_error)
-    __pyx_v_v_spike = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_v_spike == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
-    __pyx_v_v_reset = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_v_reset == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
-    __pyx_v_v_init = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_v_init == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
-    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
-    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 105, __pyx_L3_error)
-    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 106, __pyx_L3_error)
-    __pyx_v_omega = __pyx_PyFloat_AsDouble(values[12]); if (unlikely((__pyx_v_omega == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L3_error)
+    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_t_refract = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_t_refract == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_tau = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_tau == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_v_thresh = __pyx_PyFloat_AsDouble(values[5]); if (unlikely((__pyx_v_v_thresh == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+    __pyx_v_v_spike = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_v_spike == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_v_reset = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_v_reset == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_v_init = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_v_init == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 123, __pyx_L3_error)
+    __pyx_v_omega = __pyx_PyFloat_AsDouble(values[12]); if (unlikely((__pyx_v_omega == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L3_error)
     if (values[13]) {
-      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L3_error)
+      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L3_error)
     } else {
       __pyx_v_t_start = ((double)0.0);
     }
@@ -5132,7 +5133,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_1lif_filter_1
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 104, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lif_filter_1d_signal_cy", 0, 13, 15, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 121, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("simplecochlea.cython.cochlea_fun_cy.lif_filter_1d_signal_cy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5152,13 +5153,13 @@ static PyObject *__pyx_pf_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d
   struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_signal_cy __pyx_t_2;
   __Pyx_RefNannySetupContext("lif_filter_1d_signal_cy", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 104, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 104, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 104, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 121, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 121, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 121, __pyx_L1_error) }
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.t_start = __pyx_v_t_start;
   __pyx_t_2.t_last_spike_p = __pyx_v_t_last_spike_p;
-  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_signal_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d_signal_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5178,7 +5179,7 @@ static PyObject *__pyx_pf_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_1d
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":166
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":183
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -5285,7 +5286,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   }
   __Pyx_INCREF(__pyx_v_t_last_spike_p);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":172
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":189
  *     cdef Py_ssize_t i, c
  *     cdef double t
  *     cdef double dt = 1.0 / fs             # <<<<<<<<<<<<<<
@@ -5294,11 +5295,11 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
  */
   if (unlikely(__pyx_v_fs == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 172, __pyx_L1_error)
+    __PYX_ERR(0, 189, __pyx_L1_error)
   }
   __pyx_v_dt = (1.0 / __pyx_v_fs);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":173
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":190
  *     cdef double t
  *     cdef double dt = 1.0 / fs
  *     cdef Py_ssize_t n_chan = isyn_v.shape[0]             # <<<<<<<<<<<<<<
@@ -5307,7 +5308,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
  */
   __pyx_v_n_chan = (__pyx_v_isyn_v.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":174
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":191
  *     cdef double dt = 1.0 / fs
  *     cdef Py_ssize_t n_chan = isyn_v.shape[0]
  *     cdef Py_ssize_t n_pnts = isyn_v.shape[1]             # <<<<<<<<<<<<<<
@@ -5316,23 +5317,23 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
  */
   __pyx_v_n_pnts = (__pyx_v_isyn_v.shape[1]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":175
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":192
  *     cdef Py_ssize_t n_chan = isyn_v.shape[0]
  *     cdef Py_ssize_t n_pnts = isyn_v.shape[1]
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)             # <<<<<<<<<<<<<<
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_linspace); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_linspace); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -5349,7 +5350,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_2, __pyx_t_4, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5360,7 +5361,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_t_2, __pyx_t_4, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5369,7 +5370,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -5383,7 +5384,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     __pyx_t_2 = 0;
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -5391,31 +5392,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_v_tvect = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":176
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":193
  *     cdef Py_ssize_t n_pnts = isyn_v.shape[1]
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect             # <<<<<<<<<<<<<<
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 193, __pyx_L1_error)
   __pyx_v_tvect_v = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":177
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":194
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)             # <<<<<<<<<<<<<<
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -5428,14 +5429,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5444,37 +5445,37 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -5487,14 +5488,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_8);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5503,54 +5504,54 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyFloat_AddObjC(__pyx_t_2, __pyx_float_1_0, 1.0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_AddObjC(__pyx_t_2, __pyx_float_1_0, 1.0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_v_mult = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":178
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":195
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))             # <<<<<<<<<<<<<<
  *     cdef double[:] v_mult_v = v_mult
  *     cdef double[:] i_mult_v = i_mult
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -5563,14 +5564,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_8) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5579,74 +5580,74 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_8); __pyx_t_8 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_i_mult = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":179
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":196
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult             # <<<<<<<<<<<<<<
  *     cdef double[:] i_mult_v = i_mult
  *     cdef double[:] t_last_spike
  */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 196, __pyx_L1_error)
   __pyx_v_v_mult_v = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":180
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":197
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult
  *     cdef double[:] i_mult_v = i_mult             # <<<<<<<<<<<<<<
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)
  */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_i_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_i_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 197, __pyx_L1_error)
   __pyx_v_i_mult_v = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":182
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":199
  *     cdef double[:] i_mult_v = i_mult
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)             # <<<<<<<<<<<<<<
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_out = np.zeros((n_chan, n_pnts))
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -5660,13 +5661,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_t_last_spike_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_t_last_spike_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_t_last_spike_p};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -5674,19 +5675,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_t_last_spike_p};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_INCREF(__pyx_v_t_last_spike_p);
       __Pyx_GIVEREF(__pyx_v_t_last_spike_p);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_t_last_spike_p);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -5695,33 +5696,33 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __Pyx_DECREF_SET(__pyx_v_t_last_spike_p, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":183
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":200
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)             # <<<<<<<<<<<<<<
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:, :] v_out_v = v_out
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_t_last_spike_p, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_t_last_spike_p, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_10) {
-    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_last_spike_p, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_last_spike_p, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 200, __pyx_L1_error)
     __pyx_t_9 = __pyx_t_11;
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
   } else {
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_t_refract, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_t_refract, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -5734,14 +5735,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5750,33 +5751,33 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_8); __pyx_t_8 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Multiply(__pyx_float_2_0, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Multiply(__pyx_float_2_0, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = __pyx_t_11;
     __pyx_t_11.memview = NULL;
@@ -5786,23 +5787,23 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":184
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":201
  *     t_last_spike_p = np.array(t_last_spike_p)
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_out = np.zeros((n_chan, n_pnts))             # <<<<<<<<<<<<<<
  *     cdef double[:, :] v_out_v = v_out
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
@@ -5821,14 +5822,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5837,20 +5838,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -5859,19 +5860,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_v_v_out = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":185
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":202
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:, :] v_out_v = v_out             # <<<<<<<<<<<<<<
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  *     t_spikes = np.zeros(out_list_size)
  */
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 202, __pyx_L1_error)
   __pyx_v_v_out_v = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":186
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":203
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:, :] v_out_v = v_out
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)             # <<<<<<<<<<<<<<
@@ -5880,19 +5881,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
  */
   __pyx_v_out_list_size = ((int)((0.1 * __pyx_v_n_pnts) * __pyx_v_n_chan));
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":187
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":204
  *     cdef double[:, :] v_out_v = v_out
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  *     t_spikes = np.zeros(out_list_size)             # <<<<<<<<<<<<<<
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -5905,14 +5906,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5921,20 +5922,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -5943,35 +5944,35 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_v_t_spikes = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":188
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":205
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  *     t_spikes = np.zeros(out_list_size)
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 188, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -5979,31 +5980,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_v_chan_spikes = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":189
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":206
  *     t_spikes = np.zeros(out_list_size)
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes             # <<<<<<<<<<<<<<
  *     cdef int[:] chan_spikes_v = chan_spikes
  *     cdef Py_ssize_t spike_inc = 0
  */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 206, __pyx_L1_error)
   __pyx_v_t_spikes_v = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":190
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":207
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t spike_inc = 0
  *     #-- ADAPTIVE THRESHOLD
  */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_v_chan_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_v_chan_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 207, __pyx_L1_error)
   __pyx_v_chan_spikes_v = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":191
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":208
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes
  *     cdef Py_ssize_t spike_inc = 0             # <<<<<<<<<<<<<<
@@ -6012,7 +6013,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
  */
   __pyx_v_spike_inc = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":195
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":212
  *     cdef double[:] threshold_v
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6022,26 +6023,26 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_t_10 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_10) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":196
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":213
  *     cdef double delay_max_s
  *     if adaptive_threshold:
  *         delay_max_s = 5 * max(tau_j)             # <<<<<<<<<<<<<<
  *     else:
  *         delay_max_s = 0
  */
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Multiply(__pyx_int_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_int_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_14 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_14 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_delay_max_s = __pyx_t_14;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":195
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":212
  *     cdef double[:] threshold_v
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6051,7 +6052,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     goto __pyx_L3;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":198
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":215
  *         delay_max_s = 5 * max(tau_j)
  *     else:
  *         delay_max_s = 0             # <<<<<<<<<<<<<<
@@ -6063,19 +6064,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   }
   __pyx_L3:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":199
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":216
  *     else:
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))             # <<<<<<<<<<<<<<
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -6088,14 +6089,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6104,20 +6105,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -6126,19 +6127,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_v_h_t = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":200
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":217
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t             # <<<<<<<<<<<<<<
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)
  */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
   __pyx_v_h_t_v = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":201
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":218
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6148,19 +6149,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   __pyx_t_10 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_10) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":202
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":219
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)             # <<<<<<<<<<<<<<
  *         threshold_v = threshold
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6173,14 +6174,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       }
     }
     if (!__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_5};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6189,20 +6190,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_5};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 219, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
@@ -6211,31 +6212,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     __pyx_v_threshold = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":203
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":220
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)
  *         threshold_v = threshold             # <<<<<<<<<<<<<<
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  *     else:
  */
-    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 220, __pyx_L1_error)
     __pyx_v_threshold_v = __pyx_t_9;
     __pyx_t_9.memview = NULL;
     __pyx_t_9.data = NULL;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":204
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":221
  *         threshold = np.zeros(n_chan)
  *         threshold_v = threshold
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)             # <<<<<<<<<<<<<<
  *     else:
  *         threshold_v = v_thresh
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -6248,14 +6249,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_2};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6264,40 +6265,40 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_2};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_14 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_14 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_14 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_14, __pyx_v_tau_j, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_14, __pyx_v_tau_j, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_h_t_v, 1);
     __pyx_v_h_t_v = __pyx_t_9;
     __pyx_t_9.memview = NULL;
     __pyx_t_9.data = NULL;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":201
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":218
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6307,7 +6308,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     goto __pyx_L4;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":206
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":223
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  *     else:
  *         threshold_v = v_thresh             # <<<<<<<<<<<<<<
@@ -6320,7 +6321,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   }
   __pyx_L4:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":209
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":226
  * 
  * 
  *     for i in range(n_pnts):             # <<<<<<<<<<<<<<
@@ -6332,7 +6333,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
   for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
     __pyx_v_i = __pyx_t_17;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":210
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":227
  * 
  *     for i in range(n_pnts):
  *         t = tvect_v[i]             # <<<<<<<<<<<<<<
@@ -6342,7 +6343,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     __pyx_t_18 = __pyx_v_i;
     __pyx_v_t = (*((double *) ( /* dim=0 */ (__pyx_v_tvect_v.data + __pyx_t_18 * __pyx_v_tvect_v.strides[0]) )));
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":211
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":228
  *     for i in range(n_pnts):
  *         t = tvect_v[i]
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6352,7 +6353,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     __pyx_t_10 = (__pyx_v_adaptive_threshold != 0);
     if (__pyx_t_10) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":212
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":229
  *         t = tvect_v[i]
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,             # <<<<<<<<<<<<<<
@@ -6377,7 +6378,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 212, __pyx_L1_error)
+    __PYX_ERR(0, 229, __pyx_L1_error)
 }
 
 __pyx_t_13.data = __pyx_v_chan_spikes_v.data;
@@ -6398,12 +6399,12 @@ __pyx_t_13.data = __pyx_v_chan_spikes_v.data;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 212, __pyx_L1_error)
+    __PYX_ERR(0, 229, __pyx_L1_error)
 }
 
-__pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multichan(__pyx_v_n_chan, __pyx_t_9, __pyx_t_13, __pyx_v_t, __pyx_v_h_t_v, __pyx_v_fs, __pyx_v_delay_max_s, __pyx_v_omega); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
+__pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multichan(__pyx_v_n_chan, __pyx_t_9, __pyx_t_13, __pyx_v_t, __pyx_v_h_t_v, __pyx_v_fs, __pyx_v_delay_max_s, __pyx_v_omega); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 229, __pyx_L1_error)
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":213
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":230
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,
  *                                                   h_t_v, fs, delay_max_s, omega)             # <<<<<<<<<<<<<<
@@ -6418,21 +6419,21 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_t_13.memview = NULL;
       __pyx_t_13.data = NULL;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":212
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":229
  *         t = tvect_v[i]
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,             # <<<<<<<<<<<<<<
  *                                                   h_t_v, fs, delay_max_s, omega)
  * 
  */
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 229, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_v_threshold_v, 1);
       __pyx_v_threshold_v = __pyx_t_9;
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":211
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":228
  *     for i in range(n_pnts):
  *         t = tvect_v[i]
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -6441,7 +6442,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  */
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":215
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":232
  *                                                   h_t_v, fs, delay_max_s, omega)
  * 
  *         for c in range(n_chan):             # <<<<<<<<<<<<<<
@@ -6453,7 +6454,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
       __pyx_v_c = __pyx_t_21;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":216
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":233
  * 
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period             # <<<<<<<<<<<<<<
@@ -6473,7 +6474,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_L11_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":217
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":234
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]             # <<<<<<<<<<<<<<
@@ -6485,7 +6486,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_27 = __pyx_v_i;
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_26 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_27 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_reset.data + __pyx_t_25 * __pyx_v_v_reset.strides[0]) )));
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":216
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":233
  * 
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period             # <<<<<<<<<<<<<<
@@ -6495,7 +6496,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         goto __pyx_L10;
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":218
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":235
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -6521,7 +6522,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_L13_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":219
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":236
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured
  *                 v_out_v[c, i] = v_reset[c]             # <<<<<<<<<<<<<<
@@ -6533,7 +6534,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_32 = __pyx_v_i;
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_31 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_32 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_reset.data + __pyx_t_30 * __pyx_v_v_reset.strides[0]) )));
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":218
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":235
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -6543,7 +6544,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         goto __pyx_L10;
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":221
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":238
  *                 v_out_v[c, i] = v_reset[c]
  *             else:
  *                 if i == 0:             # <<<<<<<<<<<<<<
@@ -6554,7 +6555,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_10 = ((__pyx_v_i == 0) != 0);
         if (__pyx_t_10) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":222
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":239
  *             else:
  *                 if i == 0:
  *                     v_out_v[c, i] = v_init[c] * v_mult_v[c] + isyn_v[c, i - 1] * i_mult_v[c]             # <<<<<<<<<<<<<<
@@ -6570,7 +6571,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_39 = __pyx_v_i;
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_38 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_39 * __pyx_v_v_out_v.strides[1]) )) = (((*((double *) ( /* dim=0 */ (__pyx_v_v_init.data + __pyx_t_33 * __pyx_v_v_init.strides[0]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_v_mult_v.data + __pyx_t_34 * __pyx_v_v_mult_v.strides[0]) )))) + ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_35 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_36 * __pyx_v_isyn_v.strides[1]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_i_mult_v.data + __pyx_t_37 * __pyx_v_i_mult_v.strides[0]) )))));
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":221
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":238
  *                 v_out_v[c, i] = v_reset[c]
  *             else:
  *                 if i == 0:             # <<<<<<<<<<<<<<
@@ -6580,7 +6581,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           goto __pyx_L16;
         }
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":224
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":241
  *                     v_out_v[c, i] = v_init[c] * v_mult_v[c] + isyn_v[c, i - 1] * i_mult_v[c]
  *                 else:
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + isyn_v[c, i - 1] * i_mult_v[c]             # <<<<<<<<<<<<<<
@@ -6600,7 +6601,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         }
         __pyx_L16:;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":226
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":243
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + isyn_v[c, i - 1] * i_mult_v[c]
  * 
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike             # <<<<<<<<<<<<<<
@@ -6613,7 +6614,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_10 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_48 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_49 * __pyx_v_v_out_v.strides[1]) ))) > (*((double *) ( /* dim=0 */ (__pyx_v_threshold_v.data + __pyx_t_50 * __pyx_v_threshold_v.strides[0]) )))) != 0);
         if (__pyx_t_10) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":227
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":244
  * 
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike
  *                     v_out_v[c, i] = v_spike[c]             # <<<<<<<<<<<<<<
@@ -6625,7 +6626,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_53 = __pyx_v_i;
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_52 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_53 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_spike.data + __pyx_t_51 * __pyx_v_v_spike.strides[0]) )));
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":228
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":245
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike
  *                     v_out_v[c, i] = v_spike[c]
  *                     t_last_spike[c] = t             # <<<<<<<<<<<<<<
@@ -6635,7 +6636,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_54 = __pyx_v_c;
           *((double *) ( /* dim=0 */ (__pyx_v_t_last_spike.data + __pyx_t_54 * __pyx_v_t_last_spike.strides[0]) )) = __pyx_v_t;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":229
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":246
  *                     v_out_v[c, i] = v_spike[c]
  *                     t_last_spike[c] = t
  *                     t_spikes_v[spike_inc] = t             # <<<<<<<<<<<<<<
@@ -6645,7 +6646,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_55 = __pyx_v_spike_inc;
           *((double *) ( /* dim=0 */ (__pyx_v_t_spikes_v.data + __pyx_t_55 * __pyx_v_t_spikes_v.strides[0]) )) = __pyx_v_t;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":230
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":247
  *                     t_last_spike[c] = t
  *                     t_spikes_v[spike_inc] = t
  *                     chan_spikes_v[spike_inc] = c             # <<<<<<<<<<<<<<
@@ -6655,7 +6656,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_56 = __pyx_v_spike_inc;
           *((int *) ( /* dim=0 */ (__pyx_v_chan_spikes_v.data + __pyx_t_56 * __pyx_v_chan_spikes_v.strides[0]) )) = __pyx_v_c;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":231
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":248
  *                     t_spikes_v[spike_inc] = t
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1             # <<<<<<<<<<<<<<
@@ -6664,7 +6665,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  */
           __pyx_v_spike_inc = (__pyx_v_spike_inc + 1);
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":226
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":243
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + isyn_v[c, i - 1] * i_mult_v[c]
  * 
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike             # <<<<<<<<<<<<<<
@@ -6675,7 +6676,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       }
       __pyx_L10:;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":232
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":249
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):             # <<<<<<<<<<<<<<
@@ -6685,20 +6686,20 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_t_10 = ((__pyx_v_spike_inc >= (__pyx_v_out_list_size - 1)) != 0);
       if (unlikely(__pyx_t_10)) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":233
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":250
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')             # <<<<<<<<<<<<<<
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  */
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(0, 233, __pyx_L1_error)
+        __PYX_ERR(0, 250, __pyx_L1_error)
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":232
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":249
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):             # <<<<<<<<<<<<<<
@@ -6709,7 +6710,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     }
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":235
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":252
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]             # <<<<<<<<<<<<<<
@@ -6734,7 +6735,7 @@ __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 235, __pyx_L1_error)
+    __PYX_ERR(0, 252, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
@@ -6742,7 +6743,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":236
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":253
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  *     chan_spikes_v = chan_spikes_v[:spike_inc]             # <<<<<<<<<<<<<<
@@ -6767,7 +6768,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 236, __pyx_L1_error)
+    __PYX_ERR(0, 253, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
@@ -6775,7 +6776,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":237
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":254
  *     t_spikes_v = t_spikes_v[:spike_inc]
  *     chan_spikes_v = chan_spikes_v[:spike_inc]
  *     return np.array(v_out_v), np.array(t_spikes_v), np.array(chan_spikes_v)             # <<<<<<<<<<<<<<
@@ -6783,12 +6784,12 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -6801,14 +6802,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6817,31 +6818,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6854,14 +6855,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6870,31 +6871,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_chan_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_chan_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -6907,14 +6908,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_8};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -6923,26 +6924,26 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_8};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
@@ -6957,7 +6958,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":166
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":183
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -7075,73 +7076,73 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_3lif_filter_c
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_isyn_v)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 1); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 1); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_refract_period)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 2); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 2); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t_refract)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 3); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 3); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 4); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 4); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_thresh)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 5); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 5); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_spike)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 6); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 6); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_reset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 7); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 7); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_init)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 8); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 8); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_adaptive_threshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 9); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 9); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 10); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 10); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 11); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 11); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_omega)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 12); __PYX_ERR(0, 166, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, 12); __PYX_ERR(0, 183, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -7157,7 +7158,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_3lif_filter_c
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_cy") < 0)) __PYX_ERR(0, 166, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_cy") < 0)) __PYX_ERR(0, 183, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7182,21 +7183,21 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_3lif_filter_c
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
-    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 166, __pyx_L3_error)
-    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
-    __pyx_v_t_refract = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_t_refract.memview)) __PYX_ERR(0, 166, __pyx_L3_error)
-    __pyx_v_tau = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau.memview)) __PYX_ERR(0, 166, __pyx_L3_error)
-    __pyx_v_v_thresh = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_thresh.memview)) __PYX_ERR(0, 167, __pyx_L3_error)
-    __pyx_v_v_spike = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_spike.memview)) __PYX_ERR(0, 167, __pyx_L3_error)
-    __pyx_v_v_reset = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_reset.memview)) __PYX_ERR(0, 167, __pyx_L3_error)
-    __pyx_v_v_init = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_init.memview)) __PYX_ERR(0, 167, __pyx_L3_error)
-    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L3_error)
-    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 168, __pyx_L3_error)
-    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 168, __pyx_L3_error)
-    __pyx_v_omega = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[12], PyBUF_WRITABLE); if (unlikely(!__pyx_v_omega.memview)) __PYX_ERR(0, 168, __pyx_L3_error)
+    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_t_refract = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_t_refract.memview)) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_tau = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau.memview)) __PYX_ERR(0, 183, __pyx_L3_error)
+    __pyx_v_v_thresh = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_thresh.memview)) __PYX_ERR(0, 184, __pyx_L3_error)
+    __pyx_v_v_spike = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_spike.memview)) __PYX_ERR(0, 184, __pyx_L3_error)
+    __pyx_v_v_reset = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_reset.memview)) __PYX_ERR(0, 184, __pyx_L3_error)
+    __pyx_v_v_init = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_init.memview)) __PYX_ERR(0, 184, __pyx_L3_error)
+    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[9]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L3_error)
+    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 185, __pyx_L3_error)
+    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 185, __pyx_L3_error)
+    __pyx_v_omega = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[12], PyBUF_WRITABLE); if (unlikely(!__pyx_v_omega.memview)) __PYX_ERR(0, 185, __pyx_L3_error)
     if (values[13]) {
-      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L3_error)
+      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L3_error)
     } else {
       __pyx_v_t_start = ((double)0.0);
     }
@@ -7204,7 +7205,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_3lif_filter_c
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 166, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lif_filter_cy", 0, 13, 15, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 183, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("simplecochlea.cython.cochlea_fun_cy.lif_filter_cy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7224,20 +7225,20 @@ static PyObject *__pyx_pf_13simplecochlea_6cython_14cochlea_fun_cy_2lif_filter_c
   struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy __pyx_t_2;
   __Pyx_RefNannySetupContext("lif_filter_cy", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_t_refract.memview)) { __Pyx_RaiseUnboundLocalError("t_refract"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_tau.memview)) { __Pyx_RaiseUnboundLocalError("tau"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_thresh.memview)) { __Pyx_RaiseUnboundLocalError("v_thresh"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_spike.memview)) { __Pyx_RaiseUnboundLocalError("v_spike"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_reset.memview)) { __Pyx_RaiseUnboundLocalError("v_reset"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_init.memview)) { __Pyx_RaiseUnboundLocalError("v_init"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 166, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_omega.memview)) { __Pyx_RaiseUnboundLocalError("omega"); __PYX_ERR(0, 166, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_t_refract.memview)) { __Pyx_RaiseUnboundLocalError("t_refract"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_tau.memview)) { __Pyx_RaiseUnboundLocalError("tau"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_thresh.memview)) { __Pyx_RaiseUnboundLocalError("v_thresh"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_spike.memview)) { __Pyx_RaiseUnboundLocalError("v_spike"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_reset.memview)) { __Pyx_RaiseUnboundLocalError("v_reset"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_init.memview)) { __Pyx_RaiseUnboundLocalError("v_init"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 183, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_omega.memview)) { __Pyx_RaiseUnboundLocalError("omega"); __PYX_ERR(0, 183, __pyx_L1_error) }
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.t_start = __pyx_v_t_start;
   __pyx_t_2.t_last_spike_p = __pyx_v_t_last_spike_p;
-  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7264,7 +7265,7 @@ static PyObject *__pyx_pf_13simplecochlea_6cython_14cochlea_fun_cy_2lif_filter_c
   return __pyx_r;
 }
 
-/* "simplecochlea/cython/cochlea_fun_cy.pyx":243
+/* "simplecochlea/cython/cochlea_fun_cy.pyx":260
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -7400,16 +7401,16 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   }
   __Pyx_INCREF(__pyx_v_t_last_spike_p);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":247
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":264
  *                     int adaptive_threshold, double[:] tau_j, double[:] alpha_j, double[:] omega,
  *                     double t_start=0, t_last_spike_p=[]):
  *     print('Inhibition Shunting Forward Current')             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t i, j, c, c_j
  *     cdef double t
  */
-  if (__Pyx_PrintOne(0, __pyx_kp_s_Inhibition_Shunting_Forward_Curr) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_kp_s_Inhibition_Shunting_Forward_Curr) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":250
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":267
  *     cdef Py_ssize_t i, j, c, c_j
  *     cdef double t
  *     cdef double dt = 1.0 / fs             # <<<<<<<<<<<<<<
@@ -7418,11 +7419,11 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
  */
   if (unlikely(__pyx_v_fs == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 250, __pyx_L1_error)
+    __PYX_ERR(0, 267, __pyx_L1_error)
   }
   __pyx_v_dt = (1.0 / __pyx_v_fs);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":251
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":268
  *     cdef double t
  *     cdef double dt = 1.0 / fs
  *     cdef Py_ssize_t n_chan = isyn_v.shape[0]             # <<<<<<<<<<<<<<
@@ -7431,7 +7432,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
  */
   __pyx_v_n_chan = (__pyx_v_isyn_v.shape[0]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":252
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":269
  *     cdef double dt = 1.0 / fs
  *     cdef Py_ssize_t n_chan = isyn_v.shape[0]
  *     cdef Py_ssize_t n_pnts = isyn_v.shape[1]             # <<<<<<<<<<<<<<
@@ -7440,19 +7441,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
  */
   __pyx_v_n_pnts = (__pyx_v_isyn_v.shape[1]);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":254
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":271
  *     cdef Py_ssize_t n_pnts = isyn_v.shape[1]
  *     #-- INHIBITION
  *     cdef Py_ssize_t n_inhib = int(np.array(inhib_vect).size)             # <<<<<<<<<<<<<<
  *     cdef int n_inhib_half = int(np.floor(n_inhib/2))
  *     cdef double inhib_vect_sum = np.array(inhib_vect).sum()
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_inhib_vect, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_inhib_vect, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -7465,14 +7466,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7481,48 +7482,48 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_inhib = __pyx_t_6;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":255
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":272
  *     #-- INHIBITION
  *     cdef Py_ssize_t n_inhib = int(np.array(inhib_vect).size)
  *     cdef int n_inhib_half = int(np.floor(n_inhib/2))             # <<<<<<<<<<<<<<
  *     cdef double inhib_vect_sum = np.array(inhib_vect).sum()
  *     inhib_vect_norm = np.zeros(n_inhib)
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_floor); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_floor); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyInt_FromSsize_t(__Pyx_div_Py_ssize_t(__pyx_v_n_inhib, 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__Pyx_div_Py_ssize_t(__pyx_v_n_inhib, 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -7535,14 +7536,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7551,45 +7552,45 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_n_inhib_half = __pyx_t_7;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":256
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":273
  *     cdef Py_ssize_t n_inhib = int(np.array(inhib_vect).size)
  *     cdef int n_inhib_half = int(np.floor(n_inhib/2))
  *     cdef double inhib_vect_sum = np.array(inhib_vect).sum()             # <<<<<<<<<<<<<<
  *     inhib_vect_norm = np.zeros(n_inhib)
  *     inhib_vect_norm_mult = np.zeros(n_chan)
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_inhib_vect, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_inhib_vect, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -7602,14 +7603,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7618,26 +7619,26 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -7651,30 +7652,30 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (__pyx_t_1) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 273, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_inhib_vect_sum = __pyx_t_9;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":257
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":274
  *     cdef int n_inhib_half = int(np.floor(n_inhib/2))
  *     cdef double inhib_vect_sum = np.array(inhib_vect).sum()
  *     inhib_vect_norm = np.zeros(n_inhib)             # <<<<<<<<<<<<<<
  *     inhib_vect_norm_mult = np.zeros(n_chan)
  *     cdef double[:] inhib_vect_norm_v = inhib_vect_norm
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_inhib); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_inhib); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -7687,14 +7688,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_8) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 274, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7703,20 +7704,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 274, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 274, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_8); __pyx_t_8 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 274, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -7725,19 +7726,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_inhib_vect_norm = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":258
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":275
  *     cdef double inhib_vect_sum = np.array(inhib_vect).sum()
  *     inhib_vect_norm = np.zeros(n_inhib)
  *     inhib_vect_norm_mult = np.zeros(n_chan)             # <<<<<<<<<<<<<<
  *     cdef double[:] inhib_vect_norm_v = inhib_vect_norm
  *     cdef double[:] inhib_vect_norm_mult_v = inhib_vect_norm_mult
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7750,14 +7751,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7766,20 +7767,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 275, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -7788,47 +7789,47 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_inhib_vect_norm_mult = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":259
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":276
  *     inhib_vect_norm = np.zeros(n_inhib)
  *     inhib_vect_norm_mult = np.zeros(n_chan)
  *     cdef double[:] inhib_vect_norm_v = inhib_vect_norm             # <<<<<<<<<<<<<<
  *     cdef double[:] inhib_vect_norm_mult_v = inhib_vect_norm_mult
  *     #--------------
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_inhib_vect_norm, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_inhib_vect_norm, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 276, __pyx_L1_error)
   __pyx_v_inhib_vect_norm_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":260
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":277
  *     inhib_vect_norm_mult = np.zeros(n_chan)
  *     cdef double[:] inhib_vect_norm_v = inhib_vect_norm
  *     cdef double[:] inhib_vect_norm_mult_v = inhib_vect_norm_mult             # <<<<<<<<<<<<<<
  *     #--------------
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_inhib_vect_norm_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_inhib_vect_norm_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 277, __pyx_L1_error)
   __pyx_v_inhib_vect_norm_mult_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":262
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":279
  *     cdef double[:] inhib_vect_norm_mult_v = inhib_vect_norm_mult
  *     #--------------
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)             # <<<<<<<<<<<<<<
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_linspace); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_linspace); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 279, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_t_start + (__pyx_v_n_pnts * __pyx_v_dt))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_7 = 0;
@@ -7845,7 +7846,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_t_4, __pyx_t_1, __pyx_t_3};
-    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7856,7 +7857,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_t_4, __pyx_t_1, __pyx_t_3};
-    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7865,7 +7866,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   } else
   #endif
   {
-    __pyx_t_11 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -7879,7 +7880,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     __pyx_t_4 = 0;
     __pyx_t_1 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
@@ -7887,31 +7888,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_tvect = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":263
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":280
  *     #--------------
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect             # <<<<<<<<<<<<<<
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_tvect, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 280, __pyx_L1_error)
   __pyx_v_tvect_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":264
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":281
  *     tvect = np.linspace(t_start, t_start + n_pnts * dt, n_pnts)
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)             # <<<<<<<<<<<<<<
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult
  */
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
@@ -7924,14 +7925,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_8};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -7940,37 +7941,37 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_8};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -7983,14 +7984,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_11);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-      __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -7999,54 +8000,54 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-      __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_11, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_11, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyFloat_AddObjC(__pyx_t_4, __pyx_float_1_0, 1.0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyFloat_AddObjC(__pyx_t_4, __pyx_float_1_0, 1.0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_v_mult = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":265
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":282
  *     cdef double[:] tvect_v = tvect
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))             # <<<<<<<<<<<<<<
  *     cdef double[:] v_mult_v = v_mult
  *     cdef double[:] i_mult_v = i_mult
  */
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_tau, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_11 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -8059,14 +8060,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_11) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8075,74 +8076,74 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_11); __pyx_t_11 = NULL;
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_5, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_5, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_i_mult = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":266
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":283
  *     v_mult = (np.array(tau) / float(dt)) / (np.array(tau) / float(dt) + 1.0)
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult             # <<<<<<<<<<<<<<
  *     cdef double[:] i_mult_v = i_mult
  *     cdef double[:] t_last_spike
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 283, __pyx_L1_error)
   __pyx_v_v_mult_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":267
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":284
  *     i_mult = 1 / (1 + np.array(tau) / float(dt))
  *     cdef double[:] v_mult_v = v_mult
  *     cdef double[:] i_mult_v = i_mult             # <<<<<<<<<<<<<<
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_i_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_i_mult, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 284, __pyx_L1_error)
   __pyx_v_i_mult_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":269
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":286
  *     cdef double[:] i_mult_v = i_mult
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)             # <<<<<<<<<<<<<<
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_temp = np.zeros(n_chan)
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -8156,13 +8157,13 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_1) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_t_last_spike_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_t_last_spike_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t_last_spike_p};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
@@ -8170,19 +8171,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t_last_spike_p};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 286, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1); __pyx_t_1 = NULL;
       __Pyx_INCREF(__pyx_v_t_last_spike_p);
       __Pyx_GIVEREF(__pyx_v_t_last_spike_p);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_t_last_spike_p);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -8191,33 +8192,33 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __Pyx_DECREF_SET(__pyx_v_t_last_spike_p, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":270
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":287
  *     cdef double[:] t_last_spike
  *     t_last_spike_p = np.array(t_last_spike_p)
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)             # <<<<<<<<<<<<<<
  *     v_temp = np.zeros(n_chan)
  *     v_out = np.zeros((n_chan, n_pnts))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_t_last_spike_p, __pyx_n_s_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_t_last_spike_p, __pyx_n_s_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_5, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_12) {
-    __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_last_spike_p, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_last_spike_p, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 287, __pyx_L1_error)
     __pyx_t_10 = __pyx_t_13;
     __pyx_t_13.memview = NULL;
     __pyx_t_13.data = NULL;
   } else {
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_t_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_t_refract, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_v_t_refract, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_11 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -8230,14 +8231,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       }
     }
     if (!__pyx_t_11) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8246,33 +8247,33 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else
       #endif
       {
-        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_11); __pyx_t_11 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Multiply(__pyx_float_2_0, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Multiply(__pyx_float_2_0, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_10 = __pyx_t_13;
     __pyx_t_13.memview = NULL;
@@ -8282,19 +8283,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":271
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":288
  *     t_last_spike_p = np.array(t_last_spike_p)
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_temp = np.zeros(n_chan)             # <<<<<<<<<<<<<<
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:] v_temp_v = v_temp
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8307,14 +8308,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8323,20 +8324,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 271, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -8345,23 +8346,23 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_v_temp = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":272
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":289
  *     t_last_spike = t_last_spike_p if t_last_spike_p.size > 0 else t_start - 2.0 * np.array(t_refract)
  *     v_temp = np.zeros(n_chan)
  *     v_out = np.zeros((n_chan, n_pnts))             # <<<<<<<<<<<<<<
  *     cdef double[:] v_temp_v = v_temp
  *     cdef double[:, :] v_out_v = v_out
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_pnts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
@@ -8380,14 +8381,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_1) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8396,20 +8397,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_3};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
@@ -8418,31 +8419,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_v_out = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":273
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":290
  *     v_temp = np.zeros(n_chan)
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:] v_temp_v = v_temp             # <<<<<<<<<<<<<<
  *     cdef double[:, :] v_out_v = v_out
  *     cdef double v_divide
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_temp, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_v_temp, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 290, __pyx_L1_error)
   __pyx_v_v_temp_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":274
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":291
  *     v_out = np.zeros((n_chan, n_pnts))
  *     cdef double[:] v_temp_v = v_temp
  *     cdef double[:, :] v_out_v = v_out             # <<<<<<<<<<<<<<
  *     cdef double v_divide
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  */
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_v_out, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 291, __pyx_L1_error)
   __pyx_v_v_out_v = __pyx_t_14;
   __pyx_t_14.memview = NULL;
   __pyx_t_14.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":276
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":293
  *     cdef double[:, :] v_out_v = v_out
  *     cdef double v_divide
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)             # <<<<<<<<<<<<<<
@@ -8451,19 +8452,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
  */
   __pyx_v_out_list_size = ((int)((0.1 * __pyx_v_n_pnts) * __pyx_v_n_chan));
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":277
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":294
  *     cdef double v_divide
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  *     t_spikes = np.zeros(out_list_size)             # <<<<<<<<<<<<<<
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes
  */
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8476,14 +8477,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_8};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8492,20 +8493,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_8};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 294, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
@@ -8514,35 +8515,35 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_t_spikes = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":278
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":295
  *     cdef int out_list_size = int(0.1*n_pnts*n_chan)
  *     t_spikes = np.zeros(out_list_size)
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_out_list_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8550,31 +8551,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_chan_spikes = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":279
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":296
  *     t_spikes = np.zeros(out_list_size)
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes             # <<<<<<<<<<<<<<
  *     cdef int[:] chan_spikes_v = chan_spikes
  *     cdef Py_ssize_t spike_inc = 0
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_t_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 296, __pyx_L1_error)
   __pyx_v_t_spikes_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":280
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":297
  *     chan_spikes = np.zeros(out_list_size, dtype=np.int32)
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t spike_inc = 0
  *     cdef double inhib_shunt, i_c
  */
-  __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_v_chan_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_v_chan_spikes, PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(0, 297, __pyx_L1_error)
   __pyx_v_chan_spikes_v = __pyx_t_15;
   __pyx_t_15.memview = NULL;
   __pyx_t_15.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":281
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":298
  *     cdef double[:] t_spikes_v = t_spikes
  *     cdef int[:] chan_spikes_v = chan_spikes
  *     cdef Py_ssize_t spike_inc = 0             # <<<<<<<<<<<<<<
@@ -8583,7 +8584,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
  */
   __pyx_v_spike_inc = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":286
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":303
  *     cdef double[:] threshold_v
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -8593,26 +8594,26 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_t_12 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_12) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":287
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":304
  *     cdef double delay_max_s
  *     if adaptive_threshold:
  *         delay_max_s = 5 * max(tau_j)             # <<<<<<<<<<<<<<
  *     else:
  *         delay_max_s = 0
  */
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_tau_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_max, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Multiply(__pyx_int_5, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_int_5, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_delay_max_s = __pyx_t_9;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":286
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":303
  *     cdef double[:] threshold_v
  *     cdef double delay_max_s
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -8622,7 +8623,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     goto __pyx_L3;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":289
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":306
  *         delay_max_s = 5 * max(tau_j)
  *     else:
  *         delay_max_s = 0             # <<<<<<<<<<<<<<
@@ -8634,19 +8635,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   }
   __pyx_L3:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":290
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":307
  *     else:
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))             # <<<<<<<<<<<<<<
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_FromDouble((__pyx_v_fs * __pyx_v_delay_max_s)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -8659,14 +8660,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -8675,20 +8676,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 307, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 307, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -8697,19 +8698,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_v_h_t = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":291
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":308
  *         delay_max_s = 0
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t             # <<<<<<<<<<<<<<
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_h_t, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 308, __pyx_L1_error)
   __pyx_v_h_t_v = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":292
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":309
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -8719,19 +8720,19 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   __pyx_t_12 = (__pyx_v_adaptive_threshold != 0);
   if (__pyx_t_12) {
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":293
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":310
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)             # <<<<<<<<<<<<<<
  *         threshold_v = threshold
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_n_chan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -8744,14 +8745,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8760,20 +8761,20 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_GIVEREF(__pyx_t_1);
         PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
@@ -8782,31 +8783,31 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     __pyx_v_threshold = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":294
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":311
  *     if adaptive_threshold:
  *         threshold = np.zeros(n_chan)
  *         threshold_v = threshold             # <<<<<<<<<<<<<<
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  *     else:
  */
-    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_threshold, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 311, __pyx_L1_error)
     __pyx_v_threshold_v = __pyx_t_10;
     __pyx_t_10.memview = NULL;
     __pyx_t_10.data = NULL;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":295
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":312
  *         threshold = np.zeros(n_chan)
  *         threshold_v = threshold
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)             # <<<<<<<<<<<<<<
  *     else:
  *         threshold_v = v_thresh
  */
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_float64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_fs); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8819,14 +8820,14 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       }
     }
     if (!__pyx_t_1) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_8};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8835,40 +8836,40 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_8};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else
       #endif
       {
-        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_alpha_j, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_9, __pyx_v_tau_j, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_4 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_h_t_coeffs(__pyx_v_delay_max_s, __pyx_t_9, __pyx_v_tau_j, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 312, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_h_t_v, 1);
     __pyx_v_h_t_v = __pyx_t_10;
     __pyx_t_10.memview = NULL;
     __pyx_t_10.data = NULL;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":292
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":309
  *     cdef h_t = np.zeros(int(fs * delay_max_s))
  *     cdef double[:] h_t_v = h_t
  *     if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -8878,7 +8879,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     goto __pyx_L4;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":297
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":314
  *         h_t_v = get_h_t_coeffs(delay_max_s, np.float64(fs), tau_j, alpha_j)
  *     else:
  *         threshold_v = v_thresh             # <<<<<<<<<<<<<<
@@ -8891,7 +8892,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   }
   __pyx_L4:;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":300
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":317
  * 
  * 
  *     for c in range(n_chan):             # <<<<<<<<<<<<<<
@@ -8903,7 +8904,7 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
   for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
     __pyx_v_c = __pyx_t_17;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":301
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":318
  * 
  *     for c in range(n_chan):
  *         if 0 < c < n_inhib_half:             # <<<<<<<<<<<<<<
@@ -8917,18 +8918,18 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     __pyx_t_18 = (__pyx_t_12 != 0);
     if (__pyx_t_18) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":302
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":319
  *     for c in range(n_chan):
  *         if 0 < c < n_inhib_half:
  *             inhib_vect_norm_mult[c] = inhib_vect_sum /  np.array(inhib_vect[n_inhib_half-c:n_inhib_half+c+1]).sum()             # <<<<<<<<<<<<<<
  *         elif (n_chan - n_inhib_half) <= c < (n_chan - 1):
  *             inhib_vect_norm_mult[c] = inhib_vect_sum / np.array(inhib_vect[c+1-n_chan+n_inhib_half:n_chan-1-c+n_inhib_half]).sum()
  */
-      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_inhib_vect_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
+      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_inhib_vect_sum); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 302, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_10.data = __pyx_v_inhib_vect.data;
@@ -8949,10 +8950,10 @@ static PyObject *__pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inh
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 302, __pyx_L1_error)
+    __PYX_ERR(0, 319, __pyx_L1_error)
 }
 
-__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 302, __pyx_L1_error)
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
       __pyx_t_10.memview = NULL;
@@ -8968,14 +8969,14 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         }
       }
       if (!__pyx_t_11) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_5);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -8984,26 +8985,26 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_t_8};
-          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else
         #endif
         {
-          __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 319, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_11); __pyx_t_11 = NULL;
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_8);
           __pyx_t_8 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 319, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
@@ -9017,21 +9018,21 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         }
       }
       if (__pyx_t_5) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else {
-        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_inhib_vect_norm_mult, __pyx_v_c, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 0, 0) < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_inhib_vect_norm_mult, __pyx_v_c, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 0, 0) < 0)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":301
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":318
  * 
  *     for c in range(n_chan):
  *         if 0 < c < n_inhib_half:             # <<<<<<<<<<<<<<
@@ -9041,7 +9042,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
       goto __pyx_L7;
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":303
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":320
  *         if 0 < c < n_inhib_half:
  *             inhib_vect_norm_mult[c] = inhib_vect_sum /  np.array(inhib_vect[n_inhib_half-c:n_inhib_half+c+1]).sum()
  *         elif (n_chan - n_inhib_half) <= c < (n_chan - 1):             # <<<<<<<<<<<<<<
@@ -9055,18 +9056,18 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     __pyx_t_12 = (__pyx_t_18 != 0);
     if (__pyx_t_12) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":304
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":321
  *             inhib_vect_norm_mult[c] = inhib_vect_sum /  np.array(inhib_vect[n_inhib_half-c:n_inhib_half+c+1]).sum()
  *         elif (n_chan - n_inhib_half) <= c < (n_chan - 1):
  *             inhib_vect_norm_mult[c] = inhib_vect_sum / np.array(inhib_vect[c+1-n_chan+n_inhib_half:n_chan-1-c+n_inhib_half]).sum()             # <<<<<<<<<<<<<<
  * 
  *     for i in range(n_pnts):
  */
-      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_inhib_vect_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_inhib_vect_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_10.data = __pyx_v_inhib_vect.data;
@@ -9087,10 +9088,10 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 304, __pyx_L1_error)
+    __PYX_ERR(0, 321, __pyx_L1_error)
 }
 
-__pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
+__pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
       __pyx_t_10.memview = NULL;
@@ -9106,14 +9107,14 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         }
       }
       if (!__pyx_t_8) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_5};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -9122,26 +9123,26 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_5};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 304, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 321, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8); __pyx_t_8 = NULL;
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_5);
           __pyx_t_5 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_4 = NULL;
@@ -9155,21 +9156,21 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_inhib_vect_norm_mult, __pyx_v_c, __pyx_t_2, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 0, 0) < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_inhib_vect_norm_mult, __pyx_v_c, __pyx_t_2, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 0, 0) < 0)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":303
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":320
  *         if 0 < c < n_inhib_half:
  *             inhib_vect_norm_mult[c] = inhib_vect_sum /  np.array(inhib_vect[n_inhib_half-c:n_inhib_half+c+1]).sum()
  *         elif (n_chan - n_inhib_half) <= c < (n_chan - 1):             # <<<<<<<<<<<<<<
@@ -9180,7 +9181,7 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     __pyx_L7:;
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":306
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":323
  *             inhib_vect_norm_mult[c] = inhib_vect_sum / np.array(inhib_vect[c+1-n_chan+n_inhib_half:n_chan-1-c+n_inhib_half]).sum()
  * 
  *     for i in range(n_pnts):             # <<<<<<<<<<<<<<
@@ -9192,7 +9193,7 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
   for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
     __pyx_v_i = __pyx_t_17;
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":307
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":324
  * 
  *     for i in range(n_pnts):
  *         t = tvect_v[i]             # <<<<<<<<<<<<<<
@@ -9202,7 +9203,7 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     __pyx_t_19 = __pyx_v_i;
     __pyx_v_t = (*((double *) ( /* dim=0 */ (__pyx_v_tvect_v.data + __pyx_t_19 * __pyx_v_tvect_v.strides[0]) )));
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":310
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":327
  * 
  *         # If adaptive threshold, compute the current threshold for each channel
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -9212,7 +9213,7 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     __pyx_t_12 = (__pyx_v_adaptive_threshold != 0);
     if (__pyx_t_12) {
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":311
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":328
  *         # If adaptive threshold, compute the current threshold for each channel
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,             # <<<<<<<<<<<<<<
@@ -9237,7 +9238,7 @@ __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_t_10, 1, (PyObject *(*)(char *)) __
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 311, __pyx_L1_error)
+    __PYX_ERR(0, 328, __pyx_L1_error)
 }
 
 __pyx_t_15.data = __pyx_v_chan_spikes_v.data;
@@ -9258,12 +9259,12 @@ __pyx_t_15.data = __pyx_v_chan_spikes_v.data;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 311, __pyx_L1_error)
+    __PYX_ERR(0, 328, __pyx_L1_error)
 }
 
-__pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multichan(__pyx_v_n_chan, __pyx_t_10, __pyx_t_15, __pyx_v_t, __pyx_v_h_t_v, __pyx_v_fs, __pyx_v_delay_max_s, __pyx_v_omega); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+__pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multichan(__pyx_v_n_chan, __pyx_t_10, __pyx_t_15, __pyx_v_t, __pyx_v_h_t_v, __pyx_v_fs, __pyx_v_delay_max_s, __pyx_v_omega); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":312
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":329
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,
  *                                                   h_t_v, fs, delay_max_s, omega)             # <<<<<<<<<<<<<<
@@ -9278,21 +9279,21 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_t_15.memview = NULL;
       __pyx_t_15.data = NULL;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":311
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":328
  *         # If adaptive threshold, compute the current threshold for each channel
  *         if adaptive_threshold:
  *             threshold_v = get_threshold_multichan(n_chan, t_spikes_v[:spike_inc], chan_spikes_v[:spike_inc],  t,             # <<<<<<<<<<<<<<
  *                                                   h_t_v, fs, delay_max_s, omega)
  * 
  */
-      __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 311, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 328, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_v_threshold_v, 1);
       __pyx_v_threshold_v = __pyx_t_10;
       __pyx_t_10.memview = NULL;
       __pyx_t_10.data = NULL;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":310
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":327
  * 
  *         # If adaptive threshold, compute the current threshold for each channel
  *         if adaptive_threshold:             # <<<<<<<<<<<<<<
@@ -9301,7 +9302,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  */
     }
 
-    /* "simplecochlea/cython/cochlea_fun_cy.pyx":314
+    /* "simplecochlea/cython/cochlea_fun_cy.pyx":331
  *                                                   h_t_v, fs, delay_max_s, omega)
  * 
  *         for c in range(n_chan):             # <<<<<<<<<<<<<<
@@ -9313,7 +9314,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     for (__pyx_t_22 = 0; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
       __pyx_v_c = __pyx_t_22;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":315
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":332
  * 
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period             # <<<<<<<<<<<<<<
@@ -9333,7 +9334,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_L14_bool_binop_done:;
       if (__pyx_t_12) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":316
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":333
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]             # <<<<<<<<<<<<<<
@@ -9345,7 +9346,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_27 = __pyx_v_i;
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_26 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_27 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_reset.data + __pyx_t_25 * __pyx_v_v_reset.strides[0]) )));
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":315
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":332
  * 
  *         for c in range(n_chan):
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period             # <<<<<<<<<<<<<<
@@ -9355,7 +9356,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         goto __pyx_L13;
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":317
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":334
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -9381,7 +9382,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_L16_bool_binop_done:;
       if (__pyx_t_12) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":318
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":335
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured
  *                 v_out_v[c, i] = v_reset[c]             # <<<<<<<<<<<<<<
@@ -9393,7 +9394,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_32 = __pyx_v_i;
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_31 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_32 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_reset.data + __pyx_t_30 * __pyx_v_v_reset.strides[0]) )));
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":317
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":334
  *             if refract_period and t < (t_last_spike[c] + t_refract[c]):  # Refractory period
  *                 v_out_v[c, i] = v_reset[c]
  *             elif not refract_period and i > 0 and t_last_spike[c] == tvect_v[i - 1]:  # Spiking activity just occured             # <<<<<<<<<<<<<<
@@ -9403,7 +9404,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         goto __pyx_L13;
       }
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":322
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":339
  *                 # A part of the input current is shunted away through conductance instead of reaching the exictable part
  *                 # of the neuron
  *                 inhib_shunt = 0             # <<<<<<<<<<<<<<
@@ -9413,7 +9414,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       /*else*/ {
         __pyx_v_inhib_shunt = 0.0;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":323
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":340
  *                 # of the neuron
  *                 inhib_shunt = 0
  *                 if n_inhib_half <= c < (n_chan - n_inhib_half):             # <<<<<<<<<<<<<<
@@ -9427,7 +9428,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_18 = (__pyx_t_12 != 0);
         if (__pyx_t_18) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":324
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":341
  *                 inhib_shunt = 0
  *                 if n_inhib_half <= c < (n_chan - n_inhib_half):
  *                     for j in range(n_inhib):             # <<<<<<<<<<<<<<
@@ -9439,7 +9440,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           for (__pyx_t_35 = 0; __pyx_t_35 < __pyx_t_34; __pyx_t_35+=1) {
             __pyx_v_j = __pyx_t_35;
 
-            /* "simplecochlea/cython/cochlea_fun_cy.pyx":325
+            /* "simplecochlea/cython/cochlea_fun_cy.pyx":342
  *                 if n_inhib_half <= c < (n_chan - n_inhib_half):
  *                     for j in range(n_inhib):
  *                         inhib_shunt += inhib_vect[j] * isyn_v[c - n_inhib_half + j, i-1]             # <<<<<<<<<<<<<<
@@ -9452,7 +9453,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
             __pyx_v_inhib_shunt = (__pyx_v_inhib_shunt + ((*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect.data + __pyx_t_36 * __pyx_v_inhib_vect.strides[0]) ))) * (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_37 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_38 * __pyx_v_isyn_v.strides[1]) )))));
           }
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":323
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":340
  *                 # of the neuron
  *                 inhib_shunt = 0
  *                 if n_inhib_half <= c < (n_chan - n_inhib_half):             # <<<<<<<<<<<<<<
@@ -9462,7 +9463,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           goto __pyx_L19;
         }
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":326
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":343
  *                     for j in range(n_inhib):
  *                         inhib_shunt += inhib_vect[j] * isyn_v[c - n_inhib_half + j, i-1]
  *                 elif 0 < c < n_inhib_half:             # <<<<<<<<<<<<<<
@@ -9476,7 +9477,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_12 = (__pyx_t_18 != 0);
         if (__pyx_t_12) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":327
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":344
  *                         inhib_shunt += inhib_vect[j] * isyn_v[c - n_inhib_half + j, i-1]
  *                 elif 0 < c < n_inhib_half:
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]             # <<<<<<<<<<<<<<
@@ -9484,12 +9485,12 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[n_inhib_half - c + c_j] * inhib_vect_norm_mult_c
  */
           __pyx_t_39 = __pyx_v_c;
-          __pyx_t_2 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect_norm_mult_v.data + __pyx_t_39 * __pyx_v_inhib_vect_norm_mult_v.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
+          __pyx_t_2 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect_norm_mult_v.data + __pyx_t_39 * __pyx_v_inhib_vect_norm_mult_v.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_XDECREF_SET(__pyx_v_inhib_vect_norm_mult_c, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":328
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":345
  *                 elif 0 < c < n_inhib_half:
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]
  *                     for c_j in range(0, 2*c+1):             # <<<<<<<<<<<<<<
@@ -9501,33 +9502,33 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           for (__pyx_t_35 = 0; __pyx_t_35 < __pyx_t_34; __pyx_t_35+=1) {
             __pyx_v_c_j = __pyx_t_35;
 
-            /* "simplecochlea/cython/cochlea_fun_cy.pyx":329
+            /* "simplecochlea/cython/cochlea_fun_cy.pyx":346
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]
  *                     for c_j in range(0, 2*c+1):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[n_inhib_half - c + c_j] * inhib_vect_norm_mult_c             # <<<<<<<<<<<<<<
  *                 elif (n_chan - n_inhib_half) <= c < (n_chan-1):
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]
  */
-            __pyx_t_2 = PyFloat_FromDouble(__pyx_v_inhib_shunt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_2 = PyFloat_FromDouble(__pyx_v_inhib_shunt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 346, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __pyx_t_40 = __pyx_v_c_j;
             __pyx_t_41 = (__pyx_v_i - 1);
             __pyx_t_42 = ((__pyx_v_n_inhib_half - __pyx_v_c) + __pyx_v_c_j);
-            __pyx_t_3 = PyFloat_FromDouble(((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_40 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_41 * __pyx_v_isyn_v.strides[1]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect.data + __pyx_t_42 * __pyx_v_inhib_vect.strides[0]) ))))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_3 = PyFloat_FromDouble(((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_40 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_41 * __pyx_v_isyn_v.strides[1]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect.data + __pyx_t_42 * __pyx_v_inhib_vect.strides[0]) ))))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_inhib_vect_norm_mult_c); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_inhib_vect_norm_mult_c); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_v_inhib_shunt = __pyx_t_9;
           }
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":326
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":343
  *                     for j in range(n_inhib):
  *                         inhib_shunt += inhib_vect[j] * isyn_v[c - n_inhib_half + j, i-1]
  *                 elif 0 < c < n_inhib_half:             # <<<<<<<<<<<<<<
@@ -9537,7 +9538,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           goto __pyx_L19;
         }
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":330
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":347
  *                     for c_j in range(0, 2*c+1):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[n_inhib_half - c + c_j] * inhib_vect_norm_mult_c
  *                 elif (n_chan - n_inhib_half) <= c < (n_chan-1):             # <<<<<<<<<<<<<<
@@ -9551,7 +9552,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_18 = (__pyx_t_12 != 0);
         if (__pyx_t_18) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":331
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":348
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[n_inhib_half - c + c_j] * inhib_vect_norm_mult_c
  *                 elif (n_chan - n_inhib_half) <= c < (n_chan-1):
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]             # <<<<<<<<<<<<<<
@@ -9559,12 +9560,12 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[c_j - c + n_inhib_half] * inhib_vect_norm_mult_c
  */
           __pyx_t_43 = __pyx_v_c;
-          __pyx_t_3 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect_norm_mult_v.data + __pyx_t_43 * __pyx_v_inhib_vect_norm_mult_v.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
+          __pyx_t_3 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect_norm_mult_v.data + __pyx_t_43 * __pyx_v_inhib_vect_norm_mult_v.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_XDECREF_SET(__pyx_v_inhib_vect_norm_mult_c, __pyx_t_3);
           __pyx_t_3 = 0;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":332
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":349
  *                 elif (n_chan - n_inhib_half) <= c < (n_chan-1):
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]
  *                     for c_j in range(2*c+1-n_chan, n_chan):             # <<<<<<<<<<<<<<
@@ -9576,33 +9577,33 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           for (__pyx_t_35 = (((2 * __pyx_v_c) + 1) - __pyx_v_n_chan); __pyx_t_35 < __pyx_t_34; __pyx_t_35+=1) {
             __pyx_v_c_j = __pyx_t_35;
 
-            /* "simplecochlea/cython/cochlea_fun_cy.pyx":333
+            /* "simplecochlea/cython/cochlea_fun_cy.pyx":350
  *                     inhib_vect_norm_mult_c = inhib_vect_norm_mult_v[c]
  *                     for c_j in range(2*c+1-n_chan, n_chan):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[c_j - c + n_inhib_half] * inhib_vect_norm_mult_c             # <<<<<<<<<<<<<<
  *                 elif c==0 or c==(n_chan-1):
  *                     inhib_shunt = isyn_v[c, i-1]*inhib_vect_sum
  */
-            __pyx_t_3 = PyFloat_FromDouble(__pyx_v_inhib_shunt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_3 = PyFloat_FromDouble(__pyx_v_inhib_shunt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_44 = __pyx_v_c_j;
             __pyx_t_45 = (__pyx_v_i - 1);
             __pyx_t_46 = ((__pyx_v_c_j - __pyx_v_c) + __pyx_v_n_inhib_half);
-            __pyx_t_1 = PyFloat_FromDouble(((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_44 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_45 * __pyx_v_isyn_v.strides[1]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect.data + __pyx_t_46 * __pyx_v_inhib_vect.strides[0]) ))))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_1 = PyFloat_FromDouble(((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_44 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_45 * __pyx_v_isyn_v.strides[1]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_inhib_vect.data + __pyx_t_46 * __pyx_v_inhib_vect.strides[0]) ))))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_inhib_vect_norm_mult_c); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_inhib_vect_norm_mult_c); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_v_inhib_shunt = __pyx_t_9;
           }
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":330
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":347
  *                     for c_j in range(0, 2*c+1):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[n_inhib_half - c + c_j] * inhib_vect_norm_mult_c
  *                 elif (n_chan - n_inhib_half) <= c < (n_chan-1):             # <<<<<<<<<<<<<<
@@ -9612,7 +9613,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           goto __pyx_L19;
         }
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":334
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":351
  *                     for c_j in range(2*c+1-n_chan, n_chan):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[c_j - c + n_inhib_half] * inhib_vect_norm_mult_c
  *                 elif c==0 or c==(n_chan-1):             # <<<<<<<<<<<<<<
@@ -9630,7 +9631,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_L26_bool_binop_done:;
         if (__pyx_t_18) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":335
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":352
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[c_j - c + n_inhib_half] * inhib_vect_norm_mult_c
  *                 elif c==0 or c==(n_chan-1):
  *                     inhib_shunt = isyn_v[c, i-1]*inhib_vect_sum             # <<<<<<<<<<<<<<
@@ -9641,7 +9642,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_48 = (__pyx_v_i - 1);
           __pyx_v_inhib_shunt = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_isyn_v.data + __pyx_t_47 * __pyx_v_isyn_v.strides[0]) ) + __pyx_t_48 * __pyx_v_isyn_v.strides[1]) ))) * __pyx_v_inhib_vect_sum);
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":334
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":351
  *                     for c_j in range(2*c+1-n_chan, n_chan):
  *                         inhib_shunt += isyn_v[c_j, i - 1] * inhib_vect[c_j - c + n_inhib_half] * inhib_vect_norm_mult_c
  *                 elif c==0 or c==(n_chan-1):             # <<<<<<<<<<<<<<
@@ -9651,7 +9652,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         }
         __pyx_L19:;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":336
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":353
  *                 elif c==0 or c==(n_chan-1):
  *                     inhib_shunt = isyn_v[c, i-1]*inhib_vect_sum
  *                 i_c = isyn_v[c, i-1] / (1 + inhib_shunt)             # <<<<<<<<<<<<<<
@@ -9664,11 +9665,11 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_51 = (1.0 + __pyx_v_inhib_shunt);
         if (unlikely(__pyx_t_51 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 336, __pyx_L1_error)
+          __PYX_ERR(0, 353, __pyx_L1_error)
         }
         __pyx_v_i_c = (__pyx_t_9 / __pyx_t_51);
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":337
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":354
  *                     inhib_shunt = isyn_v[c, i-1]*inhib_vect_sum
  *                 i_c = isyn_v[c, i-1] / (1 + inhib_shunt)
  *                 if i == 0:             # <<<<<<<<<<<<<<
@@ -9678,7 +9679,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_18 = ((__pyx_v_i == 0) != 0);
         if (__pyx_t_18) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":338
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":355
  *                 i_c = isyn_v[c, i-1] / (1 + inhib_shunt)
  *                 if i == 0:
  *                     v_out_v[c, i] = v_init[c] * v_mult_v[c] + i_c * i_mult_v[c]             # <<<<<<<<<<<<<<
@@ -9692,7 +9693,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_56 = __pyx_v_i;
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_55 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_56 * __pyx_v_v_out_v.strides[1]) )) = (((*((double *) ( /* dim=0 */ (__pyx_v_v_init.data + __pyx_t_52 * __pyx_v_v_init.strides[0]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_v_mult_v.data + __pyx_t_53 * __pyx_v_v_mult_v.strides[0]) )))) + (__pyx_v_i_c * (*((double *) ( /* dim=0 */ (__pyx_v_i_mult_v.data + __pyx_t_54 * __pyx_v_i_mult_v.strides[0]) )))));
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":337
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":354
  *                     inhib_shunt = isyn_v[c, i-1]*inhib_vect_sum
  *                 i_c = isyn_v[c, i-1] / (1 + inhib_shunt)
  *                 if i == 0:             # <<<<<<<<<<<<<<
@@ -9702,7 +9703,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           goto __pyx_L28;
         }
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":340
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":357
  *                     v_out_v[c, i] = v_init[c] * v_mult_v[c] + i_c * i_mult_v[c]
  *                 else:
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + i_c * i_mult_v[c]             # <<<<<<<<<<<<<<
@@ -9720,7 +9721,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         }
         __pyx_L28:;
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":341
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":358
  *                 else:
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + i_c * i_mult_v[c]
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike             # <<<<<<<<<<<<<<
@@ -9733,7 +9734,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
         __pyx_t_18 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_63 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_64 * __pyx_v_v_out_v.strides[1]) ))) > (*((double *) ( /* dim=0 */ (__pyx_v_threshold_v.data + __pyx_t_65 * __pyx_v_threshold_v.strides[0]) )))) != 0);
         if (__pyx_t_18) {
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":342
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":359
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + i_c * i_mult_v[c]
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike
  *                     v_out_v[c, i] = v_spike[c]             # <<<<<<<<<<<<<<
@@ -9745,7 +9746,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_68 = __pyx_v_i;
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_v_out_v.data + __pyx_t_67 * __pyx_v_v_out_v.strides[0]) ) + __pyx_t_68 * __pyx_v_v_out_v.strides[1]) )) = (*((double *) ( /* dim=0 */ (__pyx_v_v_spike.data + __pyx_t_66 * __pyx_v_v_spike.strides[0]) )));
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":343
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":360
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike
  *                     v_out_v[c, i] = v_spike[c]
  *                     t_last_spike[c] = t             # <<<<<<<<<<<<<<
@@ -9755,7 +9756,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_69 = __pyx_v_c;
           *((double *) ( /* dim=0 */ (__pyx_v_t_last_spike.data + __pyx_t_69 * __pyx_v_t_last_spike.strides[0]) )) = __pyx_v_t;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":344
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":361
  *                     v_out_v[c, i] = v_spike[c]
  *                     t_last_spike[c] = t
  *                     t_spikes_v[spike_inc] = t             # <<<<<<<<<<<<<<
@@ -9765,7 +9766,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_70 = __pyx_v_spike_inc;
           *((double *) ( /* dim=0 */ (__pyx_v_t_spikes_v.data + __pyx_t_70 * __pyx_v_t_spikes_v.strides[0]) )) = __pyx_v_t;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":345
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":362
  *                     t_last_spike[c] = t
  *                     t_spikes_v[spike_inc] = t
  *                     chan_spikes_v[spike_inc] = c             # <<<<<<<<<<<<<<
@@ -9775,7 +9776,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
           __pyx_t_71 = __pyx_v_spike_inc;
           *((int *) ( /* dim=0 */ (__pyx_v_chan_spikes_v.data + __pyx_t_71 * __pyx_v_chan_spikes_v.strides[0]) )) = __pyx_v_c;
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":346
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":363
  *                     t_spikes_v[spike_inc] = t
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1             # <<<<<<<<<<<<<<
@@ -9784,7 +9785,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
  */
           __pyx_v_spike_inc = (__pyx_v_spike_inc + 1);
 
-          /* "simplecochlea/cython/cochlea_fun_cy.pyx":341
+          /* "simplecochlea/cython/cochlea_fun_cy.pyx":358
  *                 else:
  *                     v_out_v[c, i] = v_out_v[c, i-1] * v_mult_v[c] + i_c * i_mult_v[c]
  *                 if v_out_v[c, i] > threshold_v[c]:  # Spike             # <<<<<<<<<<<<<<
@@ -9795,7 +9796,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       }
       __pyx_L13:;
 
-      /* "simplecochlea/cython/cochlea_fun_cy.pyx":347
+      /* "simplecochlea/cython/cochlea_fun_cy.pyx":364
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):             # <<<<<<<<<<<<<<
@@ -9805,20 +9806,20 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
       __pyx_t_18 = ((__pyx_v_spike_inc >= (__pyx_v_out_list_size - 1)) != 0);
       if (unlikely(__pyx_t_18)) {
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":348
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":365
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')             # <<<<<<<<<<<<<<
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  */
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_Raise(__pyx_t_1, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __PYX_ERR(0, 348, __pyx_L1_error)
+        __PYX_ERR(0, 365, __pyx_L1_error)
 
-        /* "simplecochlea/cython/cochlea_fun_cy.pyx":347
+        /* "simplecochlea/cython/cochlea_fun_cy.pyx":364
  *                     chan_spikes_v[spike_inc] = c
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):             # <<<<<<<<<<<<<<
@@ -9829,7 +9830,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     }
   }
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":350
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":367
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]             # <<<<<<<<<<<<<<
@@ -9854,7 +9855,7 @@ __pyx_t_2 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_get_threshold_multi
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 350, __pyx_L1_error)
+    __PYX_ERR(0, 367, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
@@ -9862,7 +9863,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":351
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":368
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  *     chan_spikes_v = chan_spikes_v[:spike_inc]             # <<<<<<<<<<<<<<
@@ -9887,7 +9888,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_t_spikes_v, 1);
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 351, __pyx_L1_error)
+    __PYX_ERR(0, 368, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
@@ -9895,7 +9896,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
   __pyx_t_15.memview = NULL;
   __pyx_t_15.data = NULL;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":352
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":369
  *     t_spikes_v = t_spikes_v[:spike_inc]
  *     chan_spikes_v = chan_spikes_v[:spike_inc]
  *     return np.array(v_out_v), np.array(t_spikes_v), np.array(chan_spikes_v)             # <<<<<<<<<<<<<<
@@ -9903,12 +9904,12 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_v_out_v, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -9921,14 +9922,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9937,31 +9938,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_t_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -9974,14 +9975,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_11};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -9990,31 +9991,31 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_11};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_11);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_11);
       __pyx_t_11 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_chan_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_chan_spikes_v, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
@@ -10027,14 +10028,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -10043,26 +10044,26 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1);
@@ -10077,7 +10078,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_chan_spikes_v, 1);
   __pyx_t_11 = 0;
   goto __pyx_L0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":243
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":260
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
@@ -10205,79 +10206,79 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_5lif_filter_i
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_isyn_v)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 1); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 1); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_refract_period)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 2); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 2); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t_refract)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 3); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 3); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 4); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 4); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_thresh)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 5); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 5); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_spike)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 6); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 6); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_reset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 7); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 7); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_v_init)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 8); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 8); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inhib_vect)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 9); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 9); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_adaptive_threshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 10); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 10); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tau_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 11); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 11); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha_j)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 12); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 12); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_omega)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 13); __PYX_ERR(0, 243, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, 13); __PYX_ERR(0, 260, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -10293,7 +10294,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_5lif_filter_i
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_inhib_shuntfor_current_cy") < 0)) __PYX_ERR(0, 243, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lif_filter_inhib_shuntfor_current_cy") < 0)) __PYX_ERR(0, 260, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -10319,22 +10320,22 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_5lif_filter_i
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 243, __pyx_L3_error)
-    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 243, __pyx_L3_error)
-    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 243, __pyx_L3_error)
-    __pyx_v_t_refract = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_t_refract.memview)) __PYX_ERR(0, 243, __pyx_L3_error)
-    __pyx_v_tau = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau.memview)) __PYX_ERR(0, 243, __pyx_L3_error)
-    __pyx_v_v_thresh = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_thresh.memview)) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_v_spike = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_spike.memview)) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_v_reset = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_reset.memview)) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_v_init = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_init.memview)) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_inhib_vect = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[9], PyBUF_WRITABLE); if (unlikely(!__pyx_v_inhib_vect.memview)) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 245, __pyx_L3_error)
-    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 245, __pyx_L3_error)
-    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[12], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 245, __pyx_L3_error)
-    __pyx_v_omega = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[13], PyBUF_WRITABLE); if (unlikely(!__pyx_v_omega.memview)) __PYX_ERR(0, 245, __pyx_L3_error)
+    __pyx_v_fs = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_fs == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L3_error)
+    __pyx_v_isyn_v = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_isyn_v.memview)) __PYX_ERR(0, 260, __pyx_L3_error)
+    __pyx_v_refract_period = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_refract_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L3_error)
+    __pyx_v_t_refract = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_t_refract.memview)) __PYX_ERR(0, 260, __pyx_L3_error)
+    __pyx_v_tau = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau.memview)) __PYX_ERR(0, 260, __pyx_L3_error)
+    __pyx_v_v_thresh = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_thresh.memview)) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_v_spike = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_spike.memview)) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_v_reset = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_reset.memview)) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_v_init = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_v_init.memview)) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_inhib_vect = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[9], PyBUF_WRITABLE); if (unlikely(!__pyx_v_inhib_vect.memview)) __PYX_ERR(0, 261, __pyx_L3_error)
+    __pyx_v_adaptive_threshold = __Pyx_PyInt_As_int(values[10]); if (unlikely((__pyx_v_adaptive_threshold == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 262, __pyx_L3_error)
+    __pyx_v_tau_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[11], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tau_j.memview)) __PYX_ERR(0, 262, __pyx_L3_error)
+    __pyx_v_alpha_j = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[12], PyBUF_WRITABLE); if (unlikely(!__pyx_v_alpha_j.memview)) __PYX_ERR(0, 262, __pyx_L3_error)
+    __pyx_v_omega = __Pyx_PyObject_to_MemoryviewSlice_ds_double(values[13], PyBUF_WRITABLE); if (unlikely(!__pyx_v_omega.memview)) __PYX_ERR(0, 262, __pyx_L3_error)
     if (values[14]) {
-      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[14]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 246, __pyx_L3_error)
+      __pyx_v_t_start = __pyx_PyFloat_AsDouble(values[14]); if (unlikely((__pyx_v_t_start == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L3_error)
     } else {
       __pyx_v_t_start = ((double)0.0);
     }
@@ -10342,7 +10343,7 @@ static PyObject *__pyx_pw_13simplecochlea_6cython_14cochlea_fun_cy_5lif_filter_i
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 243, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lif_filter_inhib_shuntfor_current_cy", 0, 14, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 260, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("simplecochlea.cython.cochlea_fun_cy.lif_filter_inhib_shuntfor_current_cy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -10362,21 +10363,21 @@ static PyObject *__pyx_pf_13simplecochlea_6cython_14cochlea_fun_cy_4lif_filter_i
   struct __pyx_opt_args_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inhib_shuntfor_current_cy __pyx_t_2;
   __Pyx_RefNannySetupContext("lif_filter_inhib_shuntfor_current_cy", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_t_refract.memview)) { __Pyx_RaiseUnboundLocalError("t_refract"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_tau.memview)) { __Pyx_RaiseUnboundLocalError("tau"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_thresh.memview)) { __Pyx_RaiseUnboundLocalError("v_thresh"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_spike.memview)) { __Pyx_RaiseUnboundLocalError("v_spike"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_reset.memview)) { __Pyx_RaiseUnboundLocalError("v_reset"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_v_init.memview)) { __Pyx_RaiseUnboundLocalError("v_init"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_inhib_vect.memview)) { __Pyx_RaiseUnboundLocalError("inhib_vect"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 243, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_omega.memview)) { __Pyx_RaiseUnboundLocalError("omega"); __PYX_ERR(0, 243, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_isyn_v.memview)) { __Pyx_RaiseUnboundLocalError("isyn_v"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_t_refract.memview)) { __Pyx_RaiseUnboundLocalError("t_refract"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_tau.memview)) { __Pyx_RaiseUnboundLocalError("tau"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_thresh.memview)) { __Pyx_RaiseUnboundLocalError("v_thresh"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_spike.memview)) { __Pyx_RaiseUnboundLocalError("v_spike"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_reset.memview)) { __Pyx_RaiseUnboundLocalError("v_reset"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_v_init.memview)) { __Pyx_RaiseUnboundLocalError("v_init"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_inhib_vect.memview)) { __Pyx_RaiseUnboundLocalError("inhib_vect"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_tau_j.memview)) { __Pyx_RaiseUnboundLocalError("tau_j"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_alpha_j.memview)) { __Pyx_RaiseUnboundLocalError("alpha_j"); __PYX_ERR(0, 260, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_omega.memview)) { __Pyx_RaiseUnboundLocalError("omega"); __PYX_ERR(0, 260, __pyx_L1_error) }
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.t_start = __pyx_v_t_start;
   __pyx_t_2.t_last_spike_p = __pyx_v_t_last_spike_p;
-  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inhib_shuntfor_current_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_inhib_vect, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_13simplecochlea_6cython_14cochlea_fun_cy_lif_filter_inhib_shuntfor_current_cy(__pyx_v_fs, __pyx_v_isyn_v, __pyx_v_refract_period, __pyx_v_t_refract, __pyx_v_tau, __pyx_v_v_thresh, __pyx_v_v_spike, __pyx_v_v_reset, __pyx_v_v_init, __pyx_v_inhib_vect, __pyx_v_adaptive_threshold, __pyx_v_tau_j, __pyx_v_alpha_j, __pyx_v_omega, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -26474,7 +26475,7 @@ static PyModuleDef_Slot __pyx_moduledef_slots[] = {
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
     "cochlea_fun_cy",
-    0, /* m_doc */
+    __pyx_k_This_file_is_part_of_simplecoch, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
   #else
@@ -26625,9 +26626,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 26, __pyx_L1_error)
-  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_n_s_max); if (!__pyx_builtin_max) __PYX_ERR(0, 127, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_n_s_max); if (!__pyx_builtin_max) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 250, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 810, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1000, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 147, __pyx_L1_error)
@@ -26645,25 +26646,25 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":233
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":250
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')             # <<<<<<<<<<<<<<
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Increase_size_of_t_spikes_chan_s); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Increase_size_of_t_spikes_chan_s); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":348
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":365
  *                     spike_inc += 1
  *             if spike_inc>=(out_list_size-1):
  *                 raise ValueError('Increase size of t_spikes, chan_spikes')             # <<<<<<<<<<<<<<
  * 
  *     t_spikes_v = t_spikes_v[:spike_inc]
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Increase_size_of_t_spikes_chan_s); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Increase_size_of_t_spikes_chan_s); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
@@ -27338,7 +27339,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("cochlea_fun_cy", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("cochlea_fun_cy", __pyx_methods, __pyx_k_This_file_is_part_of_simplecoch, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -27385,98 +27386,100 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":1
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":18
+ * """
+ * 
  * import numpy as np             # <<<<<<<<<<<<<<
  * from cython.parallel import prange
  * cimport numpy as np
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":106
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":123
  * cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,
  *                               double v_spike, double v_reset, double v_init, int adaptive_threshold, double[:] tau_j,
  *                               double[:] alpha_j, double omega, double t_start=0, t_last_spike_p=[]):             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t i, n_pnts
  *     cdef double t
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k_ = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":104
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":121
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_1d_signal_cy(int fs, double[:] isyn_v, int refract_period, double t_refract, double tau, double v_thresh,             # <<<<<<<<<<<<<<
  *                               double v_spike, double v_reset, double v_init, int adaptive_threshold, double[:] tau_j,
  *                               double[:] alpha_j, double omega, double t_start=0, t_last_spike_p=[]):
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k_ = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":169
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":186
  *                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init,
  *                     int adaptive_threshold, double[:] tau_j, double[:] alpha_j, double[:] omega,
  *                     double t_start=0, t_last_spike_p=[]):             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t i, c
  *     cdef double t
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k__2 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":166
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":183
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
  *                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init,
  *                     int adaptive_threshold, double[:] tau_j, double[:] alpha_j, double[:] omega,
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k__2 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":246
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":263
  *                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
  *                     int adaptive_threshold, double[:] tau_j, double[:] alpha_j, double[:] omega,
  *                     double t_start=0, t_last_spike_p=[]):             # <<<<<<<<<<<<<<
  *     print('Inhibition Shunting Forward Current')
  *     cdef Py_ssize_t i, j, c, c_j
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k__4 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simplecochlea/cython/cochlea_fun_cy.pyx":243
+  /* "simplecochlea/cython/cochlea_fun_cy.pyx":260
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef lif_filter_inhib_shuntfor_current_cy(int fs, double[:, :] isyn_v, int refract_period, double[:] t_refract, double[:] tau,             # <<<<<<<<<<<<<<
  *                     double[:] v_thresh, double[:] v_spike, double[:] v_reset, double[:] v_init, double[:] inhib_vect,
  *                     int adaptive_threshold, double[:] tau_j, double[:] alpha_j, double[:] omega,
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_k__4 = __pyx_t_1;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "simplecochlea/cython/cochlea_fun_cy.pyx":1
- * import numpy as np             # <<<<<<<<<<<<<<
- * from cython.parallel import prange
- * cimport numpy as np
+ * """             # <<<<<<<<<<<<<<
+ * This file is part of simplecochlea.
+ * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

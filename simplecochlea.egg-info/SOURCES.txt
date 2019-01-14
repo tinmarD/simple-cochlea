@@ -3,7 +3,6 @@ README.md
 setup.py
 simplecochlea/__init__.py
 simplecochlea/cochlea.py
-simplecochlea/cochlea_backup.py
 simplecochlea/generate_signals.py
 simplecochlea.egg-info/PKG-INFO
 simplecochlea.egg-info/SOURCES.txt
@@ -18,7 +17,6 @@ simplecochlea/sample_data/cochlea_test.p
 simplecochlea/sample_data/sample_sequence_10_50ms_1.wav
 simplecochlea/spikes/__init__.py
 simplecochlea/spikes/spikelist.py
-simplecochlea/spikes/spikepacket.py
 simplecochlea/utils/__init__.py
 simplecochlea/utils/utils_cochlea.py
 simplecochlea/utils/utils_freqanalysis.py
