@@ -29,4 +29,5 @@ pip install git+https://github.com/tinmarD/simplecochlea.git@master
 ## Contact
 
 Author : Martin Deudon (2018) - contact : <martin.deudon@protonmail.com>
+
 This program is released under license GPL
