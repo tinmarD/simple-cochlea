@@ -613,11 +613,17 @@ class LIFBank:
             Input signal
         v_init : array
             Initial LIF potential
-        t_start :
-        t_last_spike :
+        t_start : float (default: 0)
+            ???
+        t_last_spike : float | none (default: none)
+            Time of the last spike
 
         Returns
         -------
+        output_sig : array [n_chan, n_pnts]
+            LIF output potential
+        spikes : array [n_spikes, 2]
+            First column contain the spikes time; the 2nd column contains the spike channel
 
         """
         input_sig = np.array(input_sig).squeeze()
@@ -658,11 +664,19 @@ class LIFBank:
             Channel position
         v_init : array
             Initial LIF potential
-        t_start :
-        t_last_spike :
+        t_start : float (default: 0)
+            ???
+        t_last_spike : float | none (default: none)
+            Time of the last spike
 
         Returns
         -------
+        v_out : array [n_pnts]
+            LIF output potential
+        t_spikes : array [n_spikes]
+            Spikes time
+        threshold : array [n_pnts]
+            Threshold at each time point
 
         """
         if len(np.array(input_sig).shape) > 1 and not np.min(np.array(input_sig).shape) == 1:
@@ -698,7 +712,6 @@ class LIFBank:
         ax2.autoscale(axis='x', tight=True)
         ax2.legend(['Spiking Threshold'])
         ax2.set(xlabel='Channel', title='Spiking Threshold for each LIF neuron')
-        f.show(block=False)
 
 
 class Cochlea:
